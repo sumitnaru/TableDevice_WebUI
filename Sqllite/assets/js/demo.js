@@ -1,4 +1,24 @@
-type = ['','info','success','warning','danger'];
+type = ['', 'info', 'success', 'warning', 'danger'];
+
+
+
+var tempTableArray = [];
+function MainTable() {
+    this.deviceId = 0;
+    this.statsId = 0;
+    this.day = 0;
+    this.month = 0;
+    this.year = 0;
+    this.hour = 0;
+    this.minitues = 0;
+    this.second = 0;
+    this.request = 0;
+}
+var Filter1Arr = [];
+
+
+
+
 function two(files) {
     var file = files[0];
     console.log("File...");
@@ -9,12 +29,104 @@ function two(files) {
         //console.log(reader);
         //var database = SQL.open(bin2Array(reader.result));
         var database = new SQL.Database(bin2Array(reader.result))
-        var data = database.exec("SELECT * FROM STATUS WHERE STATUSID='1'");
-        console.log(data);
-        console.log(data[0].values.length);
+        var alldata = database.exec("SELECT * FROM STATUS");
+        console.log("alldata-----------------------");
+        alldata = alldata[0].values;
+        alldatalength = alldata.length;
+        //var devicedata = database.exec("SELECT DEVICEID FROM STATUS");
+        //var statusdata = database.exec("SELECT STATUSID FROM STATUS");
+        //var statusdata0 = database.exec("SELECT STATUSID FROM STATUS WHERE STATUSID=0");
+        //var statusdata1 = database.exec("SELECT STATUSID FROM STATUS WHERE STATUSID=1 ");
+        //var requestdata = database.exec("SELECT STATUSID FROM STATUS WHERE STATUSID=1 AND REQUEST=3");
+        //var requestdata1 = database.exec("SELECT STATUSID FROM STATUS WHERE STATUSID=1 AND REQUEST=3");
+
+        //sts = parseFloat(statusdata[0].values.length);
+        //sts0 = parseFloat(statusdata0[0].values.length);
+        //sts1 = parseFloat(statusdata1[0].values.length);
+        
+        //<li><a href="#"></a></li>
+        //               <li><a href="#">1 Hour</a></li>
+        //               <li><a href="#">1 day</a></li>
+        //               <li><a href="#">15 days</a></li>
+        //               <li><a href="#">30 days</a></li>
+        console.log(alldata);
+        var now = new Date();
+        var pDate = now.getDate();
+        var pMonth = now.getMonth()+1;
+        var pYear = now.getFullYear();
+        var pHour = now.getHours();
+        var pMin = now.getMinutes();
+        var pSec = now.getSeconds();
+        var droptext = document.getElementById("drpTime");
+        var min =parseInt(droptext.options[droptext.selectedIndex].value);
+        console.log(min);
+        var from = new Date(now);
+        from.setMinutes(now.getMinutes() - min);
+        console.log(from);
+        console.log(now);
+
+        var mDate = from.getDate();
+        var mMonth = from.getMonth();
+
+        var mYear = from.getFullYear();
+        var mHour = from.getHours();
+        var mMin = from.getMinutes();
+        var mSec = from.getSeconds();
+        for (var i = 0; i < alldata.length; i++) {
+            var dDate = alldata[i][2];
+            console.log("---------------"+dDate);
+            var dMonth = from.getMonth();
+            var dYear = from.getFullYear();
+            var dHour = from.getHours();
+            var dMin = from.getMinutes();
+            var dSec = from.getSeconds();
+            //var dMonth = alldata[i][3];
+            //var dYear = from.getFullYear();
+            //var dHour = from.getHours();
+            //var dMin = from.getMinutes();
+            //var dSec = from.getSeconds();
+            console.log(dYear);
+            console.log(pMonth);
+            if ((dDate <= pDate && dDate >= mDate)) {
+                console.log("m");
+                var tempFilter = new MainTable();
+                //console.log(alldata[i][0]);
+                tempFilter.deviceId = alldata[i][0];
+                tempFilter.statsId = alldata[i][1];
+                tempFilter.day = alldata[i][2];
+                tempFilter.month = alldata[i][3];
+                tempFilter.year = alldata[i][4];
+                tempFilter.hour = alldata[i][5];
+                tempFilter.minitues = alldata[i][6];
+                tempFilter.second = alldata[i][7];
+               // console.log(tempFilter);
+                Filter1Arr.push(tempFilter);
+            }
+        }
+        console.log("Filter1:");
+        console.log(Filter1Arr.length);
+        console.log(Filter1Arr);
+        console.log(alldatalength);
+        var val = parseFloat(alldatalength / Filter1Arr.length);
+        sts0 = Math.round(100 / val).toFixed(2);
+        var val1 = parseFloat(alldatalength /(alldatalength- Filter1Arr.length));
+        sts1 = Math.round(100 / val1).toFixed(2);
+
+        //For Area Chat Weher We Shaw Number Of Request
+
+      //  var requestdata = database.exec("SELECT DEVICEID FROM STATUS WHERE STATUSID=1");
+        console.log("ststus-----------------------");
+       // console.log(requestdata[0].values);
+      //  var myJSON = JSON.stringify(requestdata[0].values);
+        // merged = [].concat.apply([], requestdata[0].values);
+       // console.log(merged);
+        
+        demo.initChartist();
+       // initChartist();
+
     }, 1000);
 }
-
+var merged=[1];
 function updateTimeOnline() {
     var file = files[0];
     var reader = new FileReader();
@@ -42,23 +154,6 @@ function four() {
 
 var getFileBlob = function (url, cb) {
 
-    //$.ajax({
-    //    url: url,
-    //    type: 'GET',
-    //    dataType: 'json',
-    //    /* Very important */
-    //    contentType: 'application/json',
-    //    success: function (data) {
-    //        var res = JSON.parse(data);
-
-    //    },
-    //    error: function (data) {
-    //        cb(data);
-            
-    //    }
-    //});
-
-
     var xhr = new XMLHttpRequest();
     xhr.open("GET", url);
     xhr.responseType = "blob";
@@ -82,7 +177,7 @@ var getFileObject = function (filePathOrUrl, cb) {
 
 
 
-
+var sts = 1,sts0 = 3,sts1 = 5;
 
 demo = {
     initPickColor: function(){
@@ -105,11 +200,9 @@ demo = {
 
 
     initChartist: function () {
-        ///-------------------
-
 
         var tempdataSales = {
-            labels: ['9:00AM', '12:00AM', '3:00PM', '6:00PM', '9:00PM', '12:00PM', '3:00AM', '6:00AM'],
+            labels: merged,
             series: [
                [287, 385, 490, 562, 594, 626, 698, 895, 952],
               [67, 152, 193, 240, 387, 435, 535, 642, 744],
@@ -135,6 +228,7 @@ demo = {
             }),
             showLine: true,
             showPoint: false,
+            
         };
 
         var tempresponsiveSales = [
@@ -157,7 +251,7 @@ demo = {
         ///-------------------
 
         var dataSales = {
-          labels: ['9:00AM', '12:00AM', '3:00PM', '6:00PM', '9:00PM', '12:00PM', '3:00AM', '6:00AM'],
+          labels: ['2:00AM', '12:00AM', '3:00PM', '6:00PM', '9:00PM', '12:00PM', '3:00AM', '6:00AM'],
           series: [
              [287, 385, 490, 562, 594, 626, 698, 895, 952],
 			 
@@ -242,10 +336,12 @@ demo = {
         };
 
         Chartist.Pie('#chartPreferences', dataPreferences, optionsPreferences);
-
+        
         Chartist.Pie('#chartPreferences', {
-          labels: ['62%','32%','6%'],
-          series: [62, 32, 6]
+            //labels: [sts0 + '%', sts1 + '%', sts2 + '%'],
+            //series: [sts0, sts1, sts2]
+            labels: [sts0 + '%', sts1 + '%'],
+            series: [sts0, sts1]
         });
     },
 

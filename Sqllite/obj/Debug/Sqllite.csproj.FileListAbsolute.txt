@@ -1,0 +1,60 @@
+F:\SUMIT\Sqllite\Sqllite\bin\roslyn\csc.exe
+F:\SUMIT\Sqllite\Sqllite\bin\roslyn\Microsoft.Build.Tasks.CodeAnalysis.dll
+F:\SUMIT\Sqllite\Sqllite\bin\roslyn\Microsoft.CodeAnalysis.CSharp.dll
+F:\SUMIT\Sqllite\Sqllite\bin\roslyn\Microsoft.CodeAnalysis.dll
+F:\SUMIT\Sqllite\Sqllite\bin\roslyn\Microsoft.CodeAnalysis.VisualBasic.dll
+F:\SUMIT\Sqllite\Sqllite\bin\roslyn\Microsoft.CSharp.Core.targets
+F:\SUMIT\Sqllite\Sqllite\bin\roslyn\Microsoft.VisualBasic.Core.targets
+F:\SUMIT\Sqllite\Sqllite\bin\roslyn\System.Collections.Immutable.dll
+F:\SUMIT\Sqllite\Sqllite\bin\roslyn\System.Reflection.Metadata.dll
+F:\SUMIT\Sqllite\Sqllite\bin\roslyn\vbc.exe
+F:\SUMIT\Sqllite\Sqllite\bin\roslyn\VBCSCompiler.exe
+F:\SUMIT\Sqllite\Sqllite\bin\roslyn\VBCSCompiler.exe.config
+F:\SUMIT\Sqllite\Sqllite\bin\Sqllite.dll.config
+F:\SUMIT\Sqllite\Sqllite\bin\Sqllite.dll
+F:\SUMIT\Sqllite\Sqllite\bin\Sqllite.pdb
+F:\SUMIT\Sqllite\Sqllite\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll
+F:\SUMIT\Sqllite\Sqllite\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.xml
+F:\SUMIT\Sqllite\Sqllite\obj\Debug\Sqllite.csprojResolveAssemblyReference.cache
+F:\SUMIT\Sqllite\Sqllite\obj\Debug\Sqllite.dll
+F:\SUMIT\Sqllite\Sqllite\obj\Debug\Sqllite.pdb
+E:\Sqllite\Sqllite\bin\roslyn\csc.exe
+E:\Sqllite\Sqllite\bin\roslyn\Microsoft.Build.Tasks.CodeAnalysis.dll
+E:\Sqllite\Sqllite\bin\roslyn\Microsoft.CodeAnalysis.CSharp.dll
+E:\Sqllite\Sqllite\bin\roslyn\Microsoft.CodeAnalysis.dll
+E:\Sqllite\Sqllite\bin\roslyn\Microsoft.CodeAnalysis.VisualBasic.dll
+E:\Sqllite\Sqllite\bin\roslyn\Microsoft.CSharp.Core.targets
+E:\Sqllite\Sqllite\bin\roslyn\Microsoft.VisualBasic.Core.targets
+E:\Sqllite\Sqllite\bin\roslyn\System.Collections.Immutable.dll
+E:\Sqllite\Sqllite\bin\roslyn\System.Reflection.Metadata.dll
+E:\Sqllite\Sqllite\bin\roslyn\vbc.exe
+E:\Sqllite\Sqllite\bin\roslyn\VBCSCompiler.exe
+E:\Sqllite\Sqllite\bin\roslyn\VBCSCompiler.exe.config
+E:\Sqllite\Sqllite\bin\Sqllite.dll.config
+E:\Sqllite\Sqllite\bin\Sqllite.dll
+E:\Sqllite\Sqllite\bin\Sqllite.pdb
+E:\Sqllite\Sqllite\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll
+E:\Sqllite\Sqllite\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.xml
+E:\Sqllite\Sqllite\obj\Debug\Sqllite.csprojResolveAssemblyReference.cache
+E:\Sqllite\Sqllite\obj\Debug\Sqllite.dll
+E:\Sqllite\Sqllite\obj\Debug\Sqllite.pdb
+F:\SUMIT\New folder\Sqllite\Sqllite\Sqllite\bin\roslyn\csc.exe
+F:\SUMIT\New folder\Sqllite\Sqllite\Sqllite\bin\roslyn\Microsoft.Build.Tasks.CodeAnalysis.dll
+F:\SUMIT\New folder\Sqllite\Sqllite\Sqllite\bin\roslyn\Microsoft.CodeAnalysis.CSharp.dll
+F:\SUMIT\New folder\Sqllite\Sqllite\Sqllite\bin\roslyn\Microsoft.CodeAnalysis.dll
+F:\SUMIT\New folder\Sqllite\Sqllite\Sqllite\bin\roslyn\Microsoft.CodeAnalysis.VisualBasic.dll
+F:\SUMIT\New folder\Sqllite\Sqllite\Sqllite\bin\roslyn\Microsoft.CSharp.Core.targets
+F:\SUMIT\New folder\Sqllite\Sqllite\Sqllite\bin\roslyn\Microsoft.VisualBasic.Core.targets
+F:\SUMIT\New folder\Sqllite\Sqllite\Sqllite\bin\roslyn\System.Collections.Immutable.dll
+F:\SUMIT\New folder\Sqllite\Sqllite\Sqllite\bin\roslyn\System.Reflection.Metadata.dll
+F:\SUMIT\New folder\Sqllite\Sqllite\Sqllite\bin\roslyn\vbc.exe
+F:\SUMIT\New folder\Sqllite\Sqllite\Sqllite\bin\roslyn\VBCSCompiler.exe
+F:\SUMIT\New folder\Sqllite\Sqllite\Sqllite\bin\roslyn\VBCSCompiler.exe.config
+F:\SUMIT\New folder\Sqllite\Sqllite\Sqllite\bin\Sqllite.dll.config
+F:\SUMIT\New folder\Sqllite\Sqllite\Sqllite\bin\Sqllite.dll
+F:\SUMIT\New folder\Sqllite\Sqllite\Sqllite\bin\Sqllite.pdb
+F:\SUMIT\New folder\Sqllite\Sqllite\Sqllite\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll
+F:\SUMIT\New folder\Sqllite\Sqllite\Sqllite\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.xml
+F:\SUMIT\New folder\Sqllite\Sqllite\Sqllite\obj\Debug\Sqllite.csprojResolveAssemblyReference.cache
+F:\SUMIT\New folder\Sqllite\Sqllite\Sqllite\obj\Debug\Sqllite.dll
+F:\SUMIT\New folder\Sqllite\Sqllite\Sqllite\obj\Debug\Sqllite.pdb
