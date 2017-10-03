@@ -67,7 +67,7 @@ pd = {
             sidebar_active_color = $sidebar.data('active-color');
 
             $logo = $sidebar.find('.logo').first();
-            logo_content = $logo[0].outerHTML;
+            //logo_content = $logo[0].outerHTML;
 
             ul_content = '';
 
