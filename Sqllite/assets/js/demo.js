@@ -316,7 +316,7 @@ demo = {
           }]
         ];
 
-        Chartist.Line('#chartActivity', data, options, responsiveOptions);
+       // Chartist.Line('#chartActivity', data, options, responsiveOptions);
 
         var dataPreferences = {
             series: [

@@ -78,3 +78,23 @@ C:\Users\Shalu Mishra\Desktop\Sqllite\Sqllite\Sqllite\bin\Microsoft.CodeDom.Prov
 C:\Users\Shalu Mishra\Desktop\Sqllite\Sqllite\Sqllite\obj\Debug\Sqllite.csprojResolveAssemblyReference.cache
 C:\Users\Shalu Mishra\Desktop\Sqllite\Sqllite\Sqllite\obj\Debug\Sqllite.dll
 C:\Users\Shalu Mishra\Desktop\Sqllite\Sqllite\Sqllite\obj\Debug\Sqllite.pdb
+C:\Users\Rajesh\Documents\GitHub\TableDevice_WebUI\Sqllite\bin\roslyn\csc.exe
+C:\Users\Rajesh\Documents\GitHub\TableDevice_WebUI\Sqllite\bin\roslyn\Microsoft.Build.Tasks.CodeAnalysis.dll
+C:\Users\Rajesh\Documents\GitHub\TableDevice_WebUI\Sqllite\bin\roslyn\Microsoft.CodeAnalysis.CSharp.dll
+C:\Users\Rajesh\Documents\GitHub\TableDevice_WebUI\Sqllite\bin\roslyn\Microsoft.CodeAnalysis.dll
+C:\Users\Rajesh\Documents\GitHub\TableDevice_WebUI\Sqllite\bin\roslyn\Microsoft.CodeAnalysis.VisualBasic.dll
+C:\Users\Rajesh\Documents\GitHub\TableDevice_WebUI\Sqllite\bin\roslyn\Microsoft.CSharp.Core.targets
+C:\Users\Rajesh\Documents\GitHub\TableDevice_WebUI\Sqllite\bin\roslyn\Microsoft.VisualBasic.Core.targets
+C:\Users\Rajesh\Documents\GitHub\TableDevice_WebUI\Sqllite\bin\roslyn\System.Collections.Immutable.dll
+C:\Users\Rajesh\Documents\GitHub\TableDevice_WebUI\Sqllite\bin\roslyn\System.Reflection.Metadata.dll
+C:\Users\Rajesh\Documents\GitHub\TableDevice_WebUI\Sqllite\bin\roslyn\vbc.exe
+C:\Users\Rajesh\Documents\GitHub\TableDevice_WebUI\Sqllite\bin\roslyn\VBCSCompiler.exe
+C:\Users\Rajesh\Documents\GitHub\TableDevice_WebUI\Sqllite\bin\roslyn\VBCSCompiler.exe.config
+C:\Users\Rajesh\Documents\GitHub\TableDevice_WebUI\Sqllite\bin\Sqllite.dll.config
+C:\Users\Rajesh\Documents\GitHub\TableDevice_WebUI\Sqllite\bin\Sqllite.dll
+C:\Users\Rajesh\Documents\GitHub\TableDevice_WebUI\Sqllite\bin\Sqllite.pdb
+C:\Users\Rajesh\Documents\GitHub\TableDevice_WebUI\Sqllite\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll
+C:\Users\Rajesh\Documents\GitHub\TableDevice_WebUI\Sqllite\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.xml
+C:\Users\Rajesh\Documents\GitHub\TableDevice_WebUI\Sqllite\obj\Debug\Sqllite.csprojResolveAssemblyReference.cache
+C:\Users\Rajesh\Documents\GitHub\TableDevice_WebUI\Sqllite\obj\Debug\Sqllite.dll
+C:\Users\Rajesh\Documents\GitHub\TableDevice_WebUI\Sqllite\obj\Debug\Sqllite.pdb
