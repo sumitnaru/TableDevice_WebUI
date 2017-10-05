@@ -15,7 +15,28 @@ function MainTable() {
     this.request = 0;
 }
 var Filter1Arr = [];
-
+function SubTableRespns() {
+    this.deviceId = 0;
+   /// this.statsId = 0;
+    //this.day = 0;
+    //this.month = 0;
+    //this.year = 0;
+    //this.hour = 0;
+    //this.minitues = 0;
+    //this.second = 0;
+    //this.request = 0;
+}
+function SubTableEmer() {
+    this.deviceId = 0;
+   // this.statsId = 0;
+    //this.day = 0;
+    //this.month = 0;
+    //this.year = 0;
+    //this.hour = 0;
+    //this.minitues = 0;
+    //this.second = 0;
+    //this.request = 0;
+}
 
 
 
@@ -44,11 +65,7 @@ function two(files) {
         //sts0 = parseFloat(statusdata0[0].values.length);
         //sts1 = parseFloat(statusdata1[0].values.length);
         
-        //<li><a href="#"></a></li>
-        //               <li><a href="#">1 Hour</a></li>
-        //               <li><a href="#">1 day</a></li>
-        //               <li><a href="#">15 days</a></li>
-        //               <li><a href="#">30 days</a></li>
+       
         console.log(alldata);
         var now = new Date();
         var pDate = now.getDate();
@@ -106,11 +123,43 @@ function two(files) {
         console.log("Filter1:");
         console.log(Filter1Arr.length);
         console.log(Filter1Arr);
-        console.log(alldatalength);
+       // console.log(alldatalength);
+       // console.log("FilterSubTblArrresponse");
+       // console.log(Filter1Arr.length);
         var val = parseFloat(alldatalength / Filter1Arr.length);
         sts0 = Math.round(100 / val).toFixed(2);
         var val1 = parseFloat(alldatalength /(alldatalength- Filter1Arr.length));
         sts1 = Math.round(100 / val1).toFixed(2);
+
+
+        //number of request
+        var FilterSubTblArrresponse = [];
+        var FilterSubTblArremergency = [];
+       // console.log(Filter1Arr[0]["statsId"]);
+        for (var i = 0; i < Filter1Arr.length; i++) {
+            var stsid = Filter1Arr[i]["statsId"];
+           
+            var subtablfilteRes = new SubTableRespns();
+            var subtablfilteeerm = new SubTableEmer();
+            if (stsid == 3) {
+                  //  subtablfilteRes.statsId = Filter1Arr[i]["statsId"];
+                    subtablfilteRes.deviceId = Filter1Arr[i]["deviceId"];
+                    FilterSubTblArrresponse.push(subtablfilteRes);
+                }
+            else if (stsid == 4) {
+                   // subtablfilteeerm.statsId = Filter1Arr[i]["statsId"];
+                    subtablfilteeerm.deviceId = Filter1Arr[i]["deviceId"];
+                    FilterSubTblArremergency.push(subtablfilteeerm);
+                }
+            
+        }
+        console.log("FilterSubTblArrresponse");
+       // console.log(FilterSubTblArrresponse);
+          // console.log(FilterSubTblArremergency);
+       // var myJSON = JSON.stringify(FilterSubTblArrresponse);
+       merged = [].concat.apply([], FilterSubTblArrresponse);
+       //console.log(merged);
+
 
         //For Area Chat Weher We Shaw Number Of Request
 
