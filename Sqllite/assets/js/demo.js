@@ -3,6 +3,7 @@ type = ['', 'info', 'success', 'warning', 'danger'];
 
 
 var tempTableArray = [];
+var merged = [1];
 function MainTable() {
     this.deviceId = 0;
     this.statsId = 0;
@@ -38,7 +39,8 @@ function SubTableEmer() {
     //this.request = 0;
 }
 
-
+var gg = [1];
+var rsponsetime;
 
 function two(files) {
     var file = files[0];
@@ -123,6 +125,12 @@ function two(files) {
         console.log("Filter1:");
         console.log(Filter1Arr.length);
         console.log(Filter1Arr);
+        for (var i = 0; i < Filter1Arr.length; i++) {
+            merged = Filter1Arr.concat(Filter1Arr[i].values);
+        }
+         rsponsetime = Filter1Arr.length;
+       // merged = [].concat.apply([], Filter1Arr);
+         console.log(rsponsetime);
        // console.log(alldatalength);
        // console.log("FilterSubTblArrresponse");
        // console.log(Filter1Arr.length);
@@ -131,7 +139,8 @@ function two(files) {
         var val1 = parseFloat(alldatalength /(alldatalength- Filter1Arr.length));
         sts1 = Math.round(100 / val1).toFixed(2);
 
-
+        document.getElementById("rsptm").innerHTML = Filter1Arr.length;
+        document.getElementById("ondvc").innerHTML = Filter1Arr.length;
         //number of request
         var FilterSubTblArrresponse = [];
         var FilterSubTblArremergency = [];
@@ -154,11 +163,13 @@ function two(files) {
             
         }
         console.log("FilterSubTblArrresponse");
-       // console.log(FilterSubTblArrresponse);
-          // console.log(FilterSubTblArremergency);
-       // var myJSON = JSON.stringify(FilterSubTblArrresponse);
-       merged = [].concat.apply([], FilterSubTblArrresponse);
-       //console.log(merged);
+        console.log(FilterSubTblArrresponse);
+        gg = FilterSubTblArrresponse;
+        console.log(FilterSubTblArremergency.length);
+        document.getElementById("nemr").innerHTML = FilterSubTblArremergency.length;
+        // var myJSON = JSON.stringify(FilterSubTblArrresponse);
+       
+      
 
 
         //For Area Chat Weher We Shaw Number Of Request
@@ -175,7 +186,7 @@ function two(files) {
 
     }, 1000);
 }
-var merged=[1];
+
 function updateTimeOnline() {
     var file = files[0];
     var reader = new FileReader();
@@ -251,17 +262,14 @@ demo = {
     initChartist: function () {
 
         var tempdataSales = {
-            labels: merged,
-            series: [
-               [287, 385, 490, 562, 594, 626, 698, 895, 952],
-              [67, 152, 193, 240, 387, 435, 535, 642, 744],
-              [23, 113, 67, 108, 190, 239, 307, 410, 410]
-            ]
+            labels: gg,
+            series: merged
+            //series: [
+            //   [287, 385, 490, 562, 594, 626, 698, 895, 952],
+            //  [67, 152, 193, 240, 387, 435, 535, 642, 744],
+            //  [23, 113, 67, 108, 190, 239, 307, 410, 410]
+            //]
         };
-
-
-      //  console.log(tempdataSales.labels);
-      //  console.log(tempdataSales.series.length);
 
         var tempoptionsSales = {
             lineSmooth: false,
@@ -290,7 +298,46 @@ demo = {
           }]
         ];
 
-        Chartist.Line('#chartHours1', tempdataSales, tempoptionsSales, tempresponsiveSales);
+
+        var tempdataSalesEmeerRqst = {
+            labels: merged,
+            series: [
+               [287, 385, 490, 562, 594, 626, 698, 895, 952],
+              [67, 152, 193, 240, 387, 435, 535, 642, 744],
+              [23, 113, 67, 108, 190, 239, 307, 410, 410]
+            ]
+        };
+
+
+        var tempoptionsSalesEmeerRqst = {
+            lineSmooth: false,
+            low: 0,
+            high: 1000,
+            showArea: true,
+            height: "245px",
+            axisX: {
+                showGrid: false,
+            },
+            lineSmooth: Chartist.Interpolation.simple({
+                divisor: 3
+            }),
+            showLine: true,
+            showPoint: false,
+
+        };
+
+        var tempresponsiveSalesEmeerRqst = [
+          ['screen and (max-width: 640px)', {
+              axisX: {
+                  labelInterpolationFnc: function (value) {
+                      return value[0];
+                  }
+              }
+          }]
+        ];
+
+
+        Chartist.Line('#chartHours1', tempdataSalesEmeerRqst, tempoptionsSalesEmeerRqst, tempresponsiveSalesEmeerRqst);
 
         Chartist.Line('#chartHours2', tempdataSales, tempoptionsSales, tempresponsiveSales);
 
