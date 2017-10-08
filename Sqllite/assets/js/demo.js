@@ -1,7 +1,14 @@
 type = ['', 'info', 'success', 'warning', 'danger'];
 
-
-
+var value = 0;
+function getDropdownSelectedValue() {
+    value = document.getElementById("drpTime").value;
+    console.log(value);
+}
+var cntarr = [];
+var XArr = [];
+var Y1Arr = [];
+var Y2Arr = [];
 var tempTableArray = [];
 var merged = [1];
 function MainTable() {
@@ -16,6 +23,7 @@ function MainTable() {
     this.request = 0;
 }
 var Filter1Arr = [];
+
 function SubTableRespns() {
     this.deviceId = 0;
    /// this.statsId = 0;
@@ -27,20 +35,29 @@ function SubTableRespns() {
     //this.second = 0;
     //this.request = 0;
 }
-function SubTableEmer() {
+function countTable() {
     this.deviceId = 0;
-   // this.statsId = 0;
-    //this.day = 0;
-    //this.month = 0;
-    //this.year = 0;
-    //this.hour = 0;
-    //this.minitues = 0;
-    //this.second = 0;
-    //this.request = 0;
+    this.emergency = 0;
+    this.request = 0;
+
+}
+
+function filtercountTable() {
+    this.deviceId = 0;
+    this.emergency = 0;
+    this.request = 0;
+
+}
+function SubTable() {
+    this.deviceId = 0;
+    this.statsId = 0;
+    this.emergency = 0;
+    this.request = 0;
 }
 
 var gg = [1];
 var rsponsetime;
+var filter2Arr = [0];
 
 function two(files) {
     var file = files[0];
@@ -56,19 +73,7 @@ function two(files) {
         console.log("alldata-----------------------");
         alldata = alldata[0].values;
         alldatalength = alldata.length;
-        //var devicedata = database.exec("SELECT DEVICEID FROM STATUS");
-        //var statusdata = database.exec("SELECT STATUSID FROM STATUS");
-        //var statusdata0 = database.exec("SELECT STATUSID FROM STATUS WHERE STATUSID=0");
-        //var statusdata1 = database.exec("SELECT STATUSID FROM STATUS WHERE STATUSID=1 ");
-        //var requestdata = database.exec("SELECT STATUSID FROM STATUS WHERE STATUSID=1 AND REQUEST=3");
-        //var requestdata1 = database.exec("SELECT STATUSID FROM STATUS WHERE STATUSID=1 AND REQUEST=3");
 
-        //sts = parseFloat(statusdata[0].values.length);
-        //sts0 = parseFloat(statusdata0[0].values.length);
-        //sts1 = parseFloat(statusdata1[0].values.length);
-        
-       
-        console.log(alldata);
         var now = new Date();
         var pDate = now.getDate();
         var pMonth = now.getMonth()+1;
@@ -81,8 +86,6 @@ function two(files) {
         console.log(min);
         var from = new Date(now);
         from.setMinutes(now.getMinutes() - min);
-        console.log(from);
-        console.log(now);
 
         var mDate = from.getDate();
         var mMonth = from.getMonth();
@@ -93,7 +96,7 @@ function two(files) {
         var mSec = from.getSeconds();
         for (var i = 0; i < alldata.length; i++) {
             var dDate = alldata[i][2];
-            console.log("---------------"+dDate);
+           // console.log("---------------"+dDate);
             var dMonth = from.getMonth();
             var dYear = from.getFullYear();
             var dHour = from.getHours();
@@ -104,12 +107,11 @@ function two(files) {
             //var dHour = from.getHours();
             //var dMin = from.getMinutes();
             //var dSec = from.getSeconds();
-            console.log(dYear);
-            console.log(pMonth);
+           // console.log(dYear);
+           // console.log(pMonth);
             if ((dDate <= pDate && dDate >= mDate)) {
-                console.log("m");
+               // console.log("m");
                 var tempFilter = new MainTable();
-                //console.log(alldata[i][0]);
                 tempFilter.deviceId = alldata[i][0];
                 tempFilter.statsId = alldata[i][1];
                 tempFilter.day = alldata[i][2];
@@ -118,22 +120,13 @@ function two(files) {
                 tempFilter.hour = alldata[i][5];
                 tempFilter.minitues = alldata[i][6];
                 tempFilter.second = alldata[i][7];
-               // console.log(tempFilter);
                 Filter1Arr.push(tempFilter);
             }
         }
-        console.log("Filter1:");
-        console.log(Filter1Arr.length);
-        console.log(Filter1Arr);
         for (var i = 0; i < Filter1Arr.length; i++) {
             merged = Filter1Arr.concat(Filter1Arr[i].values);
         }
          rsponsetime = Filter1Arr.length;
-       // merged = [].concat.apply([], Filter1Arr);
-         console.log(rsponsetime);
-       // console.log(alldatalength);
-       // console.log("FilterSubTblArrresponse");
-       // console.log(Filter1Arr.length);
         var val = parseFloat(alldatalength / Filter1Arr.length);
         sts0 = Math.round(100 / val).toFixed(2);
         var val1 = parseFloat(alldatalength /(alldatalength- Filter1Arr.length));
@@ -141,48 +134,76 @@ function two(files) {
 
         document.getElementById("rsptm").innerHTML = Filter1Arr.length;
         document.getElementById("ondvc").innerHTML = Filter1Arr.length;
-        //number of request
-        var FilterSubTblArrresponse = [];
-        var FilterSubTblArremergency = [];
-       // console.log(Filter1Arr[0]["statsId"]);
-        for (var i = 0; i < Filter1Arr.length; i++) {
-            var stsid = Filter1Arr[i]["statsId"];
+
+        console.log(Filter1Arr);
+
+        var subTable= new SubTable();
+        for (var k = 0; k < Filter1Arr.length; k++) {
+            subTable.deviceId = 0;
+            if (Filter1Arr[k]["statsId"] == 3) {
+                subTable.request = Filter1Arr[k]["statsId"];
+                subTable.deviceId = Filter1Arr[k]["deviceId"];
+                subTable.statsId = Filter1Arr[k]["statsId"];
+            }
+               
+            if (Filter1Arr[k]["statsId"] == 4) {
+                console.log(Filter1Arr[k]["deviceId"]);
+                subTable.emergency = Filter1Arr[k]["statsId"];
+                subTable.deviceId = Filter1Arr[k]["deviceId"];
+                subTable.statsId = Filter1Arr[k]["statsId"];
+                console.log(subTable.deviceId);
+                cntarr.push(subTable);
+            }
+                
            
-            var subtablfilteRes = new SubTableRespns();
-            var subtablfilteeerm = new SubTableEmer();
-            if (stsid == 3) {
-                  //  subtablfilteRes.statsId = Filter1Arr[i]["statsId"];
-                    subtablfilteRes.deviceId = Filter1Arr[i]["deviceId"];
-                    FilterSubTblArrresponse.push(subtablfilteRes);
-                }
-            else if (stsid == 4) {
-                   // subtablfilteeerm.statsId = Filter1Arr[i]["statsId"];
-                    subtablfilteeerm.deviceId = Filter1Arr[i]["deviceId"];
-                    FilterSubTblArremergency.push(subtablfilteeerm);
-                }
-            
         }
-        console.log("FilterSubTblArrresponse");
-        console.log(FilterSubTblArrresponse);
-        gg = FilterSubTblArrresponse;
-        console.log(FilterSubTblArremergency.length);
-        document.getElementById("nemr").innerHTML = FilterSubTblArremergency.length;
-        // var myJSON = JSON.stringify(FilterSubTblArrresponse);
+        console.log("-----------");
+        console.log(cntarr);
+        console.log("-----------");
+
+
+        //var count = new countTable();
+        //var fltcnt = new filtercountTable();
+        //for (var i = 0; i < Filter1Arr.length; i++) {
+        //    if (Filter1Arr[i]["statsId"] == 3) {
+        //        var tmpdid = Filter1Arr[i]["deviceId"];
+        //        for (var j = 0; j < cntarr.length; j++) {
+        //            cntarr.deviceId = tmpdid;
+        //            cntarr.request += 1;
+        //        }
+        //        count.deviceId = tmpdid;
+        //        count.request = 1;
+        //        count.emergency = 0;
+        //        cntarr.push(count);
+
+        //    }
+        //    else if (Filter1Arr[i]["statsId"] == 4) {
+        //        var tmpdid = Filter1Arr[i]["deviceId"];
+        //        for (var j = 0; j < cntarr.length; j++) {
+        //            cntarr.deviceId = tmpdid;
+        //            cntarr.emergency += 1;
+        //        }
+        //        count.deviceId = tmpdid;
+        //        count.request = 0;
+        //        count.emergency = 1;
+        //        cntarr.push(count);
+        //    }
+                
+        //}
+
        
-      
+
+        for (var l = 0; l < cntarr.length;l++){
+            xArr.push(cntarr[l]["deviceId"]);
+            Y1Arr.push(countTab[l]["request"]);
+            Y2Arr.push(countTab[l]["emergency"]);
+        }
 
 
-        //For Area Chat Weher We Shaw Number Of Request
+        console.log("filter2Arr----");
+      //  console.log(cntarr);
 
-      //  var requestdata = database.exec("SELECT DEVICEID FROM STATUS WHERE STATUSID=1");
-        console.log("ststus-----------------------");
-       // console.log(requestdata[0].values);
-      //  var myJSON = JSON.stringify(requestdata[0].values);
-        // merged = [].concat.apply([], requestdata[0].values);
-       // console.log(merged);
-        
         demo.initChartist();
-       // initChartist();
 
     }, 1000);
 }
@@ -345,14 +366,13 @@ demo = {
 
 
         ///-------------------
-
+        var arr1 = [287, 385, 490, 562, 594, 626, 698, 895, 952];
+        var arr2 = [67, 152, 193, 240, 387, 435, 535, 642, 744];
         var dataSales = {
           labels: ['2:00AM', '12:00AM', '3:00PM', '6:00PM', '9:00PM', '12:00PM', '3:00AM', '6:00AM'],
           series: [
-             [287, 385, 490, 562, 594, 626, 698, 895, 952],
-			 
-            [67, 152, 193, 240, 387, 435, 535, 642, 744],
-            [23, 113, 67, 108, 190, 239, 307, 410, 410]
+             arr1,
+            arr2
           ]
         };
 
