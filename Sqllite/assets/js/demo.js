@@ -171,7 +171,7 @@ function two(files) {
                   arrToatlOlineArr.push(tmpcount);
                   TotalDeviceOnline++;
                 }
-            }  
+            }
             else{ // Offline
               var ck = 0;
                 for(var hh = 0; hh<arrToatlOfflineArr.length; hh++){
@@ -188,6 +188,7 @@ function two(files) {
                 }
             }
         }
+        TotalDeviceOffline -=  TotalDeviceOnline;
         console.log("TotalDeviceOnline");
         console.log(TotalDeviceOnline);
         console.log("TotalDevOffline");
