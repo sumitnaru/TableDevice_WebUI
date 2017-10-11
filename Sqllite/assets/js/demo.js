@@ -200,8 +200,8 @@ function two(files) {
         //var val1 = parseFloat(alldatalength /(alldatalength- Filter1Arr.length));
         sts1 = Math.round(100 / TotalDeviceOffline).toFixed(2);
 
-        document.getElementById("rsptm").innerHTML = Filter1Arr.length;
-        document.getElementById("ondvc").innerHTML = Filter1Arr.length;
+        //document.getElementById("rsptm").innerHTML = Filter1Arr.length;
+       // document.getElementById("ondvc").innerHTML = Filter1Arr.length;
 
         console.log(Filter1Arr);
 
@@ -463,7 +463,10 @@ function two(files) {
             console.log(XfilterOfflineArr);
             console.log(YfilterOfflineArr);
 
-
+		document.getElementById("rsptm").innerHTML = TotalReqCount;
+        document.getElementById("onlineDeviceCountbox").innerHTML = TotalDeviceOnline;
+		document.getElementById("RqstContbox").innerHTML = TotalReqCount;
+		document.getElementById("Totalemrcountbox").innerHTML =TotalEmergencyCount;
 
         demo.initChartist();
 
