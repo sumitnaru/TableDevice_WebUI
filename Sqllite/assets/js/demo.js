@@ -194,10 +194,11 @@ function two(files) {
         console.log(TotalDeviceOffline);
 
         rsponsetime = Filter1Arr.length;
-        var val = parseFloat(alldatalength / Filter1Arr.length);
-        sts0 = Math.round(100 / val).toFixed(2);
-        var val1 = parseFloat(alldatalength /(alldatalength- Filter1Arr.length));
-        sts1 = Math.round(100 / val1).toFixed(2);
+
+        //var val = parseFloat(alldatalength / Filter1Arr.length);
+        sts0 = Math.round(100 / TotalDeviceOnline).toFixed(2);
+        //var val1 = parseFloat(alldatalength /(alldatalength- Filter1Arr.length));
+        sts1 = Math.round(100 / TotalDeviceOffline).toFixed(2);
 
         document.getElementById("rsptm").innerHTML = Filter1Arr.length;
         document.getElementById("ondvc").innerHTML = Filter1Arr.length;
