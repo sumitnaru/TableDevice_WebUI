@@ -4,7 +4,8 @@ var value = 0;
 function getDropdownSelectedValue() {
     value = document.getElementById("drpTime").value;
     console.log(value);
-    two(File);
+    two(document.getElementById("filetype").files);
+    console.log(document.getElementById("filetype").files);
 }
 var cntarr = [];
 var XArr = [];
@@ -13,11 +14,16 @@ var Y2Arr = [];
 var tempTableArray = [];
 var merged = [1];
 var Filter1Arr = [];
+<<<<<<< HEAD
 var maxNuReqCount = 1;
 var maxNuEmrCount = 1;
 var maxAvgResponceTime = 1;
 var TotalAvgResponse = 0;
 var totalSelectedMin = 1;
+=======
+var maxNuReqCount = 0;
+var maxNuEmrCount = 0;
+>>>>>>> 6f498eb56574cdb53488442c7ff520beb34660bb
 var filterEmergncy = [];
 var XEmeergencyArr = [];
 var Y1EmeergencyArr = [];
@@ -27,11 +33,17 @@ var XAvgResponsArr = [];
 var Y1AvgResponsArr = [];
 
 var filterOfflineArr = [];
+var filterOfflineArrAvg = [];
 
 var XfilterOfflineArr = [];
 var YfilterOfflineArr = [];
 
 function totalOfflineTable() {
+    this.deviceId = 0;
+    this.offLineCount = 0;
+}
+
+function totalOfflineAvgTable() {
     this.deviceId = 0;
     this.offLineCount = 0;
 }
@@ -100,7 +112,7 @@ var filter2Arr = [0];
 function two(files) {
     var file = files[0];
     console.log("File...");
-  //  console.log(file);
+    console.log(file);
     var reader = new FileReader();
     reader.readAsBinaryString(file);
     setTimeout(function () {
@@ -121,39 +133,30 @@ function two(files) {
         var pSec = now.getSeconds();
         var droptext = document.getElementById("drpTime");
         var min =parseInt(droptext.options[droptext.selectedIndex].value);
-        totalSelectedMin = min;
-        console.log("totalSelectedMin");
-        console.log(totalSelectedMin);
-        var fromTime = new Date();
-        fromTime.setMinutes(fromTime.getMinutes() - totalSelectedMin);
-
-        /*if (value != "" || value != null) {
+        console.log(min);
+        var from = new Date(now);
+        var mi
+        if (value != "" || value != null) {
             from.setMinutes(now.getMinutes() -parseInt(value));
         }
         else
-            from.setMinutes(now.getMinutes() - min);*/
+            from.setMinutes(now.getMinutes() - min);
+
+        var mDate = from.getDate();
+        var mMonth = from.getMonth();
+
+        var mYear = from.getFullYear();
+        var mHour = from.getHours();
+        var mMin = from.getMinutes();
+        var mSec = from.getSeconds();
         for (var i = 0; i < alldata.length; i++) {
+            var dDate = alldata[i][2];
             // console.log("---------------"+dDate);
-            var dYear = alldata[i][4];
-            var dMonth = alldata[i][3];
-            var dDay = alldata[i][2];
-            var dHour = alldata[i][5];
-            var dMin = alldata[i][6];
-            var dSec = alldata[i][7];
-            var dStr = dMonth+"-"+dDay+"-"+dYear+" "+dHour+":"+dMin+":"+dSec
-            //01-01-2016 00:03:44
-            var dTime = new Date(dStr);
-            /*dTime.setYear(dYear);
-            dTime.setMonth(dMonth);
-            dTime.setDate(dDay);
-            dTime.setHours(dHour);
-            dTime.setMinutes(dMin);
-            dTime.setSeconds(dSec);*/
-            /*console.log(dStr);
-            console.log("dTime");
-            console.log(dTime);
-            console.log("fromTime");
-            console.log(fromTime);*/
+            var dMonth = from.getMonth();
+            var dYear = from.getFullYear();
+            var dHour = from.getHours();
+            var dMin = from.getMinutes();
+            var dSec = from.getSeconds();
             //var dMonth = alldata[i][3];
             //var dYear = from.getFullYear();
             //var dHour = from.getHours();
@@ -161,22 +164,21 @@ function two(files) {
             //var dSec = from.getSeconds();
             // console.log(dYear);
             // console.log(pMonth);
-            //var dDate = alldata[i][2];
-            if (dTime >= fromTime) {
-                // console.log("in<<<");
+            if ((dDate <= pDate &&  dDate >= mDate)) {
+                // console.log("m");
                 var tempFilter = new MainTable();
                 tempFilter.deviceId = alldata[i][0];
                 tempFilter.statsId = alldata[i][1];
-                tempFilter.day = dDay;
-                tempFilter.month = dMonth;
-                tempFilter.year = dYear;
-                tempFilter.hour = dHour;
-                tempFilter.minitues = dMin;
-                tempFilter.second = dSec;
+                tempFilter.day = alldata[i][2];
+                tempFilter.month = alldata[i][3];
+                tempFilter.year = alldata[i][4];
+                tempFilter.hour = alldata[i][5];
+                tempFilter.minitues = alldata[i][6];
+                tempFilter.second = alldata[i][7];
                 Filter1Arr.push(tempFilter);
             }
         }
-
+       
         rsponsetime = Filter1Arr.length;
         var val = parseFloat(alldatalength / Filter1Arr.length);
         sts0 = Math.round(100 / val).toFixed(2);
@@ -187,10 +189,10 @@ function two(files) {
         document.getElementById("ondvc").innerHTML = Filter1Arr.length;
 
         console.log(Filter1Arr);
-
-        //Numbe Of request//
+        //Numbe Of equest//
+       
         for (var i = 0; i < Filter1Arr.length; i++) {
-
+            
             if (Filter1Arr[i]["statsId"] == 3 || Filter1Arr[i]["statsId"] == 4) {
                 console.log(Filter1Arr[i]);
                 var tmpdid = Filter1Arr[i]["deviceId"];
@@ -202,11 +204,11 @@ function two(files) {
                         else
                             cntarr[j].emergency += 1;
                         ck = 1;
-
+                        
                         break;
                     }
-
-
+                    
+                    
                 }
                 if (ck == 0) {
                    // console.log("Ctreating Row");
@@ -220,16 +222,14 @@ function two(files) {
                         tmpcount.request = 0;
                         tmpcount.emergency = 1;
                     }
-
+                    
                     cntarr.push(tmpcount);
                 }
-            }
+            }  
         }
-        console.log("Total Request Table");
-        console.log(cntarr);
       //  console.log("number response -----------");
       //  console.log(cntarr);
-
+       
         for (var l = 0; l < cntarr.length; l++) {
             if (maxNuReqCount < cntarr[l]["request"])
                 maxNuReqCount = cntarr[l]["request"];
@@ -240,16 +240,20 @@ function two(files) {
             Y1Arr.push(cntarr[l]["request"]);
             Y2Arr.push(cntarr[l]["emergency"]);
         }
-        console.log("maxNuReqCount----");
+        console.log("filter2Arr----");
         console.log(maxNuReqCount);
-
+        
+        //console.log(cntarr);
+        //console.log(XArr);
+        //console.log(Y1Arr);
+        //console.log(Y2Arr);
         //end number of request//
 
 
-
         //emergency  request count
-        for (var i = 0; i < Filter1Arr.length; i++) {
 
+        for (var i = 0; i < Filter1Arr.length; i++) {
+            
             if (Filter1Arr[i]["statsId"] == 4) {
                 var tmpdid = Filter1Arr[i]["deviceId"];
                 var ck = 0;
@@ -272,7 +276,7 @@ function two(files) {
                     temcount.emergency = 1;
                     filterEmergncy.push(temcount);
                 }
-
+               
             }
 
         }
@@ -290,30 +294,12 @@ function two(files) {
         //end emergency  request count
 
         //Avg   response  time
-        /*for (var i = 0; i < Filter1Arr.length; i++) {
-
-            var tmpdid = Filter1Arr[i]["deviceId"];
-            var ck = 0;
-            for (var j = 0; j < filterAvgRespons.length; j++) {
-                if (filterAvgRespons[j].deviceId == tmpdid) {
-                    filterAvgRespons[j].count += 1;
-                    ck = 1;
-                    break;
-                }
-            }
-            if (ck == 0) {
-                var tempcnt = new avgResponseTimeTable();
-                tempcnt.deviceId = tmpdid;
-                tempcnt.count = 1;
-                filterAvgRespons.push(tempcnt);
-            }
-        }*/
         for (var i = 0; i < Filter1Arr.length; i++) {
-            var tmpdstatus = Filter1Arr[i]["statsId"];
-            if(tmpdstatus>0){
+            
             var tmpdid = Filter1Arr[i]["deviceId"];
             var ck = 0;
             for (var j = 0; j < filterAvgRespons.length; j++) {
+                    
                 if (filterAvgRespons[j].deviceId == tmpdid) {
                     filterAvgRespons[j].count += 1;
                     ck = 1;
@@ -326,21 +312,12 @@ function two(files) {
                 tempcnt.count = 1;
                 filterAvgRespons.push(tempcnt);
             }
-          }
+                
         }
-        for (var j = 0; j < filterAvgRespons.length; j++) {
-            var tempID = filterAvgRespons[j]["deviceId"];
-            for (var k = 0; k < cntarr.length; k++){
-              if(tempID == cntarr[k]["deviceId"]){
-                var cnt = filterAvgRespons[j]["count"];
-                var nomreq = cntarr[k]["request"];
-                filterAvgRespons[j]["count"] = cnt/nomreq;
-                break;
-              }
-            }
-        }
-
+           
+        
         for (var l = 0; l < filterAvgRespons.length; l++) {
+<<<<<<< HEAD
           if(maxAvgResponceTime < filterAvgRespons[l]["count"])
             maxAvgResponceTime = filterAvgRespons[l]["count"];
 
@@ -354,10 +331,18 @@ function two(files) {
         console.log(maxAvgResponceTime);
         console.log(filterAvgRespons);
 
+=======
+            XAvgResponsArr.push(filterAvgRespons[l]["deviceId"]);
+            Y1AvgResponsArr.push(filterAvgRespons[l]["count"]);
+        }
+        //console.log(filterEmergncy);
+        //console.log(XEmeergencyArr);
+        //console.log(Y1EmeergencyArr);
+>>>>>>> 6f498eb56574cdb53488442c7ff520beb34660bb
 
 
         //Total Off Line
-        /*for (var i = 0; i < Filter1Arr.length; i++) {
+        for (var i = 0; i < Filter1Arr.length; i++) {
             var tmpdid = Filter1Arr[i]["deviceId"];
             if (Filter1Arr[i]["statsId"] == 4 || Filter1Arr[i]["statsId"] == 3) {
                 var ck = 0;
@@ -371,6 +356,8 @@ function two(files) {
 
                         break;
                     }
+
+
                 }
                 if (ck == 0) {
                     // console.log("Ctreating Row");
@@ -381,48 +368,41 @@ function two(files) {
                         tempOffcnt.offLineCount = 1;
                     }
                     else {
+
                         tempOffcnt.offLineCount = 1;
                     }
                     filterOfflineArr.push(tempOffcnt);
                 }
             }
-        }*/
-        for (var i = 0; i < Filter1Arr.length; i++) {
-            var tmpdid = Filter1Arr[i]["deviceId"];
-                var ck = 0;
-                for (var j = 0; j < filterOfflineArr.length; j++) {
-                    if (filterOfflineArr[j].deviceId == tmpdid) {
-                        filterOfflineArr[j].offLineCount += 1;
-                        ck = 1;
-                        break;
-                    }
-                }
-                if (ck == 0) {
-                     console.log("Ctreating Row");
-                    var tempOffcnt = new totalOfflineTable();
-                    tempOffcnt.deviceId = tmpdid;
-                    tempOffcnt.offLineCount = 1;
-                    filterOfflineArr.push(tempOffcnt);
-                }
         }
+
+        
+        
+        var va = 0;
         for (var l = 0; l < filterOfflineArr.length; l++) {
-          var cnt = filterOfflineArr[l]["offLineCount"];
-          console.log(filterOfflineArr[l]["deviceId"]);
-          console.log(cnt);
-          if((totalSelectedMin - cnt)<0)
-          filterOfflineArr[l]["offLineCount"] = 0;
-          else
-          filterOfflineArr[l]["offLineCount"] = totalSelectedMin - cnt;
+
             if (maxNoOfflineCount < filterOfflineArr[l]["offLineCount"])
                 maxNoOfflineCount = filterOfflineArr[l]["offLineCount"];
+           
+            va = filterOfflineArr[l]["offLineCount"];
+
                 XfilterOfflineArr.push(filterOfflineArr[l]["deviceId"]);
                 YfilterOfflineArr.push(filterOfflineArr[l]["offLineCount"]);
-            }
-            console.log("Total Offline--");
-            console.log(filterOfflineArr);
-            console.log(XfilterOfflineArr);
-            console.log(YfilterOfflineArr);
+        }
+        
+           // console.log("XfilterOfflineArr");
 
+           // console.log(filterOfflineArr);
+        //console.log(XfilterOfflineArr);
+        for (var jj = 0; jj < YfilterOfflineArr.length; jj++) {
+           
+            var d = YfilterOfflineArr[jj];
+            var div = d / 10;
+            filterOfflineArrAvg.push(div);
+        }
+        console.log(filterOfflineArrAvg);
+      //  console.log(YfilterOfflineArr[0]);
+        
 
 
         demo.initChartist();
@@ -496,11 +476,11 @@ demo = {
             }
         });
     },
+	
 
 
 
-
-
+    
 
     initChartist: function () {
 
@@ -525,7 +505,7 @@ demo = {
         //    }),
         //    showLine: true,
         //    showPoint: false,
-
+            
         //};
 
         //var tempresponsiveSales = [
@@ -654,7 +634,7 @@ demo = {
         Chartist.Line('#chartHours3', tempdataSalesOffline, tempoptionsSalesOffline, tempresponsiveSalesOffline);
 
 
-
+    
         var dataSales1 = {
             //  labels: ['2:00AM', '12:00AM', '3:00PM', '6:00PM', '9:00PM', '12:00PM', '3:00AM', '6:00AM'],
             labels: XArr,
@@ -663,7 +643,7 @@ demo = {
             Y2Arr
           ]
         };
-
+    
         var optionsSales1 = {
           lineSmooth: false,
           low: 0,
@@ -740,7 +720,7 @@ demo = {
         };
 
         Chartist.Pie('#chartPreferences', dataPreferences, optionsPreferences);
-
+        
         Chartist.Pie('#chartPreferences', {
             //labels: [sts0 + '%', sts1 + '%', sts2 + '%'],
             //series: [sts0, sts1, sts2]
@@ -920,13 +900,13 @@ demo = {
         Chartist.Bar('#chartViews', dataViews, optionsViews, responsiveOptionsViews);
 
     //     multiple bars chart
-
-
-
-
-
-
-
+	
+	
+	
+	
+	
+	
+	
         var data = {
           labels: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'],
           series: [
