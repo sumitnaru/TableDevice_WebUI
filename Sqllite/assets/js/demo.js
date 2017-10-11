@@ -592,7 +592,7 @@ demo = {
         var tempoptionsSalesAvg = {
             lineSmooth: false,
             low: 0,
-            high: maxNuEmrCount,
+            high: maxAvgResponceTime,
             showArea: true,
             height: "245px",
             axisX: {
@@ -670,7 +670,7 @@ demo = {
         var tempoptionsSalesOffline = {
             lineSmooth: false,
             low: 0,
-            high: maxNuEmrCount,
+            high: TotalDeviceOffline,
             showArea: true,
             height: "245px",
             axisX: {
@@ -710,7 +710,7 @@ demo = {
         var optionsSales1 = {
           lineSmooth: false,
           low: 0,
-          high: maxNoOfflineCount,
+          high: maxNuReqCount,
           showArea: true,
           height: "245px",
           axisX: {
