@@ -4,7 +4,8 @@ var value = 0;
 function getDropdownSelectedValue() {
     value = document.getElementById("drpTime").value;
     console.log(value);
-    two(File);
+    two(document.getElementById("filetype").files);
+    console.log(document.getElementById("filetype").files);
 }
 var cntarr = [];
 var XArr = [];
@@ -24,11 +25,17 @@ var XAvgResponsArr = [];
 var Y1AvgResponsArr = [];
 
 var filterOfflineArr = [];
+var filterOfflineArrAvg = [];
 
 var XfilterOfflineArr = [];
 var YfilterOfflineArr = [];
 
 function totalOfflineTable() {
+    this.deviceId = 0;
+    this.offLineCount = 0;
+}
+
+function totalOfflineAvgTable() {
     this.deviceId = 0;
     this.offLineCount = 0;
 }
@@ -97,7 +104,7 @@ var filter2Arr = [0];
 function two(files) {
     var file = files[0];
     console.log("File...");
-  //  console.log(file);
+    console.log(file);
     var reader = new FileReader();
     reader.readAsBinaryString(file);
     setTimeout(function () {
@@ -149,7 +156,7 @@ function two(files) {
             //var dSec = from.getSeconds();
             // console.log(dYear);
             // console.log(pMonth);
-            if ((dDate <= pDate && dDate >= mDate)) {
+            if ((dDate <= pDate &&  dDate >= mDate)) {
                 // console.log("m");
                 var tempFilter = new MainTable();
                 tempFilter.deviceId = alldata[i][0];
@@ -344,17 +351,33 @@ function two(files) {
                 }
             }
         }
+
+        
+        
+        var va = 0;
         for (var l = 0; l < filterOfflineArr.length; l++) {
+
             if (maxNoOfflineCount < filterOfflineArr[l]["offLineCount"])
                 maxNoOfflineCount = filterOfflineArr[l]["offLineCount"];
+           
+            va = filterOfflineArr[l]["offLineCount"];
+
                 XfilterOfflineArr.push(filterOfflineArr[l]["deviceId"]);
                 YfilterOfflineArr.push(filterOfflineArr[l]["offLineCount"]);
-            }
+        }
+        
            // console.log("XfilterOfflineArr");
 
-            console.log(filterOfflineArr);
-            console.log(XfilterOfflineArr);
-            console.log(YfilterOfflineArr);
+           // console.log(filterOfflineArr);
+        //console.log(XfilterOfflineArr);
+        for (var jj = 0; jj < YfilterOfflineArr.length; jj++) {
+           
+            var d = YfilterOfflineArr[jj];
+            var div = d / 10;
+            filterOfflineArrAvg.push(div);
+        }
+        console.log(filterOfflineArrAvg);
+      //  console.log(YfilterOfflineArr[0]);
         
 
 
