@@ -4,6 +4,7 @@ var value = 0;
 function getDropdownSelectedValue() {
     value = document.getElementById("drpTime").value;
     console.log(value);
+    two(File);
 }
 var cntarr = [];
 var XArr = [];
@@ -11,6 +12,40 @@ var Y1Arr = [];
 var Y2Arr = [];
 var tempTableArray = [];
 var merged = [1];
+var Filter1Arr = [];
+var maxNuReqCount = 0;
+var maxNuEmrCount = 0;
+var filterEmergncy = [];
+var XEmeergencyArr = [];
+var Y1EmeergencyArr = [];
+var maxNoOfflineCount = 0;
+var filterAvgRespons = [];
+var XAvgResponsArr = [];
+var Y1AvgResponsArr = [];
+
+var filterOfflineArr = [];
+
+var XfilterOfflineArr = [];
+var YfilterOfflineArr = [];
+
+function totalOfflineTable() {
+    this.deviceId = 0;
+    this.offLineCount = 0;
+}
+
+function emergengyTable(){
+    this.deviceId = 0;
+  //  this.statsId = 0;
+    this.emergency = 0;
+}
+function avgResponseTimeTable() {
+    this.deviceId = 0;
+   // this.statsId = 0;
+    this.count = 0;
+    //this.request = 0;
+    //this.request1 = 0;
+    //this.emergency2 = 0;
+}
 function MainTable() {
     this.deviceId = 0;
     this.statsId = 0;
@@ -22,7 +57,7 @@ function MainTable() {
     this.second = 0;
     this.request = 0;
 }
-var Filter1Arr = [];
+
 
 function SubTableRespns() {
     this.deviceId = 0;
@@ -85,7 +120,12 @@ function two(files) {
         var min =parseInt(droptext.options[droptext.selectedIndex].value);
         console.log(min);
         var from = new Date(now);
-        from.setMinutes(now.getMinutes() - min);
+        var mi
+        if (value != "" || value != null) {
+            from.setMinutes(now.getMinutes() -parseInt(value));
+        }
+        else
+            from.setMinutes(now.getMinutes() - min);
 
         var mDate = from.getDate();
         var mMonth = from.getMonth();
@@ -96,7 +136,7 @@ function two(files) {
         var mSec = from.getSeconds();
         for (var i = 0; i < alldata.length; i++) {
             var dDate = alldata[i][2];
-           // console.log("---------------"+dDate);
+            // console.log("---------------"+dDate);
             var dMonth = from.getMonth();
             var dYear = from.getFullYear();
             var dHour = from.getHours();
@@ -107,10 +147,10 @@ function two(files) {
             //var dHour = from.getHours();
             //var dMin = from.getMinutes();
             //var dSec = from.getSeconds();
-           // console.log(dYear);
-           // console.log(pMonth);
+            // console.log(dYear);
+            // console.log(pMonth);
             if ((dDate <= pDate && dDate >= mDate)) {
-               // console.log("m");
+                // console.log("m");
                 var tempFilter = new MainTable();
                 tempFilter.deviceId = alldata[i][0];
                 tempFilter.statsId = alldata[i][1];
@@ -123,10 +163,8 @@ function two(files) {
                 Filter1Arr.push(tempFilter);
             }
         }
-        for (var i = 0; i < Filter1Arr.length; i++) {
-            merged = Filter1Arr.concat(Filter1Arr[i].values);
-        }
-         rsponsetime = Filter1Arr.length;
+       
+        rsponsetime = Filter1Arr.length;
         var val = parseFloat(alldatalength / Filter1Arr.length);
         sts0 = Math.round(100 / val).toFixed(2);
         var val1 = parseFloat(alldatalength /(alldatalength- Filter1Arr.length));
@@ -136,72 +174,189 @@ function two(files) {
         document.getElementById("ondvc").innerHTML = Filter1Arr.length;
 
         console.log(Filter1Arr);
-
-        var subTable= new SubTable();
-        for (var k = 0; k < Filter1Arr.length; k++) {
-            subTable.deviceId = 0;
-            if (Filter1Arr[k]["statsId"] == 3) {
-                subTable.request = Filter1Arr[k]["statsId"];
-                subTable.deviceId = Filter1Arr[k]["deviceId"];
-                subTable.statsId = Filter1Arr[k]["statsId"];
-            }
-               
-            if (Filter1Arr[k]["statsId"] == 4) {
-                console.log(Filter1Arr[k]["deviceId"]);
-                subTable.emergency = Filter1Arr[k]["statsId"];
-                subTable.deviceId = Filter1Arr[k]["deviceId"];
-                subTable.statsId = Filter1Arr[k]["statsId"];
-                console.log(subTable.deviceId);
-                cntarr.push(subTable);
-            }
-                
-           
-        }
-        console.log("-----------");
-        console.log(cntarr);
-        console.log("-----------");
-
-
-        //var count = new countTable();
-        //var fltcnt = new filtercountTable();
-        //for (var i = 0; i < Filter1Arr.length; i++) {
-        //    if (Filter1Arr[i]["statsId"] == 3) {
-        //        var tmpdid = Filter1Arr[i]["deviceId"];
-        //        for (var j = 0; j < cntarr.length; j++) {
-        //            cntarr.deviceId = tmpdid;
-        //            cntarr.request += 1;
-        //        }
-        //        count.deviceId = tmpdid;
-        //        count.request = 1;
-        //        count.emergency = 0;
-        //        cntarr.push(count);
-
-        //    }
-        //    else if (Filter1Arr[i]["statsId"] == 4) {
-        //        var tmpdid = Filter1Arr[i]["deviceId"];
-        //        for (var j = 0; j < cntarr.length; j++) {
-        //            cntarr.deviceId = tmpdid;
-        //            cntarr.emergency += 1;
-        //        }
-        //        count.deviceId = tmpdid;
-        //        count.request = 0;
-        //        count.emergency = 1;
-        //        cntarr.push(count);
-        //    }
-                
-        //}
-
+        //Numbe Of equest//
        
-
-        for (var l = 0; l < cntarr.length;l++){
-            xArr.push(cntarr[l]["deviceId"]);
-            Y1Arr.push(countTab[l]["request"]);
-            Y2Arr.push(countTab[l]["emergency"]);
+        for (var i = 0; i < Filter1Arr.length; i++) {
+            
+            if (Filter1Arr[i]["statsId"] == 3 || Filter1Arr[i]["statsId"] == 4) {
+                console.log(Filter1Arr[i]);
+                var tmpdid = Filter1Arr[i]["deviceId"];
+                var ck = 0;
+                for (var j = 0; j < cntarr.length; j++) {
+                    if (cntarr[j].deviceId == tmpdid) {
+                        if (Filter1Arr[i]["statsId"]==3)
+                            cntarr[j].request += 1;
+                        else
+                            cntarr[j].emergency += 1;
+                        ck = 1;
+                        
+                        break;
+                    }
+                    
+                    
+                }
+                if (ck == 0) {
+                   // console.log("Ctreating Row");
+                    var tmpcount = new countTable();
+                    tmpcount.deviceId = tmpdid;
+                    if (Filter1Arr[i]["statsId"] == 3) {
+                        tmpcount.request = 1;
+                        tmpcount.emergency = 0;
+                    }
+                    else {
+                        tmpcount.request = 0;
+                        tmpcount.emergency = 1;
+                    }
+                    
+                    cntarr.push(tmpcount);
+                }
+            }  
         }
-
-
-        console.log("filter2Arr----");
+      //  console.log("number response -----------");
       //  console.log(cntarr);
+       
+        for (var l = 0; l < cntarr.length; l++) {
+            if (maxNuReqCount < cntarr[l]["request"])
+                maxNuReqCount = cntarr[l]["request"];
+            if (maxNuReqCount < cntarr[l]["emergency"])
+                maxNuReqCount = cntarr[l]["emergency"];
+
+            XArr.push(cntarr[l]["deviceId"]);
+            Y1Arr.push(cntarr[l]["request"]);
+            Y2Arr.push(cntarr[l]["emergency"]);
+        }
+        console.log("filter2Arr----");
+        console.log(maxNuReqCount);
+        
+        //console.log(cntarr);
+        //console.log(XArr);
+        //console.log(Y1Arr);
+        //console.log(Y2Arr);
+        //end number of request//
+
+
+        //emergency  request count
+
+        for (var i = 0; i < Filter1Arr.length; i++) {
+            
+            if (Filter1Arr[i]["statsId"] == 4) {
+                var tmpdid = Filter1Arr[i]["deviceId"];
+                var ck = 0;
+                for (var j = 0; j < filterEmergncy.length; j++) {
+                    //console.log("tmpdid");
+                   // console.log(filterEmergncy[j]);
+                    if (filterEmergncy[j].deviceId == tmpdid) {
+                        if (Filter1Arr[i]["statsId"] == 4)
+                            filterEmergncy[j].emergency += 1;
+                        var ck = 1;
+                       // console.log("Rep**");
+
+                        break;
+                    }
+                }
+                if (ck == 0) {
+                    var temcount = new emergengyTable();
+                   // console.log("tttttttttttttttt**");
+                    temcount.deviceId = tmpdid;
+                    temcount.emergency = 1;
+                    filterEmergncy.push(temcount);
+                }
+               
+            }
+
+        }
+      //  console.log("eeeeeeeeeeeeeee");
+     //   console.log(filterEmergncy);
+        for (var l = 0; l < filterEmergncy.length; l++) {
+            maxNuEmrCount = filterEmergncy[l]["emergency"]
+            XEmeergencyArr.push(filterEmergncy[l]["deviceId"]);
+            Y1EmeergencyArr.push(filterEmergncy[l]["emergency"]);
+        }
+        //console.log(filterEmergncy);
+        //console.log(XEmeergencyArr);
+        //console.log(Y1EmeergencyArr);
+
+        //end emergency  request count
+
+        //Avg   response  time
+        for (var i = 0; i < Filter1Arr.length; i++) {
+            
+            var tmpdid = Filter1Arr[i]["deviceId"];
+            var ck = 0;
+            for (var j = 0; j < filterAvgRespons.length; j++) {
+                    
+                if (filterAvgRespons[j].deviceId == tmpdid) {
+                    filterAvgRespons[j].count += 1;
+                    ck = 1;
+                    break;
+                }
+            }
+            if (ck == 0) {
+                var tempcnt = new avgResponseTimeTable();
+                tempcnt.deviceId = tmpdid;
+                tempcnt.count = 1;
+                filterAvgRespons.push(tempcnt);
+            }
+                
+        }
+           
+        
+        for (var l = 0; l < filterAvgRespons.length; l++) {
+            XAvgResponsArr.push(filterAvgRespons[l]["deviceId"]);
+            Y1AvgResponsArr.push(filterAvgRespons[l]["count"]);
+        }
+        //console.log(filterEmergncy);
+        //console.log(XEmeergencyArr);
+        //console.log(Y1EmeergencyArr);
+
+
+        //Total Off Line
+        for (var i = 0; i < Filter1Arr.length; i++) {
+            var tmpdid = Filter1Arr[i]["deviceId"];
+            if (Filter1Arr[i]["statsId"] == 4 || Filter1Arr[i]["statsId"] == 3) {
+                var ck = 0;
+                for (var j = 0; j < filterOfflineArr.length; j++) {
+                    if (filterOfflineArr[j].deviceId == tmpdid) {
+                        if (Filter1Arr[i]["statsId"] == 3)
+                            filterOfflineArr[j].offLineCount += 1;
+                        else
+                            filterOfflineArr[j].offLineCount += 1;
+                        ck = 1;
+
+                        break;
+                    }
+
+
+                }
+                if (ck == 0) {
+                    // console.log("Ctreating Row");
+                    var tempOffcnt = new totalOfflineTable();
+                    tempOffcnt.deviceId = tmpdid;
+                    if (Filter1Arr[i]["statsId"] == 3) {
+
+                        tempOffcnt.offLineCount = 1;
+                    }
+                    else {
+
+                        tempOffcnt.offLineCount = 1;
+                    }
+                    filterOfflineArr.push(tempOffcnt);
+                }
+            }
+        }
+        for (var l = 0; l < filterOfflineArr.length; l++) {
+            if (maxNoOfflineCount < filterOfflineArr[l]["offLineCount"])
+                maxNoOfflineCount = filterOfflineArr[l]["offLineCount"];
+                XfilterOfflineArr.push(filterOfflineArr[l]["deviceId"]);
+                YfilterOfflineArr.push(filterOfflineArr[l]["offLineCount"]);
+            }
+           // console.log("XfilterOfflineArr");
+
+            console.log(filterOfflineArr);
+            console.log(XfilterOfflineArr);
+            console.log(YfilterOfflineArr);
+        
+
 
         demo.initChartist();
 
@@ -278,24 +433,56 @@ demo = {
 
 
 
-
+    
 
     initChartist: function () {
 
-        var tempdataSales = {
-            labels: gg,
-            series: merged
-            //series: [
-            //   [287, 385, 490, 562, 594, 626, 698, 895, 952],
-            //  [67, 152, 193, 240, 387, 435, 535, 642, 744],
-            //  [23, 113, 67, 108, 190, 239, 307, 410, 410]
-            //]
+        //var tempdataSales = {
+        //    labels: XArr,
+        //    series: [
+        //        Y1Arr,
+        //        Y2Arr]
+        //};
+
+        //var tempoptionsSales = {
+        //    lineSmooth: false,
+        //    low: 0,
+        //    high: maxNuEmrCount,
+        //    showArea: true,
+        //    height: "245px",
+        //    axisX: {
+        //        showGrid: false,
+        //    },
+        //    lineSmooth: Chartist.Interpolation.simple({
+        //        divisor: 3
+        //    }),
+        //    showLine: true,
+        //    showPoint: false,
+            
+        //};
+
+        //var tempresponsiveSales = [
+        //  ['screen and (max-width: 640px)', {
+        //      axisX: {
+        //          labelInterpolationFnc: function (value) {
+        //              return value[0];
+        //          }
+        //      }
+        //  }]
+        //];
+
+
+        var tempdataSalesAvg = {
+            labels: XAvgResponsArr,
+            series: [
+              Y1AvgResponsArr
+            ]
         };
 
-        var tempoptionsSales = {
+        var tempoptionsSalesAvg = {
             lineSmooth: false,
             low: 0,
-            high: 1000,
+            high: maxNuEmrCount,
             showArea: true,
             height: "245px",
             axisX: {
@@ -306,10 +493,10 @@ demo = {
             }),
             showLine: true,
             showPoint: false,
-            
+
         };
 
-        var tempresponsiveSales = [
+        var tempresponsiveSalesAvg = [
           ['screen and (max-width: 640px)', {
               axisX: {
                   labelInterpolationFnc: function (value) {
@@ -319,13 +506,16 @@ demo = {
           }]
         ];
 
+        Chartist.Line('#chartHours2', tempdataSalesAvg, tempoptionsSalesAvg, tempresponsiveSalesAvg);
+
 
         var tempdataSalesEmeerRqst = {
-            labels: merged,
+            labels: XEmeergencyArr,
             series: [
-               [287, 385, 490, 562, 594, 626, 698, 895, 952],
-              [67, 152, 193, 240, 387, 435, 535, 642, 744],
-              [23, 113, 67, 108, 190, 239, 307, 410, 410]
+                Y1EmeergencyArr
+              // [287, 385, 490, 562, 594, 626, 698, 895, 952],
+              //[67, 152, 193, 240, 387, 435, 535, 642, 744],
+              //[23, 113, 67, 108, 190, 239, 307, 410, 410]
             ]
         };
 
@@ -333,7 +523,7 @@ demo = {
         var tempoptionsSalesEmeerRqst = {
             lineSmooth: false,
             low: 0,
-            high: 1000,
+            high: maxNuEmrCount,
             showArea: true,
             height: "245px",
             axisX: {
@@ -358,28 +548,59 @@ demo = {
         ];
 
 
-        Chartist.Line('#chartHours1', tempdataSalesEmeerRqst, tempoptionsSalesEmeerRqst, tempresponsiveSalesEmeerRqst);
+        Chartist.Line('#chartHoursEmrgency', tempdataSalesEmeerRqst, tempoptionsSalesEmeerRqst, tempresponsiveSalesEmeerRqst);
 
-        Chartist.Line('#chartHours2', tempdataSales, tempoptionsSales, tempresponsiveSales);
+        // Chartist.Line('#chartHours2', tempdataSales, tempoptionsSales, tempresponsiveSales);
 
-        Chartist.Line('#chartHours3', tempdataSales, tempoptionsSales, tempresponsiveSales);
-
-
-        ///-------------------
-        var arr1 = [287, 385, 490, 562, 594, 626, 698, 895, 952];
-        var arr2 = [67, 152, 193, 240, 387, 435, 535, 642, 744];
-        var dataSales = {
-          labels: ['2:00AM', '12:00AM', '3:00PM', '6:00PM', '9:00PM', '12:00PM', '3:00AM', '6:00AM'],
-          series: [
-             arr1,
-            arr2
-          ]
+        var tempdataSalesOffline = {
+            labels: XfilterOfflineArr,
+            series: [YfilterOfflineArr]
         };
 
-        var optionsSales = {
+        var tempoptionsSalesOffline = {
+            lineSmooth: false,
+            low: 0,
+            high: maxNuEmrCount,
+            showArea: true,
+            height: "245px",
+            axisX: {
+                showGrid: false,
+            },
+            lineSmooth: Chartist.Interpolation.simple({
+                divisor: 3
+            }),
+            showLine: true,
+            showPoint: false,
+
+        };
+
+        var tempresponsiveSalesOffline = [
+          ['screen and (max-width: 640px)', {
+              axisX: {
+                  labelInterpolationFnc: function (value) {
+                      return value[0];
+                  }
+              }
+          }]
+        ];
+
+        Chartist.Line('#chartHours3', tempdataSalesOffline, tempoptionsSalesOffline, tempresponsiveSalesOffline);
+
+
+    
+        var dataSales1 = {
+            //  labels: ['2:00AM', '12:00AM', '3:00PM', '6:00PM', '9:00PM', '12:00PM', '3:00AM', '6:00AM'],
+            labels: XArr,
+          series: [
+             Y1Arr,
+            Y2Arr
+          ]
+        };
+    
+        var optionsSales1 = {
           lineSmooth: false,
           low: 0,
-          high: 1000,
+          high: maxNoOfflineCount,
           showArea: true,
           height: "245px",
           axisX: {
@@ -392,7 +613,7 @@ demo = {
           showPoint: false,
         };
 
-        var responsiveSales = [
+        var responsiveSales1 = [
           ['screen and (max-width: 640px)', {
             axisX: {
               labelInterpolationFnc: function (value) {
@@ -402,7 +623,7 @@ demo = {
           }]
         ];
 
-        Chartist.Line('#chartHours', dataSales, optionsSales, responsiveSales);
+        Chartist.Line('#chartHours', dataSales1, optionsSales1, responsiveSales1);
 
 
         var data = {
