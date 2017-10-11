@@ -16,6 +16,7 @@ var Filter1Arr = [];
 var maxNuReqCount = 1;
 var maxNuEmrCount = 1;
 var maxAvgResponceTime = 1;
+var TotalAvgResponse = 0;
 var totalSelectedMin = 1;
 var filterEmergncy = [];
 var XEmeergencyArr = [];
@@ -343,9 +344,12 @@ function two(files) {
           if(maxAvgResponceTime < filterAvgRespons[l]["count"])
             maxAvgResponceTime = filterAvgRespons[l]["count"];
 
+            TotalAvgResponse += filterAvgRespons[l]["count"];
+
             XAvgResponsArr.push(filterAvgRespons[l]["deviceId"]);
             Y1AvgResponsArr.push(filterAvgRespons[l]["count"]);
         }
+        TotalAvgResponse /=  filterAvgRespons.length;
         console.log("maxAvgResponceTime");
         console.log(maxAvgResponceTime);
         console.log(filterAvgRespons);
