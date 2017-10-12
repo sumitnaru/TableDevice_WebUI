@@ -109,6 +109,29 @@ function two(files) {
     var reader = new FileReader();
     reader.readAsBinaryString(file);
     setTimeout(function () {
+		
+		
+		
+		var arrToatlOlineArr = [];
+        var arrToatlOfflineArr = [];
+
+		
+		Filter1Arr = [];
+		arrToatlOlineArr=[];
+		arrToatlOfflineArr=[];
+		XfilterOfflineArr=[];
+		YfilterOfflineArr=[];
+		filterOfflineArr=[];
+		XAvgResponsArr=[];
+		Y1AvgResponsArr=[];
+		filterAvgRespons=[];
+		filterEmergncy=[];
+		XEmeergencyArr=[];
+		Y1EmeergencyArr=[];
+		XArr=[];
+		Y1Arr=[];
+		Y2Arr=[];
+		cntarr=[];
         //console.log(reader);
         //var database = SQL.open(bin2Array(reader.result));
         var database = new SQL.Database(bin2Array(reader.result))
@@ -126,17 +149,13 @@ function two(files) {
         var fromTime5Min = new Date();
         fromTime5Min.setMinutes(fromTime5Min.getMinutes() - 2);
         fromTime.setMinutes(fromTime.getMinutes() - totalSelectedMin);
-        var arrToatlOlineArr = [];
-        var arrToatlOfflineArr = [];
-
+        
         /*if (value != "" || value != null) {
             from.setMinutes(now.getMinutes() -parseInt(value));
         }
         else
             from.setMinutes(now.getMinutes() - min);*/
-		Filter1Arr = [];
-		arrToatlOlineArr=[];
-		arrToatlOfflineArr=[];
+		
         for (var i = 0; i < alldata.length; i++) {
             // console.log("---------------"+dDate);
             var dYear = alldata[i][4];
@@ -213,7 +232,7 @@ function two(files) {
         console.log(Filter1Arr);
 
         //Numbe Of request//
-		cntarr=[];
+		
         for (var i = 0; i < Filter1Arr.length; i++) {
 
             if (Filter1Arr[i]["statsId"] == 3 || Filter1Arr[i]["statsId"] == 4) {
@@ -255,9 +274,7 @@ function two(files) {
         console.log(cntarr);
       //  console.log("number response -----------");
       //  console.log(cntarr);
-		XArr=[];
-		Y1Arr=[];
-		Y2Arr=[];
+		
 		TotalReqCount=0;
 		TotalEmergencyCount=0;
         for (var l = 0; l < cntarr.length; l++) {
@@ -289,7 +306,7 @@ function two(files) {
 
 
         //emergency  request count
-		filterEmergncy=[];
+		
         for (var i = 0; i < Filter1Arr.length; i++) {
 
             if (Filter1Arr[i]["statsId"] == 4) {
@@ -320,8 +337,7 @@ function two(files) {
         }
       //  console.log("eeeeeeeeeeeeeee");
      //   console.log(filterEmergncy);
-	 XEmeergencyArr=[];
-	 Y1EmeergencyArr=[];
+	 
         for (var l = 0; l < filterEmergncy.length; l++) {
             maxNuEmrCount = filterEmergncy[l]["emergency"]
             XEmeergencyArr.push(filterEmergncy[l]["deviceId"]);
@@ -354,7 +370,7 @@ function two(files) {
         }*/
 
         // Avarage Response Time Table //
-		filterAvgRespons=[];
+		
         for (var i = 0; i < Filter1Arr.length; i++) {
             var tmpdstatus = Filter1Arr[i]["statsId"];
             if(tmpdstatus>0){
@@ -387,8 +403,7 @@ function two(files) {
               }
             }
         }
-XAvgResponsArr=[];
-Y1AvgResponsArr=[];
+
         for (var l = 0; l < filterAvgRespons.length; l++) {
           if(maxAvgResponceTime < filterAvgRespons[l]["count"])
             maxAvgResponceTime = filterAvgRespons[l]["count"];
@@ -444,7 +459,7 @@ Y1AvgResponsArr=[];
             }
         }*/
 		
-		filterOfflineArr=[];
+		
         for (var i = 0; i < Filter1Arr.length; i++) {
             var tmpdid = Filter1Arr[i]["deviceId"];
                 var ck = 0;
@@ -463,9 +478,8 @@ Y1AvgResponsArr=[];
                     filterOfflineArr.push(tempOffcnt);
                 }
         }
-		XfilterOfflineArr=[];
-		YfilterOfflineArr=[];
-		filterOfflineArr=[];
+		
+		//filterOfflineArr=[];
         for (var l = 0; l < filterOfflineArr.length; l++) {
           var cnt = filterOfflineArr[l]["offLineCount"];
           console.log(filterOfflineArr[l]["deviceId"]);
@@ -687,7 +701,9 @@ demo = {
 
         var tempdataSalesOffline = {
             labels: XfilterOfflineArr,
-            series: [YfilterOfflineArr]
+            series: [
+			YfilterOfflineArr
+			]
         };
 
         var tempoptionsSalesOffline = {
