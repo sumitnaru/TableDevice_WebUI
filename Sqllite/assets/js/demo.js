@@ -506,7 +506,7 @@ function two(files) {
 		document.getElementById("Totalemrcountbox").innerHTML =TotalEmergencyCount;
 
         demo.initChartist();
-four();
+//four();
     }, 1000);
 }
 
