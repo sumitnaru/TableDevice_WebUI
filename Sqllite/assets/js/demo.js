@@ -198,6 +198,7 @@ function two(files) {
         console.log("TotalDevOffline");
         console.log(TotalDeviceOffline);
         console.log("Test......"+TotalDeviceOffline);
+        console.log(arrToatlOfflineArr);
 
         rsponsetime = Filter1Arr.length;
 
@@ -398,7 +399,7 @@ Y1AvgResponsArr=[];
             XAvgResponsArr.push(filterAvgRespons[l]["deviceId"]);
             Y1AvgResponsArr.push(filterAvgRespons[l]["count"]);
         }
-		
+
         if(filterAvgRespons.length == 1){
           XAvgResponsArr.push(0);
           Y1AvgResponsArr.push(0);
@@ -443,7 +444,7 @@ Y1AvgResponsArr=[];
                 }
             }
         }*/
-		
+
 		filterOfflineArr=[];
         for (var i = 0; i < Filter1Arr.length; i++) {
             var tmpdid = Filter1Arr[i]["deviceId"];
