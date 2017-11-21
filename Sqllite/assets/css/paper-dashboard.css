@@ -100,6 +100,8 @@ blockquote small {
 
 .text-warning, .text-warning:hover {
   color: #BB992F; }
+.text-warning1, .text-warning1:hover {
+  color: #ff000c; }
 
 .text-danger, .text-danger:hover {
   color: #B33C12; }
@@ -124,6 +126,9 @@ strong {
 
 .icon-danger {
   color: #EB5E28;
+    }
+.icon-danger1 {
+  color: #ff000c;
     }
 
 .chart-legend .text-primary, .chart-legend .text-primary:hover {

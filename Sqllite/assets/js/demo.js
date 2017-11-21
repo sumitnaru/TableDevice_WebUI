@@ -109,13 +109,13 @@ function two(files) {
     var reader = new FileReader();
     reader.readAsBinaryString(file);
     setTimeout(function () {
-		
-		
-		
+
+
+
 		var arrToatlOlineArr = [];
         var arrToatlOfflineArr = [];
 
-		
+
 		Filter1Arr = [];
 		arrToatlOlineArr=[];
 		arrToatlOfflineArr=[];
@@ -139,7 +139,13 @@ function two(files) {
         console.log("alldata-----------------------");
         alldata = alldata[0].values;
         alldatalength = alldata.length;
-
+		
+		//var alldataUnique = database.exec("SELECT distinct * FROM STATUS");
+		console.log("-------------------------------------alldata");
+		//console.log(alldataUnique)
+		
+		
+		
         var droptext = document.getElementById("drpTime");
         var min =parseInt(droptext.options[droptext.selectedIndex].value);
         totalSelectedMin = min;
@@ -149,13 +155,17 @@ function two(files) {
         var fromTime5Min = new Date();
         fromTime5Min.setMinutes(fromTime5Min.getMinutes() - 2);
         fromTime.setMinutes(fromTime.getMinutes() - totalSelectedMin);
-        
+
         /*if (value != "" || value != null) {
             from.setMinutes(now.getMinutes() -parseInt(value));
         }
         else
             from.setMinutes(now.getMinutes() - min);*/
-		
+            TotalDeviceOnline = 0;
+            TotalDeviceOffline = 0;
+            console.log("TotalDeviceOnline---1");
+            console.log(TotalDeviceOnline);
+            console.log(TotalDeviceOffline);
         for (var i = 0; i < alldata.length; i++) {
             // console.log("---------------"+dDate);
             var dYear = alldata[i][4];
@@ -216,7 +226,7 @@ function two(files) {
         console.log(TotalDeviceOnline);
         console.log("TotalDevOffline");
         console.log(TotalDeviceOffline);
-        console.log("Test......"+TotalDeviceOffline);
+        //console.log("Test......"+TotalDeviceOffline);
 
         rsponsetime = Filter1Arr.length;
 
@@ -232,7 +242,7 @@ function two(files) {
         console.log(Filter1Arr);
 
         //Numbe Of request//
-		
+
         for (var i = 0; i < Filter1Arr.length; i++) {
 
             if (Filter1Arr[i]["statsId"] == 3 || Filter1Arr[i]["statsId"] == 4) {
@@ -274,7 +284,7 @@ function two(files) {
         console.log(cntarr);
       //  console.log("number response -----------");
       //  console.log(cntarr);
-		
+
 		TotalReqCount=0;
 		TotalEmergencyCount=0;
         for (var l = 0; l < cntarr.length; l++) {
@@ -306,7 +316,7 @@ function two(files) {
 
 
         //emergency  request count
-		
+
         for (var i = 0; i < Filter1Arr.length; i++) {
 
             if (Filter1Arr[i]["statsId"] == 4) {
@@ -337,7 +347,7 @@ function two(files) {
         }
       //  console.log("eeeeeeeeeeeeeee");
      //   console.log(filterEmergncy);
-	 
+
         for (var l = 0; l < filterEmergncy.length; l++) {
             maxNuEmrCount = filterEmergncy[l]["emergency"]
             XEmeergencyArr.push(filterEmergncy[l]["deviceId"]);
@@ -370,7 +380,7 @@ function two(files) {
         }*/
 
         // Avarage Response Time Table //
-		
+
         for (var i = 0; i < Filter1Arr.length; i++) {
             var tmpdstatus = Filter1Arr[i]["statsId"];
             if(tmpdstatus>0){
@@ -403,7 +413,9 @@ function two(files) {
               }
             }
         }
-
+        TotalAvgResponse = 0;
+        console.log("TotalAvgResponse-----2");
+        console.log(TotalAvgResponse);
         for (var l = 0; l < filterAvgRespons.length; l++) {
           if(maxAvgResponceTime < filterAvgRespons[l]["count"])
             maxAvgResponceTime = filterAvgRespons[l]["count"];
@@ -413,7 +425,7 @@ function two(files) {
             XAvgResponsArr.push(filterAvgRespons[l]["deviceId"]);
             Y1AvgResponsArr.push(filterAvgRespons[l]["count"]);
         }
-		
+
         if(filterAvgRespons.length == 1){
           XAvgResponsArr.push(0);
           Y1AvgResponsArr.push(0);
@@ -458,8 +470,8 @@ function two(files) {
                 }
             }
         }*/
-		
-		
+
+        filterOfflineArr = [];
         for (var i = 0; i < Filter1Arr.length; i++) {
             var tmpdid = Filter1Arr[i]["deviceId"];
                 var ck = 0;
@@ -471,15 +483,16 @@ function two(files) {
                     }
                 }
                 if (ck == 0) {
-                     console.log("Ctreating Row");
+                     //console.log("Ctreating Row");
                     var tempOffcnt = new totalOfflineTable();
                     tempOffcnt.deviceId = tmpdid;
                     tempOffcnt.offLineCount = 1;
                     filterOfflineArr.push(tempOffcnt);
                 }
         }
-		
+
 		//filterOfflineArr=[];
+    maxNoOfflineCount = 0;
         for (var l = 0; l < filterOfflineArr.length; l++) {
           var cnt = filterOfflineArr[l]["offLineCount"];
           console.log(filterOfflineArr[l]["deviceId"]);
@@ -490,8 +503,20 @@ function two(files) {
           filterOfflineArr[l]["offLineCount"] = totalSelectedMin - cnt;
             if (maxNoOfflineCount < filterOfflineArr[l]["offLineCount"])
                 maxNoOfflineCount = filterOfflineArr[l]["offLineCount"];
+
                 XfilterOfflineArr.push(filterOfflineArr[l]["deviceId"]);
                 YfilterOfflineArr.push(filterOfflineArr[l]["offLineCount"]);
+            }
+            if(filterOfflineArr.length == 1){
+              XfilterOfflineArr.push(0);
+              YfilterOfflineArr.push(0);
+            }
+            else if(filterOfflineArr.length == 0){
+              XfilterOfflineArr.push(0);
+              YfilterOfflineArr.push(totalSelectedMin);
+              XfilterOfflineArr.push(0);
+              YfilterOfflineArr.push(totalSelectedMin);
+              maxNoOfflineCount = totalSelectedMin;
             }
             console.log("maxNoOfflineCount");
             console.log(maxNoOfflineCount);
@@ -500,7 +525,10 @@ function two(files) {
             console.log(XfilterOfflineArr);
             console.log(YfilterOfflineArr);
 
-		document.getElementById("rsptm").innerHTML = TotalReqCount;
+            if(isNaN(TotalAvgResponse))
+            document.getElementById("rsptm").innerHTML = "-";
+            else
+		          document.getElementById("rsptm").innerHTML = TotalAvgResponse.toFixed(2) + " Min";
         document.getElementById("onlineDeviceCountbox").innerHTML = TotalDeviceOnline;
 		document.getElementById("RqstContbox").innerHTML = TotalReqCount;
 		document.getElementById("Totalemrcountbox").innerHTML =TotalEmergencyCount;
@@ -709,7 +737,7 @@ demo = {
         var tempoptionsSalesOffline = {
             lineSmooth: false,
             low: 0,
-            high: TotalDeviceOffline,
+            high: maxNoOfflineCount,
             showArea: true,
             height: "245px",
             axisX: {

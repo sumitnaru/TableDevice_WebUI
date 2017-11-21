@@ -39,153 +39,84 @@
 
 </head>
 <body>
-
     <div class="container-fluid top-bg">
-       <!-- <div class="sidebar" data-background-color="white" data-active-color="danger">
+        <div class="container main-panel shadow" style="width:100%; margin-top:20px;" >
+          <!--  <nav class="navbar navbar-default">
+                <!-- <div class="container-fluid"> -->
+                    <!-- <div class="navbar-header"> -->
+                        <!-- <button type="button" class="navbar-toggle"> -->
+                            <!-- <span class="sr-only">Toggle navigation</span> -->
+                            <!-- <span class="icon-bar bar1"></span> -->
+                            <!-- <span class="icon-bar bar2"></span> -->
+                            <!-- <span class="icon-bar bar3"></span> -->
+                        <!-- </button> -->
+<!-- <<<<<<< HEAD -->
+                        <!-- <!-- <a class="navbar-brand" href="#">Dashboard</a> --> 
+<!-- ======= -->
+                        <!-- <!-- <a class="navbar-brand" href="#">Dashboard</a> -->
+<!-- >>>>>>> 451efa1cae46dec5b2b92119d7caf208db123f2e -->
+                    <!-- </div> -->
+                    <!-- <div class="collapse navbar-collapse"> -->
+                        <!-- <ul class="nav navbar-nav navbar-right"> -->
+                        <!-- </ul> -->
 
-            <!--
-                Tip 1: you can change the color of the sidebar's background using: data-background-color="white | black"
-                Tip 2: you can change the color of the active button using the data-active-color="primary | info | success | warning | danger"
-            -->
-
-          <!--  <div class="sidebar-wrapper">
-                <div class="logo">
-                    <a href="http://www.creative-tim.com" class="simple-text">
-                        Creative Tim
-                    </a>
-                </div>
-
-                <ul class="nav">
-                    <li class="active">
-                        <a href="dashboard.html">
-                            <i class="ti-panel"></i>
-                            <p>Dashboard</p>
-                        </a>
-                    </li>
-                    <li>
-                        <a href="user.html">
-                            <i class="ti-user"></i>
-                            <p>User Profile</p>
-                        </a>
-                    </li>
-                    <li>
-                        <a href="table.html">
-                            <i class="ti-view-list-alt"></i>
-                            <p>Table List</p>
-                        </a>
-                    </li>
-                    <li>
-                        <a href="typography.html">
-                            <i class="ti-text"></i>
-                            <p>Typography</p>
-                        </a>
-                    </li>
-                    <li>
-                        <a href="icons.html">
-                            <i class="ti-pencil-alt2"></i>
-                            <p>Icons</p>
-                        </a>
-                    </li>
-                    <li>
-                        <a href="maps.html">
-                            <i class="ti-map"></i>
-                            <p>Maps</p>
-                        </a>
-                    </li>
-                    <li>
-                        <a href="notifications.html">
-                            <i class="ti-bell"></i>
-                            <p>Notifications</p>
-                        </a>
-                    </li>
-                    <li class="active-pro">
-                        <a href="upgrade.html">
-                            <i class="ti-export"></i>
-                            <p>Upgrade to PRO</p>
-                        </a>
-                    </li>
-                </ul>
-            </div>
-        </div>-->
-
-        <div class="container main-panel shadow" style="width:100%">
-            <nav class="navbar navbar-default">
-                <div class="container-fluid">
-                    <div class="navbar-header">
-                        <button type="button" class="navbar-toggle">
-                            <span class="sr-only">Toggle navigation</span>
-                            <span class="icon-bar bar1"></span>
-                            <span class="icon-bar bar2"></span>
-                            <span class="icon-bar bar3"></span>
-                        </button>
-                        <!-- <a class="navbar-brand" href="#">Dashboard</a> -->
-                    </div>
-                    <div class="collapse navbar-collapse">
-                        <ul class="nav navbar-nav navbar-right">
-                            <!--<li>
-                                <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-                                    <i class="ti-panel"></i>
-                                    <p>Stats</p>
-                                </a>
-                            </li>
-                            <li class="dropdown">
-                                <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-                                    <i class="ti-bell"></i>
-                                    <p class="notification">5</p>
-                                    <p>Notifications</p>
-                                    <b class="caret"></b>
-                                </a>
-                                <ul class="dropdown-menu">
-                                    <li><a href="#">Notification 1</a></li>
-                                    <li><a href="#">Notification 2</a></li>
-                                    <li><a href="#">Notification 3</a></li>
-                                    <li><a href="#">Notification 4</a></li>
-                                    <li><a href="#">Another notification</a></li>
-                                </ul>
-                            </li>-->
-                            <!-- <li> -->
-                                <!-- <a href="#"> -->
-                                    <!-- <i class="ti-settings"></i> -->
-                                    <!-- <p>Settings</p> -->
-                                <!-- </a> -->
-                            <!-- </li> -->
-                        </ul>
-
-                    </div>
-                </div>
-            </nav>
-
-           <!--<div class="form-control ">
-               <div class="dropdown">
-                   <select id="drpTime" class="btn btn-primary dropdown-toggle">
-                       <option value="10" selected="selected">10 Minuts</option>
-                       <option value="60" >1 Hour</option>
-                       <option value="1440">1 day</option>
-                       <option value="21600">15 days</option>
-                       <option value="43200">30 days</option>
-                   </select>
-
-               </div>
-           </div>-->
-
+                    <!-- </div> -->
+                <!-- </div> -->
+           <!-- </nav>-->
             <div class="container-fluid">
                 <div class="row">
-                    <div class="col-lg-12" >
-                        <div class="dropdown" style="width:100%">
+                    <div class="col-md-12" >
+					<div style="margin:0 15px 0 15px" >
+                        <div class="dropdown" style="width:100%;">
                             <select id="drpTime" class="btn btn-primary dropdown-toggle" onchange="getDropdownSelectedValue()" style="width:100%; height:40px">
-                                <option value="10"  selected="selected">10 Minuts</option>
-                                <option value="60" >1 Hour</option>
+<!-- <<<<<<< HEAD -->
+                                <option value="10" >10 Minuts</option>
+                                <option value="60" selected="selected">1 Hour</option>
 								<option value="480">8 Hour</option>
+								<option value="240">4 Hour</option>
+<!-- ======= -->
+                                <option value="30" >30 Minuts</option>
+                                <option value="60" selected="selected">1 Hour</option>
+                                <option value="240">4 Hours</option>
+								                <option value="480">8 Hours</option>
+                                <option value="720">12 Hours</option>
+<!-- >>>>>>> 451efa1cae46dec5b2b92119d7caf208db123f2e -->
                                 <option value="1440">1 day</option>
                                 <option value="21600">15 days</option>
-								<option value="43200">30 days</option>
+								                <option value="43200">30 days</option>
                                 <option value="525600">1 year</option>
-								<option value="2628000">max </option>
+								                <option value="2628000">MAX</option>
                             </select>
                         </div>
+						</div>
+						<br>
+						<div class="col-lg-6">
+                            <div class="dropdown" style="width:100%">
+                                <select id="drpTime" class="btn btn-warning dropdown-toggle" style="width:100%;">
+                                    <option value="date" selected="selected"><button type="button" class="btn btn-warning">Date</button></option>
+                                    <option value="1"><button type="button" class="btn btn-warning">1</button></option>
+                                    <option value="2"><button type="button" class="btn btn-warning">2</button></option>
+                                    <option value="3"><button type="button" class="btn btn-warning">3</button></option>
+                                    <option value="4"><button type="button" class="btn btn-warning">4</button></option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="col-lg-6">
+                            <div class="dropdown" style="width:100%">
+                                <select id="drpTime" class="btn btn-info dropdown-toggle" style="width:100%;">
+                                    <option value="device" selected="selected"><button type="button" class="btn btn-warning">Devices</button></option>
+                                    <option value="a"><button type="button" class="btn btn-warning">A</button></option>
+                                    <option value="b"><button type="button" class="btn btn-warning">B</button></option>
+                                    <option value="c"><button type="button" class="btn btn-warning">C</button></option>
+                                    <option value="d"><button type="button" class="btn btn-warning">D</button></option>
+                                </select>
+                            </div>
+                         </div>
                     </div>
                 </div>
             </div>
+			
+			 
 
                 <div class="content">
                     <div class="container-fluid">
@@ -202,7 +133,7 @@
                                             <div class="col-xs-7">
                                                 <div class="numbers" >
                                                     <p>Responce Time</p>
-                                                    <p id="rsptm">1.23 Min</p>
+                                                    <p id="rsptm"></p>
                                                 </div>
                                             </div>
                                         </div>
@@ -227,8 +158,12 @@
                                             <div class="col-xs-7">
                                                 <div class="numbers">
                                                     <p>Online Device</p>
-                                                    <p id="onlineDeviceCountbox">12</p>
+                                                    <p id="onlineDeviceCountbox"></p>
+<!-- <<<<<<< HEAD -->
                                                     
+<!-- ======= -->
+
+<!-- >>>>>>> 451efa1cae46dec5b2b92119d7caf208db123f2e -->
                                                 </div>
                                             </div>
                                         </div>
@@ -253,7 +188,7 @@
                                             <div class="col-xs-7">
                                                 <div class="numbers">
                                                     <p>Request Count</p>
-                                                    <p id="RqstContbox">23</p>
+                                                    <p id="RqstContbox"></p>
                                                 </div>
                                             </div>
                                         </div>
@@ -271,14 +206,18 @@
                                     <div class="content">
                                         <div class="row">
                                             <div class="col-xs-5">
-                                                <div class="icon-big icon-danger text-center">
+                                                <div class="icon-big icon-danger1 text-center">
                                                     <i class="ti-pulse"></i>
                                                 </div>
                                             </div>
                                             <div class="col-xs-7">
                                                 <div class="numbers">
+<!-- <<<<<<< HEAD -->
+                                                    <p>Critical</p>
+<!-- ======= -->
                                                     <p>Emmergency</p>
-                                                    <p id="Totalemrcountbox">5</p>
+<!-- >>>>>>> 451efa1cae46dec5b2b92119d7caf208db123f2e -->
+                                                    <p id="Totalemrcountbox"></p>
                                                 </div>
                                             </div>
                                         </div>
@@ -298,16 +237,18 @@
                                 <div class="card">
                                     <div class="header">
                                         <h4 class="title">Number Of Request</h4>
-                                        <form name="form" id="my_form">
-                                            <input id="filetype" type="file" onchange="two(this.files)" value="F:/SUMIT/Sqllite/Sqllite/assets/db/SerialData.db" /> <br>
-                                        </form>
+<!-- <<<<<<< HEAD -->
+                                        
+<!-- ======= -->
+
+<!-- >>>>>>> 451efa1cae46dec5b2b92119d7caf208db123f2e -->
                                     </div>
                                     <div class="content">
                                         <div id="chartHours" class="ct-chart"></div>
                                         <div class="footer">
                                             <div class="chart-legend">
                                                 <i class="fa fa-circle text-info"></i> Request
-                                                <i class="fa fa-circle text-warning"></i> Emergency
+                                                <i class="fa fa-circle text-warning"></i> Critical
                                             </div>
 
 
@@ -326,7 +267,7 @@
                                         <!-- <div class="footer"> -->
                                             <!-- <div class="chart-legend"> -->
                                                 <!-- <!--<i class="fa fa-circle text-info"></i> On -->
-                                                <!-- <i class="fa fa-circle text-danger"></i> Off--> 
+                                                <!-- <i class="fa fa-circle text-danger"></i> Off-->
                                                 <!-- <i class="fa fa-circle text-info"></i> Emergency -->
 
                                             <!-- </div> -->
@@ -339,7 +280,7 @@
                             <div class="col-md-12">
                                 <div class="card">
                                     <div class="header">
-                                        <h4 class="title">Average Response Time</h4>
+                                        <h4 class="title">Average Response Time (Minutes)</h4>
                                     </div>
                                     <div class="content">
                                         <div id="chartHours2" class="ct-chart"></div>
@@ -355,7 +296,7 @@
                             <div class="col-md-12">
                                 <div class="card">
                                     <div class="header">
-                                        <h4 class="title">Total Offline Time</h4>
+                                        <h4 class="title">Total Offline Time (Minutes)</h4>
                                     </div>
                                     <div class="content">
                                         <div id="chartHours3" class="ct-chart"></div>
@@ -378,7 +319,7 @@
                             <div class="col-md-6">
                                 <div class="card">
                                     <div class="header">
-                                        <h4 class="title">Number  Of Device Offline/Online </h4>
+                                        <h4 class="title">Number Of Device Online/Offline </h4>
                                     </div>
                                     <div class="content">
                                         <div id="chartPreferences" class="ct-chart ct-perfect-fourth"></div>
@@ -414,7 +355,9 @@
                         </div>
                     </div>
                 </div>
-
+<form name="form" id="my_form">
+                                            <input id="filetype" type="file" onchange="two(this.files)" value="F:/SUMIT/Sqllite/Sqllite/assets/db/SerialData.db" /> <br>
+                                        </form>
 
                 <!--<footer class="footer">
                     <div class="container-fluid">
@@ -447,7 +390,30 @@
 
             </div>
     </div>
+<!-- <div id="content"> -->
+     <!-- <h3>Hello, this is a H3 tag</h3> -->
 
+    <!-- <p>a pararaph</p> -->
+<!-- </div> -->
+<!-- <div id="editor"></div> -->
+<!-- <button id="cmd">generate PDF</button> -->
+
+<!-- <script> -->
+<!-- var doc = new jsPDF(); -->
+<!-- var specialElementHandlers = { -->
+    <!-- '#editor': function (element, renderer) { -->
+        <!-- return true; -->
+    <!-- } -->
+<!-- }; -->
+
+<!-- $('#cmd').click(function () { -->
+    <!-- doc.fromHTML($('#content').html(), 15, 15, { -->
+        <!-- 'width': 170, -->
+            <!-- 'elementHandlers': specialElementHandlers -->
+    <!-- }); -->
+    <!-- doc.save('sample-file.pdf'); -->
+<!-- }); -->
+<!-- </script> -->
 
 </body>
 

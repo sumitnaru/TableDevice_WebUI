@@ -1,0 +1,39 @@
+<!DOCTYPE HTML>
+<html>
+    <head>
+        <title>The document</title>
+        <script src="https://code.jquery.com/jquery-3.0.0.min.js" integrity="sha256-JmvOoLtYsmqlsWxa7mDSLMwa6dZ9rrIdtrrVYRnDRH0=" crossorigin="anonymous"></script>
+        <script src="https://cdn.jsdelivr.net/jspdf/1.2.61/jspdf.min.js"></script>
+        <style>
+        </style>
+    </head>
+    <body>
+        <form id="smdiv">
+            <div id="content">
+                <label>Name</label>
+                <input type="text" name="name"/>
+                <label>Empid</label>
+                <input type="text" name="empid"/>
+                <label>Age</label>
+                <input type="text" name="age"/>
+            </div>
+        </form>
+        <button id="cmd">generate PDF</button>
+        
+    </body>
+</html>
+<script>
+//I did not read up on formatting as in pdf.text(X1, X2,   <------ not sure of how X1 and X2 are used, you can do that
+$('#cmd').click(function () {
+var name_val = $('form#smdiv input[name="name"]').val();
+var empid_val = $('form#smdiv input[name="empid"]').val();
+var age_val = $('form#smdiv input[name="age"]').val();
+
+var pdf = new jsPDF();
+pdf.text(5, 5, 'You figure out formatting');
+pdf.text(30, 30, 'Name: '+ name_val);
+pdf.text(60, 60, 'Emp ID: '+ empid_val);
+pdf.text(90, 90, 'Age: '+ age_val);
+pdf.save('hello_world.pdf');
+});    
+</script>
