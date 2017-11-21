@@ -50,15 +50,7 @@
                             <!-- <span class="icon-bar bar2"></span> -->
                             <!-- <span class="icon-bar bar3"></span> -->
                         <!-- </button> -->
-<<<<<<< HEAD
-<!-- <<<<<<< HEAD -->
-                        <!-- <!-- <a class="navbar-brand" href="#">Dashboard</a> --> 
-<!-- ======= -->
                         <!-- <!-- <a class="navbar-brand" href="#">Dashboard</a> -->
-<!-- >>>>>>> 451efa1cae46dec5b2b92119d7caf208db123f2e -->
-=======
-                        <!-- <!-- <a class="navbar-brand" href="#">Dashboard</a> -->
->>>>>>> a1be91f829da3ba63343499abf959203f15050bc
                     <!-- </div> -->
                     <!-- <div class="collapse navbar-collapse"> -->
                         <!-- <ul class="nav navbar-nav navbar-right"> -->
@@ -71,26 +63,14 @@
                 <div class="row">
                     <div class="col-md-12" >
 					<div style="margin:0 15px 0 15px" >
+					Time Spam Dropdown:<br>
                         <div class="dropdown" style="width:100%;">
                             <select id="drpTime" class="btn btn-primary dropdown-toggle" onchange="getDropdownSelectedValue()" style="width:100%; height:40px">
-<<<<<<< HEAD
-<!-- <<<<<<< HEAD -->
-                                <option value="10" >10 Minuts</option>
-                                <option value="60" selected="selected">1 Hour</option>
-								<option value="480">8 Hour</option>
-								<option value="240">4 Hour</option>
-<!-- ======= -->
-=======
->>>>>>> a1be91f829da3ba63343499abf959203f15050bc
                                 <option value="30" >30 Minuts</option>
                                 <option value="60" selected="selected">1 Hour</option>
                                 <option value="240">4 Hours</option>
 								                <option value="480">8 Hours</option>
                                 <option value="720">12 Hours</option>
-<<<<<<< HEAD
-<!-- >>>>>>> 451efa1cae46dec5b2b92119d7caf208db123f2e -->
-=======
->>>>>>> a1be91f829da3ba63343499abf959203f15050bc
                                 <option value="1440">1 day</option>
                                 <option value="21600">15 days</option>
 								                <option value="43200">30 days</option>
@@ -98,38 +78,26 @@
 								                <option value="2628000">MAX</option>
                             </select>
                         </div>
-						</div>
-<<<<<<< HEAD
-						<br>
-						<div class="col-lg-6">
-                            <div class="dropdown" style="width:100%">
-                                <select id="drpTime" class="btn btn-warning dropdown-toggle" style="width:100%;">
-                                    <option value="date" selected="selected"><button type="button" class="btn btn-warning">Date</button></option>
-                                    <option value="1"><button type="button" class="btn btn-warning">1</button></option>
-                                    <option value="2"><button type="button" class="btn btn-warning">2</button></option>
-                                    <option value="3"><button type="button" class="btn btn-warning">3</button></option>
-                                    <option value="4"><button type="button" class="btn btn-warning">4</button></option>
-                                </select>
-                            </div>
+						
+						</div><br>
+						<hr>
+						<div class="col-lg-5">
+                             <div class="col-lg-3">  <label for="bday">Enter Date:</label></div>
+							 <div class="col-lg-6"> <input id="date" type="date" onchange="getDateValue()"  pattern="\d{1,2}-\d{1,2}-\d{4}" style="width:100%;margin:0 0 0 0; " class="form-control"></div>
                         </div>
-                        <div class="col-lg-6">
+                        <div class="col-lg-7">
+						 <div class="col-lg-3">Device Dropdown:</div>
+						 <div class="col-lg-9">
                             <div class="dropdown" style="width:100%">
-                                <select id="drpTime" class="btn btn-info dropdown-toggle" style="width:100%;">
-                                    <option value="device" selected="selected"><button type="button" class="btn btn-warning">Devices</button></option>
-                                    <option value="a"><button type="button" class="btn btn-warning">A</button></option>
-                                    <option value="b"><button type="button" class="btn btn-warning">B</button></option>
-                                    <option value="c"><button type="button" class="btn btn-warning">C</button></option>
-                                    <option value="d"><button type="button" class="btn btn-warning">D</button></option>
+                                <select id="drpDevic" class="btn btn-info dropdown-toggle" style="width:100%;" onchange="getDropdownSelectedValue()">
+									<option value="0" selected="selected">All Device</option>
                                 </select>
                             </div>
-                         </div>
-=======
->>>>>>> a1be91f829da3ba63343499abf959203f15050bc
+							</div>
+                        </div>
                     </div>
                 </div>
             </div>
-			
-			 
 
                 <div class="content">
                     <div class="container-fluid">
@@ -172,15 +140,7 @@
                                                 <div class="numbers">
                                                     <p>Online Device</p>
                                                     <p id="onlineDeviceCountbox"></p>
-<<<<<<< HEAD
-<!-- <<<<<<< HEAD -->
-                                                    
-<!-- ======= -->
 
-<!-- >>>>>>> 451efa1cae46dec5b2b92119d7caf208db123f2e -->
-=======
-
->>>>>>> a1be91f829da3ba63343499abf959203f15050bc
                                                 </div>
                                             </div>
                                         </div>
@@ -218,7 +178,7 @@
                                     </div>
                                 </div>
                             </div>
-                            <div class="col-lg-3 col-sm-6">
+                           <div class="col-lg-3 col-sm-6">
                                 <div class="card">
                                     <div class="content">
                                         <div class="row">
@@ -229,24 +189,16 @@
                                             </div>
                                             <div class="col-xs-7">
                                                 <div class="numbers">
-<!-- <<<<<<< HEAD -->
+
                                                     <p>Critical</p>
-<!-- ======= -->
+
                                                     <p>Emmergency</p>
-<<<<<<< HEAD
-<!-- >>>>>>> 451efa1cae46dec5b2b92119d7caf208db123f2e -->
-=======
->>>>>>> a1be91f829da3ba63343499abf959203f15050bc
+
                                                     <p id="Totalemrcountbox"></p>
                                                 </div>
                                             </div>
                                         </div>
-                                        <!--<div class="footer">
-                                            <hr />
-                                            <div class="stats">
-                                                <i class="ti-reload"></i> Updated now
-                                            </div>
-                                        </div>-->
+                                      
                                     </div>
                                 </div>
                             </div>
@@ -257,22 +209,14 @@
                                 <div class="card">
                                     <div class="header">
                                         <h4 class="title">Number Of Request</h4>
-<<<<<<< HEAD
-<!-- <<<<<<< HEAD -->
-                                        
-<!-- ======= -->
 
-<!-- >>>>>>> 451efa1cae46dec5b2b92119d7caf208db123f2e -->
-=======
-
->>>>>>> a1be91f829da3ba63343499abf959203f15050bc
                                     </div>
                                     <div class="content">
                                         <div id="chartHours" class="ct-chart"></div>
                                         <div class="footer">
                                             <div class="chart-legend">
                                                 <i class="fa fa-circle text-info"></i> Request
-                                                <i class="fa fa-circle text-warning"></i> Critical
+                                                <i class="fa fa-circle text-warning"></i> Emergency
                                             </div>
 
 
@@ -414,30 +358,7 @@
 
             </div>
     </div>
-<!-- <div id="content"> -->
-     <!-- <h3>Hello, this is a H3 tag</h3> -->
 
-    <!-- <p>a pararaph</p> -->
-<!-- </div> -->
-<!-- <div id="editor"></div> -->
-<!-- <button id="cmd">generate PDF</button> -->
-
-<!-- <script> -->
-<!-- var doc = new jsPDF(); -->
-<!-- var specialElementHandlers = { -->
-    <!-- '#editor': function (element, renderer) { -->
-        <!-- return true; -->
-    <!-- } -->
-<!-- }; -->
-
-<!-- $('#cmd').click(function () { -->
-    <!-- doc.fromHTML($('#content').html(), 15, 15, { -->
-        <!-- 'width': 170, -->
-            <!-- 'elementHandlers': specialElementHandlers -->
-    <!-- }); -->
-    <!-- doc.save('sample-file.pdf'); -->
-<!-- }); -->
-<!-- </script> -->
 
 </body>
 

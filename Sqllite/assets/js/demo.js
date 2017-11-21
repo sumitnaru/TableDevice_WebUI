@@ -1,9 +1,16 @@
 type = ['', 'info', 'success', 'warning', 'danger'];
 
 var value = 0;
+var datetx=null;
 function getDropdownSelectedValue() {
     value = document.getElementById("drpTime").value;
     console.log(value);
+    two(document.getElementById("filetype").files);
+}
+
+function getDateValue() {
+    datetxt=document.getElementById("date").value;
+		console.log(datetxt);
     two(document.getElementById("filetype").files);
 }
 var cntarr = [];
@@ -102,6 +109,27 @@ var gg = [1];
 var rsponsetime;
 var filter2Arr = [0];
 
+var devi=0;
+function deviceDropdownCreate(options){
+	//devi=1;
+	console.log("drop");
+	var select = document.getElementById("drpDevic");
+	select.innerHTML = "";
+	
+	var el = document.createElement("option");
+    el.textContent = "All Device";
+    el.value = 0;
+    select.appendChild(el);
+	
+	for(var i = 0; i < options.length; i++) {
+		var opt = options[i];
+		var el = document.createElement("option");
+		el.textContent = opt;
+		el.value = opt;
+		select.appendChild(el);
+	}
+}
+
 function two(files) {
     var file = files[0];
     console.log("File...");
@@ -132,6 +160,7 @@ function two(files) {
 		Y1Arr=[];
 		Y2Arr=[];
 		cntarr=[];
+		var AllUniqueDevice = [];
         //console.log(reader);
         //var database = SQL.open(bin2Array(reader.result));
         var database = new SQL.Database(bin2Array(reader.result))
@@ -139,10 +168,13 @@ function two(files) {
         console.log("alldata-----------------------");
         alldata = alldata[0].values;
         alldatalength = alldata.length;
+		 console.log(alldata);
+		// console.log(alldatalength);
 		
-		//var alldataUnique = database.exec("SELECT distinct * FROM STATUS");
-		console.log("-------------------------------------alldata");
-		//console.log(alldataUnique)
+		
+		datetxt=document.getElementById("date").value;
+		console.log("datetxt-----------------------");
+		console.log(datetxt);
 		
 		
 		
@@ -166,8 +198,28 @@ function two(files) {
             console.log("TotalDeviceOnline---1");
             console.log(TotalDeviceOnline);
             console.log(TotalDeviceOffline);
+			var drpDevic=document.getElementById("drpDevic");
+			var selectedD =parseInt(drpDevic.options[drpDevic.selectedIndex].value);
+			console.log("drpDevic-----------------------");
+			console.log(selectedD);
+			console.log("drpDevic-----------------------||");
         for (var i = 0; i < alldata.length; i++) {
-            // console.log("---------------"+dDate);
+           //  console.log("---------------"+dDate);
+		   
+		  
+		   var ck1 = 0;
+		   for(var id=0;id<AllUniqueDevice.length;id++){
+			   
+			   if(alldata[i][0]==AllUniqueDevice[id]){
+				   ck1 = 1;
+				   break;
+			   }
+		   }
+		   if(ck1==0)
+			   AllUniqueDevice.push(alldata[i][0]);
+		   
+		   deviceDropdownCreate(AllUniqueDevice);
+		   
             var dYear = alldata[i][4];
             var dMonth = alldata[i][3];
             var dDay = alldata[i][2];
@@ -175,8 +227,13 @@ function two(files) {
             var dMin = alldata[i][6];
             var dSec = alldata[i][7];
             var dStr = dMonth+"-"+dDay+"-"+dYear+" "+dHour+":"+dMin+":"+dSec
+			
+			var ddateStr= dYear+"-"+dMonth+"-"+dDay
             //01-01-2016 00:03:44
+		//	console.log("---------------");
             var dTime = new Date(dStr);
+			var ckdate=0;
+			//console.log(ddateStr);
             if (dTime >= fromTime) {
                 // console.log("in<<<");
                 var tempFilter = new MainTable();
@@ -190,6 +247,26 @@ function two(files) {
                 tempFilter.second = dSec;
                 Filter1Arr.push(tempFilter);
             }
+			else if(ddateStr==datetxt){
+				
+				if(selectedD == 0 || selectedD == alldata[i][0]){
+					ckdate=1;
+				//console.log("in<<<ddddd");
+					var tempFilter = new MainTable();
+					tempFilter.deviceId = alldata[i][0];
+					tempFilter.statsId = alldata[i][1];
+					tempFilter.day = dDay;
+					tempFilter.month = dMonth;
+					tempFilter.year = dYear;
+					tempFilter.hour = dHour;
+					tempFilter.minitues = dMin;
+					tempFilter.second = dSec;
+					Filter1Arr.push(tempFilter);
+				}
+			}
+			//if(ckdate==1 && devi==1)
+			//	document.getElementById("date").value = "";
+			
             if (dTime >= fromTime5Min) {
               var ck = 0;
                 for(var hh = 0; hh<arrToatlOlineArr.length; hh++){
@@ -537,6 +614,8 @@ function two(files) {
 //four();
     }, 1000);
 }
+
+
 
 function updateTimeOnline() {
     var file = files[0];
