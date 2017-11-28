@@ -59,18 +59,39 @@
                     <!-- </div> -->
                 <!-- </div> -->
            <!-- </nav>-->
+		   <div class="col-md-12" style="">
+		   <div class="col-md-12" >
+		    <div class="col-md-3" ></div>
+			<div class="col-md-9" >
+		   <ul class="nav nav-tabs">
+			  <li class="nav-item" style="border-right:solid">
+				<a class="nav-link active" data-toggle="tab"  id="allVale" style="color:red;" onclick="tabSelection(1)" >All</a>
+			  </li>
+			  <li class="nav-item">
+				<a class="nav-link" data-toggle="tab"  id="timeValue" style="color:red;" onclick="tabSelection(2)" >Date</a>
+			  </li>
+			</ul>
+			</div>
+			</div>
+		   <div style="display:none">
+		  <input type="radio"  id="all"> 
+		  <input type="radio"   id="time"> 
+		  </div>
+			
             <div class="container-fluid">
                 <div class="row">
                     <div class="col-md-12" >
+					<br>
 					<div style="margin:0 15px 0 15px" >
-					Time Spam Dropdown:<br>
+					<div class="col-md-2"> <label for="bday" id="lbltimespan" style="display:none">Time Spam:</label></div>
+					<div class="col-md-10">
                         <div class="dropdown" style="width:100%;">
-                            <select id="drpTime" class="btn btn-primary dropdown-toggle" onchange="getDropdownSelectedValue()" style="width:100%; height:40px">
+                            <select id="drpTime" class="btn btn-primary dropdown-toggle" onchange="getDropdownSelectedValue()" style="width:100%; display:none; height:40px;">
                                 <option value="30" >30 Minuts</option>
-                                <option value="60" selected="selected">1 Hour</option>
+                                <option value="60" >1 Hour</option>
                                 <option value="240">4 Hours</option>
-								                <option value="480">8 Hours</option>
-                                <option value="720">12 Hours</option>
+								<option value="480">8 Hours</option>
+                                <option value="720" selected="selected">12 Hours</option>
                                 <option value="1440">1 day</option>
                                 <option value="21600">15 days</option>
 								                <option value="43200">30 days</option>
@@ -79,17 +100,26 @@
                             </select>
                         </div>
 						
-						</div><br>
-						<hr>
-						<div class="col-lg-5">
-                             <div class="col-lg-3">  <label for="bday">Enter Date:</label></div>
-							 <div class="col-lg-6"> <input id="date" type="date" onchange="getDateValue()"  pattern="\d{1,2}-\d{1,2}-\d{4}" style="width:100%;margin:0 0 0 0; " class="form-control"></div>
-                        </div>
-                        <div class="col-lg-7">
-						 <div class="col-lg-3">Device Dropdown:</div>
-						 <div class="col-lg-9">
+						</div>
+						</div>
+						
+						<div class="col-lg-12">
+						<div style="margin:0 15px 0 15px" >
+						
+                              <div class="col-lg-2"><label id="lblenterdate" style="display:none"  for="bday">Enter Date:</label></div> 
+							 <div class="col-lg-4"><input id="date" style="display:none" type="date" onchange="getDateValue()" hidden="hidden"  pattern="\d{1,2}-\d{1,2}-\d{4}" style="width:200px;margin:0 0 0 0; " class="form-control"></div> 
+                       
+						</div>
+						</div>
+						<br>
+						<br>
+						<br>
+							
+                        <div class="col-lg-12">
+						 <div class="col-lg-2"><label for="bday">Device:</label></div>
+						 <div class="col-lg-10">
                             <div class="dropdown" style="width:100%">
-                                <select id="drpDevic" class="btn btn-info dropdown-toggle" style="width:100%;" onchange="getDropdownSelectedValue()">
+                                <select id="drpDevic" class="btn btn-info dropdown-toggle" style="width:100%;" onchange="getDateDviceValue()">
 									<option value="0" selected="selected">All Device</option>
                                 </select>
                             </div>
@@ -98,7 +128,7 @@
                     </div>
                 </div>
             </div>
-
+<br>
                 <div class="content">
                     <div class="container-fluid">
                         <div class="row">
@@ -190,10 +220,7 @@
                                             <div class="col-xs-7">
                                                 <div class="numbers">
 
-                                                    <p>Critical</p>
-
-                                                    <p>Emmergency</p>
-
+                                                    <p>Critical Request</p>
                                                     <p id="Totalemrcountbox"></p>
                                                 </div>
                                             </div>

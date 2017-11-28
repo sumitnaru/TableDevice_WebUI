@@ -1,16 +1,59 @@
 type = ['', 'info', 'success', 'warning', 'danger'];
 
 var value = 0;
-var datetx=null;
+var datetxt=null;
+var datetxt1=null;
+var objParmeter=0;
+tabSelection(1);
+function tabSelection(obj){
+	console.log(obj);
+	//document.getElementById("allVale").classList.remove("active");
+	//document.getElementById("timeValue").classList.remove("active");
+	if(obj==1){
+		document.getElementById("all").checked =true;
+		document.getElementById("time").checked =false;
+		//document.getElementById("timeValue").classList.add("active");
+		getDropdownSelectedValue();
+	}
+	else if(obj==2){
+		document.getElementById("time").checked =true;
+		document.getElementById("all").checked =false;
+		//document.getElementById("allVale").classList.add("active");
+		getDropdownSelectedValue();
+		
+	}
+}
+
 function getDropdownSelectedValue() {
     value = document.getElementById("drpTime").value;
-    console.log(value);
+   
+	
+	if(document.getElementById("all").checked == true){
+		console.log("000000000000000001111111111111111");
+		document.getElementById("lbltimespan").style.display='';
+		document.getElementById("lblenterdate").style.display='none';
+		document.getElementById("date").style.display='none';
+		document.getElementById("drpTime").style.display='';
+	}
+	else {
+		console.log("00000000000000002222222222");
+		document.getElementById("lbltimespan").style.display='none';
+		document.getElementById("drpTime").style.display='none';
+		document.getElementById("lblenterdate").style.display='';
+		document.getElementById("date").style.display='';
+		
+	}
     two(document.getElementById("filetype").files);
 }
 
 function getDateValue() {
     datetxt=document.getElementById("date").value;
 		console.log(datetxt);
+    two(document.getElementById("filetype").files);
+}
+function getDateDviceValue() {
+    datetxt1=document.getElementById("drpDevic").value;
+		console.log(datetxt1);
     two(document.getElementById("filetype").files);
 }
 var cntarr = [];
@@ -129,6 +172,11 @@ function deviceDropdownCreate(options){
 		select.appendChild(el);
 	}
 }
+var drpDevic=null;
+var selectedD=null;
+
+
+
 
 function two(files) {
     var file = files[0];
@@ -137,12 +185,8 @@ function two(files) {
     var reader = new FileReader();
     reader.readAsBinaryString(file);
     setTimeout(function () {
-
-
-
 		var arrToatlOlineArr = [];
         var arrToatlOfflineArr = [];
-
 
 		Filter1Arr = [];
 		arrToatlOlineArr=[];
@@ -171,22 +215,42 @@ function two(files) {
 		 console.log(alldata);
 		// console.log(alldatalength);
 		
-		
-		datetxt=document.getElementById("date").value;
-		console.log("datetxt-----------------------");
-		console.log(datetxt);
-		
-		
-		
-        var droptext = document.getElementById("drpTime");
-        var min =parseInt(droptext.options[droptext.selectedIndex].value);
-        totalSelectedMin = min;
-        console.log("totalSelectedMin");
-        console.log(totalSelectedMin);
-        var fromTime = new Date();
-        var fromTime5Min = new Date();
-        fromTime5Min.setMinutes(fromTime5Min.getMinutes() - 2);
-        fromTime.setMinutes(fromTime.getMinutes() - totalSelectedMin);
+		if(document.getElementById("all").checked == true){
+			var droptext = document.getElementById("drpTime");
+			var min =parseInt(droptext.options[droptext.selectedIndex].value);
+			totalSelectedMin = min;
+			console.log("totalSelectedMin");
+			console.log(totalSelectedMin);
+			var fromTime = new Date();
+			var fromTime5Min = new Date();
+			fromTime5Min.setMinutes(fromTime5Min.getMinutes() - 2);
+			fromTime.setMinutes(fromTime.getMinutes() - totalSelectedMin);
+
+		}
+		else {
+			datetxt=document.getElementById("date").value;
+			console.log("datetxt-----------------------");
+			console.log(datetxt);
+			// var drpDevic=document.getElementById("drpDevic");
+				// var selectedD =parseInt(drpDevic.options[drpDevic.selectedIndex].value);
+				// console.log("drpDevic-----------------------");
+				// console.log(selectedD);
+				// console.log("drpDevic-----------------------||");
+		}
+		var drpDevic=document.getElementById("drpDevic");
+				var selectedD =parseInt(drpDevic.options[drpDevic.selectedIndex].value);
+				console.log("drpDevic-----------------------");
+				console.log(selectedD);
+				console.log("drpDevic-----------------------||");
+        // var droptext = document.getElementById("drpTime");
+        // var min =parseInt(droptext.options[droptext.selectedIndex].value);
+        // totalSelectedMin = min;
+        // console.log("totalSelectedMin");
+        // console.log(totalSelectedMin);
+        // var fromTime = new Date();
+        // var fromTime5Min = new Date();
+        // fromTime5Min.setMinutes(fromTime5Min.getMinutes() - 2);
+        // fromTime.setMinutes(fromTime.getMinutes() - totalSelectedMin);
 
         /*if (value != "" || value != null) {
             from.setMinutes(now.getMinutes() -parseInt(value));
@@ -198,18 +262,19 @@ function two(files) {
             console.log("TotalDeviceOnline---1");
             console.log(TotalDeviceOnline);
             console.log(TotalDeviceOffline);
-			var drpDevic=document.getElementById("drpDevic");
-			var selectedD =parseInt(drpDevic.options[drpDevic.selectedIndex].value);
-			console.log("drpDevic-----------------------");
-			console.log(selectedD);
-			console.log("drpDevic-----------------------||");
+			// var drpDevic=document.getElementById("drpDevic");
+			// var selectedD =parseInt(drpDevic.options[drpDevic.selectedIndex].value);
+			// console.log("drpDevic-----------------------");
+			// console.log(selectedD);
+			// console.log("drpDevic-----------------------||");
         for (var i = 0; i < alldata.length; i++) {
            //  console.log("---------------"+dDate);
 		   
 		  
 		   var ck1 = 0;
 		   for(var id=0;id<AllUniqueDevice.length;id++){
-			   
+			   console.log("----------selectedD");
+			  // console.log(alldata[i][0]);
 			   if(alldata[i][0]==AllUniqueDevice[id]){
 				   ck1 = 1;
 				   break;
@@ -218,7 +283,9 @@ function two(files) {
 		   if(ck1==0)
 			   AllUniqueDevice.push(alldata[i][0]);
 		   
-		   deviceDropdownCreate(AllUniqueDevice);
+		   // var len = document.getElementById("drpDevic").length;
+		   // alert("Count: "+len);
+		   // deviceDropdownCreate(AllUniqueDevice);
 		   
             var dYear = alldata[i][4];
             var dMonth = alldata[i][3];
@@ -236,6 +303,7 @@ function two(files) {
 			//console.log(ddateStr);
             if (dTime >= fromTime) {
                 // console.log("in<<<");
+				if(selectedD == 0 || selectedD == alldata[i][0]){
                 var tempFilter = new MainTable();
                 tempFilter.deviceId = alldata[i][0];
                 tempFilter.statsId = alldata[i][1];
@@ -246,6 +314,7 @@ function two(files) {
                 tempFilter.minitues = dMin;
                 tempFilter.second = dSec;
                 Filter1Arr.push(tempFilter);
+				}
             }
 			else if(ddateStr==datetxt){
 				
@@ -355,6 +424,7 @@ function two(files) {
                     cntarr.push(tmpcount);
                 }
             }
+			
         }
 
         console.log("Total Request Table");
@@ -494,15 +564,15 @@ function two(files) {
         console.log("TotalAvgResponse-----2");
         console.log(TotalAvgResponse);
         for (var l = 0; l < filterAvgRespons.length; l++) {
-          if(maxAvgResponceTime < filterAvgRespons[l]["count"])
-            maxAvgResponceTime = filterAvgRespons[l]["count"];
+          // if(maxAvgResponceTime < filterAvgRespons[l]["count"])
+            // maxAvgResponceTime = filterAvgRespons[l]["count"];
 
             TotalAvgResponse += filterAvgRespons[l]["count"];
 
             XAvgResponsArr.push(filterAvgRespons[l]["deviceId"]);
             Y1AvgResponsArr.push(filterAvgRespons[l]["count"]);
         }
-
+		maxAvgResponceTime = 2 * TotalAvgResponse;
         if(filterAvgRespons.length == 1){
           XAvgResponsArr.push(0);
           Y1AvgResponsArr.push(0);
@@ -612,6 +682,12 @@ function two(files) {
 
         demo.initChartist();
 //four();
+
+		var len = document.getElementById("drpDevic").length;
+		   if(len==1)
+		    deviceDropdownCreate(AllUniqueDevice);
+		   
+		   
     }, 1000);
 }
 
