@@ -678,15 +678,15 @@ function two(files) {
 		          document.getElementById("rsptm").innerHTML = TotalAvgResponse.toFixed(2) + " Min";
         document.getElementById("onlineDeviceCountbox").innerHTML = TotalDeviceOnline;
 		document.getElementById("RqstContbox").innerHTML = TotalReqCount;
-		document.getElementById("Totalemrcountbox").innerHTML =TotalEmergencyCount;
+			document.getElementById("Totalemrcountbox").innerHTML =TotalEmergencyCount;
 
-        demo.initChartist();
+       
 //four();
 
 		var len = document.getElementById("drpDevic").length;
 		   if(len==1)
 		    deviceDropdownCreate(AllUniqueDevice);
-		   
+		   demo.initChartist(); 
 		   
     }, 1000);
 }
