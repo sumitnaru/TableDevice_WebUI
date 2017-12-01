@@ -4,7 +4,22 @@ var value = 0;
 var datetxt=null;
 var datetxt1=null;
 var objParmeter=0;
-tabSelection(1);
+$(document).ready(function () {
+
+        //demo.initChartist();
+		tabSelection(1);
+
+
+        <!-- $.notify({ -->
+            <!-- icon: 'ti-gift', -->
+            <!-- message: "Welcome to <b>Paper Dashboard</b> - a beautiful Bootstrap freebie for your next project." -->
+
+        <!-- }, { -->
+            <!-- type: 'success', -->
+            <!-- timer: 4000 -->
+        <!-- }); -->
+
+    });
 function tabSelection(obj){
 	console.log(obj);
 	//document.getElementById("allVale").classList.remove("active");
