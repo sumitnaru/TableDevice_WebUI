@@ -35,28 +35,28 @@ function tabSelection(obj){
 		document.getElementById("all").checked =false;
 		//document.getElementById("allVale").classList.add("active");
 		getDropdownSelectedValue();
-		
+
 	}
 }
 
 function getDropdownSelectedValue() {
     value = document.getElementById("drpTime").value;
-   
-	
+
+
 	if(document.getElementById("all").checked == true){
 		console.log("000000000000000001111111111111111");
 		document.getElementById("lbltimespan").style.display='';
-		document.getElementById("lblenterdate").style.display='none';
-		document.getElementById("date").style.display='none';
+		document.getElementById("DateDiv").style.display='none';
+		//document.getElementById("date").style.display='none';
 		document.getElementById("drpTime").style.display='';
 	}
 	else {
 		console.log("00000000000000002222222222");
 		document.getElementById("lbltimespan").style.display='none';
 		document.getElementById("drpTime").style.display='none';
-		document.getElementById("lblenterdate").style.display='';
-		document.getElementById("date").style.display='';
-		
+		document.getElementById("DateDiv").style.display='';
+		//document.getElementById("date").style.display='';
+
 	}
     two(document.getElementById("filetype").files);
 }
@@ -173,12 +173,12 @@ function deviceDropdownCreate(options){
 	console.log("drop");
 	var select = document.getElementById("drpDevic");
 	select.innerHTML = "";
-	
+
 	var el = document.createElement("option");
     el.textContent = "All Device";
     el.value = 0;
     select.appendChild(el);
-	
+
 	for(var i = 0; i < options.length; i++) {
 		var opt = options[i];
 		var el = document.createElement("option");
@@ -229,7 +229,7 @@ function two(files) {
         alldatalength = alldata.length;
 		 console.log(alldata);
 		// console.log(alldatalength);
-		
+
 		if(document.getElementById("all").checked == true){
 			var droptext = document.getElementById("drpTime");
 			var min =parseInt(droptext.options[droptext.selectedIndex].value);
@@ -284,8 +284,8 @@ function two(files) {
 			// console.log("drpDevic-----------------------||");
         for (var i = 0; i < alldata.length; i++) {
            //  console.log("---------------"+dDate);
-		   
-		  
+
+
 		   var ck1 = 0;
 		   for(var id=0;id<AllUniqueDevice.length;id++){
 			   console.log("----------selectedD");
@@ -297,11 +297,11 @@ function two(files) {
 		   }
 		   if(ck1==0)
 			   AllUniqueDevice.push(alldata[i][0]);
-		   
+
 		   // var len = document.getElementById("drpDevic").length;
 		   // alert("Count: "+len);
 		   // deviceDropdownCreate(AllUniqueDevice);
-		   
+
             var dYear = alldata[i][4];
             var dMonth = alldata[i][3];
             var dDay = alldata[i][2];
@@ -309,7 +309,7 @@ function two(files) {
             var dMin = alldata[i][6];
             var dSec = alldata[i][7];
             var dStr = dMonth+"-"+dDay+"-"+dYear+" "+dHour+":"+dMin+":"+dSec
-			
+
 			var ddateStr= dYear+"-"+dMonth+"-"+dDay
             //01-01-2016 00:03:44
 		//	console.log("---------------");
@@ -332,7 +332,7 @@ function two(files) {
 				}
             }
 			else if(ddateStr==datetxt){
-				
+
 				if(selectedD == 0 || selectedD == alldata[i][0]){
 					ckdate=1;
 				//console.log("in<<<ddddd");
@@ -350,7 +350,7 @@ function two(files) {
 			}
 			//if(ckdate==1 && devi==1)
 			//	document.getElementById("date").value = "";
-			
+
             if (dTime >= fromTime5Min) {
               var ck = 0;
                 for(var hh = 0; hh<arrToatlOlineArr.length; hh++){
@@ -439,7 +439,7 @@ function two(files) {
                     cntarr.push(tmpcount);
                 }
             }
-			
+
         }
 
         console.log("Total Request Table");
@@ -695,14 +695,14 @@ function two(files) {
 		document.getElementById("RqstContbox").innerHTML = TotalReqCount;
 			document.getElementById("Totalemrcountbox").innerHTML =TotalEmergencyCount;
 
-       
+
 //four();
 
 		var len = document.getElementById("drpDevic").length;
 		   if(len==1)
 		    deviceDropdownCreate(AllUniqueDevice);
-		   demo.initChartist(); 
-		   
+		   demo.initChartist();
+
     }, 1000);
 }
 

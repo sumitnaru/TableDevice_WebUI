@@ -74,10 +74,10 @@
 			</div>
 			</div>
 		   <div style="display:none">
-		  <input type="radio"  id="all"> 
-		  <input type="radio"   id="time"> 
+		  <input type="radio"  id="all">
+		  <input type="radio"   id="time">
 		  </div>
-			
+
             <div class="container-fluid">
                 <div class="row">
                     <div class="col-md-12" >
@@ -101,18 +101,20 @@
                         </div>
 						</div>
 						</div>
-						
-						<div class="col-lg-12">
-						<div style="margin:0 15px 0 15px">
-                              <div class="col-lg-2"><label id="lblenterdate" style="display:none"  for="bday">Enter Date:</label></div> 
-							 <div class="col-lg-4"><input id="date" style="display:none" type="date" onchange="getDateValue()" hidden="hidden"  pattern="\d{1,2}-\d{1,2}-\d{4}" style="width:200px;margin:0 0 0 0; " class="form-control"></div> 
-                       
+
+						<div class="col-lg-12" >
+						<div style="margin:0 15px 0 15px; display:none" id="DateDiv">
+              <div class="col-lg-2"><label id="lblenterdate"  >Enter Date From:</label></div>
+							 <div class="col-lg-4"><input id="date" type="date" onchange="getDateValue()" hidden="hidden"  pattern="\d{1,2}-\d{1,2}-\d{4}" style="width:200px;margin:0 0 0 0; " class="form-control"></div>
+
+               <div class="col-lg-2"><label id="lblenterdateto" >Enter Date To:</label></div>
+ 							 <div class="col-lg-4"><input id="dateto" type="date" onchange="getDateValue()" hidden="hidden"  pattern="\d{1,2}-\d{1,2}-\d{4}" style="width:200px;margin:0 0 0 0; " class="form-control"></div>
 						</div>
 						</div>
 						<br>
 						<br>
 						<br>
-							
+
                         <div class="col-lg-12">
 						 <div class="col-lg-2"><label for="bday">Device:</label></div>
 						 <div class="col-lg-10">
@@ -223,7 +225,7 @@
                                                 </div>
                                             </div>
                                         </div>
-                                      
+
                                     </div>
                                 </div>
                             </div>
@@ -287,12 +289,12 @@
                             </div>
 
                             <div class="col-md-12">
-                                <div class="card">
+                                <div class="card" >
                                     <div class="header">
                                         <h4 class="title">Total Offline Time (Minutes)</h4>
                                     </div>
                                     <div class="content">
-                                        <div id="chartHours3" class="ct-chart"></div>
+                                        <div id="chartHours3" class="ct-chart" style="padding-left:100px"></div>
                                         <div class="footer">
                                             <div class="chart-legend">
                                                 <i class="fa fa-circle text-info"></i>Total Offline
@@ -410,7 +412,7 @@
 <script src="assets/js/demo.js"></script>
 
 <script type="text/javascript">
-    
+
 </script>
 
 </html>
