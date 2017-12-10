@@ -2,6 +2,7 @@ type = ['', 'info', 'success', 'warning', 'danger'];
 
 var value = 0;
 var datetxt=null;
+var datetxtto=null;
 var datetxt1=null;
 var objParmeter=0;
 $(document).ready(function () {
@@ -175,7 +176,7 @@ function deviceDropdownCreate(options){
 	select.innerHTML = "";
 
 	var el = document.createElement("option");
-    el.textContent = "All Device";
+    el.textContent = "All Devices";
     el.value = 0;
     select.appendChild(el);
 
@@ -244,8 +245,11 @@ function two(files) {
 		}
 		else {
 			datetxt=document.getElementById("date").value;
+			datetxtto=document.getElementById("dateto").value;
+			
 			console.log("datetxt-----------------------");
 			console.log(datetxt);
+			console.log(datetxtto);
 			// var drpDevic=document.getElementById("drpDevic");
 				// var selectedD =parseInt(drpDevic.options[drpDevic.selectedIndex].value);
 				// console.log("drpDevic-----------------------");
@@ -331,7 +335,7 @@ function two(files) {
                 Filter1Arr.push(tempFilter);
 				}
             }
-			else if(ddateStr==datetxt){
+			else if(ddateStr>=datetxt && ddateStr<=datetxtto){
 
 				if(selectedD == 0 || selectedD == alldata[i][0]){
 					ckdate=1;
@@ -396,6 +400,9 @@ function two(files) {
         //var val1 = parseFloat(alldatalength /(alldatalength- Filter1Arr.length));
         //sts1 = Math.round(100 / 60).toFixed(2);
 		sts0 = TotalDeviceOnline;sts1=TotalDeviceOffline;
+		document.getElementById("poff").innerHTML=": "+sts1;
+		document.getElementById("pon").innerHTML=": "+sts0;
+
 
         //document.getElementById("rsptm").innerHTML = Filter1Arr.length;
         //document.getElementById("ondvc").innerHTML = Filter1Arr.length;
@@ -686,7 +693,7 @@ function two(files) {
             console.log(filterOfflineArr);
             console.log(XfilterOfflineArr);
             console.log(YfilterOfflineArr);
-
+			
             if(isNaN(TotalAvgResponse))
             document.getElementById("rsptm").innerHTML = "-";
             else

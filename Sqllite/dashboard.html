@@ -63,7 +63,7 @@
 		   <div class="col-md-12" >
 		    <div class="col-md-3" ></div>
 			<div class="col-md-9" >
-		   <ul class="nav nav-tabs">
+		   <ul class="nav nav-tabs" style="display:inline-block">
 			  <li class="nav-item" style="border-right:solid">
 				<a class="nav-link active" data-toggle="tab"  id="allVale" style="color:red;" onclick="tabSelection(1)" >Time Span</a>
 			  </li>
@@ -71,6 +71,7 @@
 				<a class="nav-link" data-toggle="tab"  id="timeValue" style="color:red;" onclick="tabSelection(2)" >Date</a>
 			  </li>
 			</ul>
+			<input style="display:inline-block;float:right;top: 17px; right: 17px; height:50px; background-color:#2E86C1; color:#fff; border:none; box-shadow: 2px 2px #BBBBBB; padding-left:10px; padding-right:10px; " type="button" onclick="window.print()" id="create_pdf" value="Print Report">
 			</div>
 			</div>
 		   <div style="display:none">
@@ -116,11 +117,11 @@
 						<br>
 
                         <div class="col-lg-12">
-						 <div class="col-lg-2"><label for="bday">Device:</label></div>
+						 <div class="col-lg-2"><label for="bday">Devices:</label></div>
 						 <div class="col-lg-10">
                             <div class="dropdown" style="width:100%">
                                 <select id="drpDevic" class="btn btn-info dropdown-toggle" style="width:100%;" onchange="getDateDviceValue()">
-									<option value="0" selected="selected">All Device</option>
+									<option value="0" selected="selected">All Devices</option>
                                 </select>
                             </div>
 							</div>
@@ -321,8 +322,8 @@
 
                                         <div class="footer">
                                             <div class="chart-legend">
-                                                <i class="fa fa-circle text-warning"></i>Offline
-                                                <i class="fa fa-circle text-info"></i> Online
+                                                <i class="fa fa-circle text-warning"></i>Offline<label id="poff"></label>
+                                                <i class="fa fa-circle text-info"></i> Online<label id="pon"></label>
 
                                             </div>
                                         </div>
