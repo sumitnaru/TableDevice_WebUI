@@ -1,9 +1,75 @@
 type = ['', 'info', 'success', 'warning', 'danger'];
 
 var value = 0;
+var datetxt=null;
+var datetxtto=null;
+var datetxt1=null;
+var objParmeter=0;
+$(document).ready(function () {
+
+        //demo.initChartist();
+		tabSelection(1);
+
+
+        <!-- $.notify({ -->
+            <!-- icon: 'ti-gift', -->
+            <!-- message: "Welcome to <b>Paper Dashboard</b> - a beautiful Bootstrap freebie for your next project." -->
+
+        <!-- }, { -->
+            <!-- type: 'success', -->
+            <!-- timer: 4000 -->
+        <!-- }); -->
+
+    });
+function tabSelection(obj){
+	console.log(obj);
+	//document.getElementById("allVale").classList.remove("active");
+	//document.getElementById("timeValue").classList.remove("active");
+	if(obj==1){
+		document.getElementById("all").checked =true;
+		document.getElementById("time").checked =false;
+		//document.getElementById("timeValue").classList.add("active");
+		getDropdownSelectedValue();
+	}
+	else if(obj==2){
+		document.getElementById("time").checked =true;
+		document.getElementById("all").checked =false;
+		//document.getElementById("allVale").classList.add("active");
+		getDropdownSelectedValue();
+
+	}
+}
+
 function getDropdownSelectedValue() {
     value = document.getElementById("drpTime").value;
-    console.log(value);
+
+
+	if(document.getElementById("all").checked == true){
+		console.log("000000000000000001111111111111111");
+		document.getElementById("lbltimespan").style.display='';
+		document.getElementById("DateDiv").style.display='none';
+		//document.getElementById("date").style.display='none';
+		document.getElementById("drpTime").style.display='';
+	}
+	else {
+		console.log("00000000000000002222222222");
+		document.getElementById("lbltimespan").style.display='none';
+		document.getElementById("drpTime").style.display='none';
+		document.getElementById("DateDiv").style.display='';
+		//document.getElementById("date").style.display='';
+
+	}
+    two(document.getElementById("filetype").files);
+}
+
+function getDateValue() {
+    datetxt=document.getElementById("date").value;
+		console.log(datetxt);
+    two(document.getElementById("filetype").files);
+}
+function getDateDviceValue() {
+    datetxt1=document.getElementById("drpDevic").value;
+		console.log(datetxt1);
     two(document.getElementById("filetype").files);
 }
 var cntarr = [];
@@ -102,6 +168,32 @@ var gg = [1];
 var rsponsetime;
 var filter2Arr = [0];
 
+var devi=0;
+function deviceDropdownCreate(options){
+	//devi=1;
+	console.log("drop");
+	var select = document.getElementById("drpDevic");
+	select.innerHTML = "";
+
+	var el = document.createElement("option");
+    el.textContent = "All Devices";
+    el.value = 0;
+    select.appendChild(el);
+
+	for(var i = 0; i < options.length; i++) {
+		var opt = options[i];
+		var el = document.createElement("option");
+		el.textContent = opt;
+		el.value = opt;
+		select.appendChild(el);
+	}
+}
+var drpDevic=null;
+var selectedD=null;
+
+
+
+
 function two(files) {
     var file = files[0];
     console.log("File...");
@@ -109,12 +201,8 @@ function two(files) {
     var reader = new FileReader();
     reader.readAsBinaryString(file);
     setTimeout(function () {
-
-
-
 		var arrToatlOlineArr = [];
         var arrToatlOfflineArr = [];
-
 
 		Filter1Arr = [];
 		arrToatlOlineArr=[];
@@ -132,6 +220,7 @@ function two(files) {
 		Y1Arr=[];
 		Y2Arr=[];
 		cntarr=[];
+		var AllUniqueDevice = [];
         //console.log(reader);
         //var database = SQL.open(bin2Array(reader.result));
         var database = new SQL.Database(bin2Array(reader.result))
@@ -139,22 +228,48 @@ function two(files) {
         console.log("alldata-----------------------");
         alldata = alldata[0].values;
         alldatalength = alldata.length;
-		
-		//var alldataUnique = database.exec("SELECT distinct * FROM STATUS");
-		console.log("-------------------------------------alldata");
-		//console.log(alldataUnique)
-		
-		
-		
-        var droptext = document.getElementById("drpTime");
-        var min =parseInt(droptext.options[droptext.selectedIndex].value);
-        totalSelectedMin = min;
-        console.log("totalSelectedMin");
-        console.log(totalSelectedMin);
-        var fromTime = new Date();
-        var fromTime5Min = new Date();
-        fromTime5Min.setMinutes(fromTime5Min.getMinutes() - 2);
-        fromTime.setMinutes(fromTime.getMinutes() - totalSelectedMin);
+		 console.log(alldata);
+		// console.log(alldatalength);
+
+		if(document.getElementById("all").checked == true){
+			var droptext = document.getElementById("drpTime");
+			var min =parseInt(droptext.options[droptext.selectedIndex].value);
+			totalSelectedMin = min;
+			console.log("totalSelectedMin");
+			console.log(totalSelectedMin);
+			var fromTime = new Date();
+			var fromTime5Min = new Date();
+			fromTime5Min.setMinutes(fromTime5Min.getMinutes() - 2);
+			fromTime.setMinutes(fromTime.getMinutes() - totalSelectedMin);
+
+		}
+		else {
+			datetxt=document.getElementById("date").value;
+			datetxtto=document.getElementById("dateto").value;
+			
+			console.log("datetxt-----------------------");
+			console.log(datetxt);
+			console.log(datetxtto);
+			// var drpDevic=document.getElementById("drpDevic");
+				// var selectedD =parseInt(drpDevic.options[drpDevic.selectedIndex].value);
+				// console.log("drpDevic-----------------------");
+				// console.log(selectedD);
+				// console.log("drpDevic-----------------------||");
+		}
+		var drpDevic=document.getElementById("drpDevic");
+				var selectedD =parseInt(drpDevic.options[drpDevic.selectedIndex].value);
+				console.log("drpDevic-----------------------");
+				console.log(selectedD);
+				console.log("drpDevic-----------------------||");
+        // var droptext = document.getElementById("drpTime");
+        // var min =parseInt(droptext.options[droptext.selectedIndex].value);
+        // totalSelectedMin = min;
+        // console.log("totalSelectedMin");
+        // console.log(totalSelectedMin);
+        // var fromTime = new Date();
+        // var fromTime5Min = new Date();
+        // fromTime5Min.setMinutes(fromTime5Min.getMinutes() - 2);
+        // fromTime.setMinutes(fromTime.getMinutes() - totalSelectedMin);
 
         /*if (value != "" || value != null) {
             from.setMinutes(now.getMinutes() -parseInt(value));
@@ -166,8 +281,31 @@ function two(files) {
             console.log("TotalDeviceOnline---1");
             console.log(TotalDeviceOnline);
             console.log(TotalDeviceOffline);
+			// var drpDevic=document.getElementById("drpDevic");
+			// var selectedD =parseInt(drpDevic.options[drpDevic.selectedIndex].value);
+			// console.log("drpDevic-----------------------");
+			// console.log(selectedD);
+			// console.log("drpDevic-----------------------||");
         for (var i = 0; i < alldata.length; i++) {
-            // console.log("---------------"+dDate);
+           //  console.log("---------------"+dDate);
+
+
+		   var ck1 = 0;
+		   for(var id=0;id<AllUniqueDevice.length;id++){
+			   console.log("----------selectedD");
+			  // console.log(alldata[i][0]);
+			   if(alldata[i][0]==AllUniqueDevice[id]){
+				   ck1 = 1;
+				   break;
+			   }
+		   }
+		   if(ck1==0)
+			   AllUniqueDevice.push(alldata[i][0]);
+
+		   // var len = document.getElementById("drpDevic").length;
+		   // alert("Count: "+len);
+		   // deviceDropdownCreate(AllUniqueDevice);
+
             var dYear = alldata[i][4];
             var dMonth = alldata[i][3];
             var dDay = alldata[i][2];
@@ -175,10 +313,16 @@ function two(files) {
             var dMin = alldata[i][6];
             var dSec = alldata[i][7];
             var dStr = dMonth+"-"+dDay+"-"+dYear+" "+dHour+":"+dMin+":"+dSec
+
+			var ddateStr= dYear+"-"+dMonth+"-"+dDay
             //01-01-2016 00:03:44
+		//	console.log("---------------");
             var dTime = new Date(dStr);
+			var ckdate=0;
+			//console.log(ddateStr);
             if (dTime >= fromTime) {
                 // console.log("in<<<");
+				if(selectedD == 0 || selectedD == alldata[i][0]){
                 var tempFilter = new MainTable();
                 tempFilter.deviceId = alldata[i][0];
                 tempFilter.statsId = alldata[i][1];
@@ -189,7 +333,28 @@ function two(files) {
                 tempFilter.minitues = dMin;
                 tempFilter.second = dSec;
                 Filter1Arr.push(tempFilter);
+				}
             }
+			else if(ddateStr>=datetxt && ddateStr<=datetxtto){
+
+				if(selectedD == 0 || selectedD == alldata[i][0]){
+					ckdate=1;
+				//console.log("in<<<ddddd");
+					var tempFilter = new MainTable();
+					tempFilter.deviceId = alldata[i][0];
+					tempFilter.statsId = alldata[i][1];
+					tempFilter.day = dDay;
+					tempFilter.month = dMonth;
+					tempFilter.year = dYear;
+					tempFilter.hour = dHour;
+					tempFilter.minitues = dMin;
+					tempFilter.second = dSec;
+					Filter1Arr.push(tempFilter);
+				}
+			}
+			//if(ckdate==1 && devi==1)
+			//	document.getElementById("date").value = "";
+
             if (dTime >= fromTime5Min) {
               var ck = 0;
                 for(var hh = 0; hh<arrToatlOlineArr.length; hh++){
@@ -235,6 +400,9 @@ function two(files) {
         //var val1 = parseFloat(alldatalength /(alldatalength- Filter1Arr.length));
         //sts1 = Math.round(100 / 60).toFixed(2);
 		sts0 = TotalDeviceOnline;sts1=TotalDeviceOffline;
+		document.getElementById("poff").innerHTML=": "+sts1;
+		document.getElementById("pon").innerHTML=": "+sts0;
+
 
         //document.getElementById("rsptm").innerHTML = Filter1Arr.length;
         //document.getElementById("ondvc").innerHTML = Filter1Arr.length;
@@ -278,6 +446,7 @@ function two(files) {
                     cntarr.push(tmpcount);
                 }
             }
+
         }
 
         console.log("Total Request Table");
@@ -417,15 +586,15 @@ function two(files) {
         console.log("TotalAvgResponse-----2");
         console.log(TotalAvgResponse);
         for (var l = 0; l < filterAvgRespons.length; l++) {
-          if(maxAvgResponceTime < filterAvgRespons[l]["count"])
-            maxAvgResponceTime = filterAvgRespons[l]["count"];
+          // if(maxAvgResponceTime < filterAvgRespons[l]["count"])
+            // maxAvgResponceTime = filterAvgRespons[l]["count"];
 
             TotalAvgResponse += filterAvgRespons[l]["count"];
 
             XAvgResponsArr.push(filterAvgRespons[l]["deviceId"]);
             Y1AvgResponsArr.push(filterAvgRespons[l]["count"]);
         }
-
+		maxAvgResponceTime = 2 * TotalAvgResponse;
         if(filterAvgRespons.length == 1){
           XAvgResponsArr.push(0);
           Y1AvgResponsArr.push(0);
@@ -524,19 +693,27 @@ function two(files) {
             console.log(filterOfflineArr);
             console.log(XfilterOfflineArr);
             console.log(YfilterOfflineArr);
-
+			
             if(isNaN(TotalAvgResponse))
             document.getElementById("rsptm").innerHTML = "-";
             else
 		          document.getElementById("rsptm").innerHTML = TotalAvgResponse.toFixed(2) + " Min";
         document.getElementById("onlineDeviceCountbox").innerHTML = TotalDeviceOnline;
 		document.getElementById("RqstContbox").innerHTML = TotalReqCount;
-		document.getElementById("Totalemrcountbox").innerHTML =TotalEmergencyCount;
+			document.getElementById("Totalemrcountbox").innerHTML =TotalEmergencyCount;
 
-        demo.initChartist();
+
 //four();
+
+		var len = document.getElementById("drpDevic").length;
+		   if(len==1)
+		    deviceDropdownCreate(AllUniqueDevice);
+		   demo.initChartist();
+
     }, 1000);
 }
+
+
 
 function updateTimeOnline() {
     var file = files[0];
