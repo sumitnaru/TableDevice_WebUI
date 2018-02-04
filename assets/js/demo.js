@@ -7,9 +7,7 @@ var datetxt1=null;
 var objParmeter=0;
 $(document).ready(function () {
 
-        //demo.initChartist();
 		tabSelection(1);
-
 
         <!-- $.notify({ -->
             <!-- icon: 'ti-gift', -->
@@ -22,9 +20,6 @@ $(document).ready(function () {
 
     });
 function tabSelection(obj){
-	console.log(obj);
-	//document.getElementById("allVale").classList.remove("active");
-	//document.getElementById("timeValue").classList.remove("active");
 	if(obj==1){
 		document.getElementById("all").checked =true;
 		document.getElementById("time").checked =false;
@@ -109,16 +104,11 @@ function totalOfflineTable() {
 
 function emergengyTable(){
     this.deviceId = 0;
-  //  this.statsId = 0;
     this.emergency = 0;
 }
 function avgResponseTimeTable() {
     this.deviceId = 0;
-   // this.statsId = 0;
-    this.count = 0;
-    //this.request = 0;
-    //this.request1 = 0;
-    //this.emergency2 = 0;
+    this.count = 0;;
 }
 function MainTable() {
     this.deviceId = 0;
@@ -135,14 +125,6 @@ function MainTable() {
 
 function SubTableRespns() {
     this.deviceId = 0;
-   /// this.statsId = 0;
-    //this.day = 0;
-    //this.month = 0;
-    //this.year = 0;
-    //this.hour = 0;
-    //this.minitues = 0;
-    //this.second = 0;
-    //this.request = 0;
 }
 function countTable() {
     this.deviceId = 0;
@@ -247,53 +229,15 @@ function two(files) {
 			datetxt=document.getElementById("date").value;
 			datetxtto=document.getElementById("dateto").value;
 			
-			console.log("datetxt-----------------------");
-			console.log(datetxt);
-			console.log(datetxtto);
-			// var drpDevic=document.getElementById("drpDevic");
-				// var selectedD =parseInt(drpDevic.options[drpDevic.selectedIndex].value);
-				// console.log("drpDevic-----------------------");
-				// console.log(selectedD);
-				// console.log("drpDevic-----------------------||");
 		}
 		var drpDevic=document.getElementById("drpDevic");
 				var selectedD =parseInt(drpDevic.options[drpDevic.selectedIndex].value);
-				console.log("drpDevic-----------------------");
-				console.log(selectedD);
-				console.log("drpDevic-----------------------||");
-        // var droptext = document.getElementById("drpTime");
-        // var min =parseInt(droptext.options[droptext.selectedIndex].value);
-        // totalSelectedMin = min;
-        // console.log("totalSelectedMin");
-        // console.log(totalSelectedMin);
-        // var fromTime = new Date();
-        // var fromTime5Min = new Date();
-        // fromTime5Min.setMinutes(fromTime5Min.getMinutes() - 2);
-        // fromTime.setMinutes(fromTime.getMinutes() - totalSelectedMin);
-
-        /*if (value != "" || value != null) {
-            from.setMinutes(now.getMinutes() -parseInt(value));
-        }
-        else
-            from.setMinutes(now.getMinutes() - min);*/
+                
             TotalDeviceOnline = 0;
             TotalDeviceOffline = 0;
-            console.log("TotalDeviceOnline---1");
-            console.log(TotalDeviceOnline);
-            console.log(TotalDeviceOffline);
-			// var drpDevic=document.getElementById("drpDevic");
-			// var selectedD =parseInt(drpDevic.options[drpDevic.selectedIndex].value);
-			// console.log("drpDevic-----------------------");
-			// console.log(selectedD);
-			// console.log("drpDevic-----------------------||");
         for (var i = 0; i < alldata.length; i++) {
-           //  console.log("---------------"+dDate);
-
-
 		   var ck1 = 0;
 		   for(var id=0;id<AllUniqueDevice.length;id++){
-			   console.log("----------selectedD");
-			  // console.log(alldata[i][0]);
 			   if(alldata[i][0]==AllUniqueDevice[id]){
 				   ck1 = 1;
 				   break;
@@ -301,10 +245,6 @@ function two(files) {
 		   }
 		   if(ck1==0)
 			   AllUniqueDevice.push(alldata[i][0]);
-
-		   // var len = document.getElementById("drpDevic").length;
-		   // alert("Count: "+len);
-		   // deviceDropdownCreate(AllUniqueDevice);
 
             var dYear = alldata[i][4];
             var dMonth = alldata[i][3];
@@ -314,12 +254,11 @@ function two(files) {
             var dSec = alldata[i][7];
             var dStr = dMonth+"-"+dDay+"-"+dYear+" "+dHour+":"+dMin+":"+dSec
 
-			var ddateStr= dYear+"-"+dMonth+"-"+dDay
+			var ddateStr= dYear+"-"+dMonth+"-"+dDay+" "+dHour+":"+dMin+":"+dSec
             //01-01-2016 00:03:44
-		//	console.log("---------------");
+           
             var dTime = new Date(dStr);
 			var ckdate=0;
-			//console.log(ddateStr);
             if (dTime >= fromTime) {
                 // console.log("in<<<");
 				if(selectedD == 0 || selectedD == alldata[i][0]){
@@ -335,11 +274,10 @@ function two(files) {
                 Filter1Arr.push(tempFilter);
 				}
             }
-			else if(ddateStr>=datetxt && ddateStr<=datetxtto){
+			else if(new Date(ddateStr)>=new Date(datetxt) && new Date(ddateStr)<=new Date(datetxtto)){
 
 				if(selectedD == 0 || selectedD == alldata[i][0]){
 					ckdate=1;
-				//console.log("in<<<ddddd");
 					var tempFilter = new MainTable();
 					tempFilter.deviceId = alldata[i][0];
 					tempFilter.statsId = alldata[i][1];
@@ -352,8 +290,6 @@ function two(files) {
 					Filter1Arr.push(tempFilter);
 				}
 			}
-			//if(ckdate==1 && devi==1)
-			//	document.getElementById("date").value = "";
 
             if (dTime >= fromTime5Min) {
               var ck = 0;
@@ -391,21 +327,12 @@ function two(files) {
         console.log(TotalDeviceOnline);
         console.log("TotalDevOffline");
         console.log(TotalDeviceOffline);
-        //console.log("Test......"+TotalDeviceOffline);
 
         rsponsetime = Filter1Arr.length;
 
-        //var val = parseFloat(alldatalength / Filter1Arr.length);
-       //sts0 = Math.round(100 / 40).toFixed(2);
-        //var val1 = parseFloat(alldatalength /(alldatalength- Filter1Arr.length));
-        //sts1 = Math.round(100 / 60).toFixed(2);
 		sts0 = TotalDeviceOnline;sts1=TotalDeviceOffline;
 		document.getElementById("poff").innerHTML=": "+sts1;
 		document.getElementById("pon").innerHTML=": "+sts0;
-
-
-        //document.getElementById("rsptm").innerHTML = Filter1Arr.length;
-        //document.getElementById("ondvc").innerHTML = Filter1Arr.length;
 
         console.log(Filter1Arr);
 
@@ -451,11 +378,12 @@ function two(files) {
 
         console.log("Total Request Table");
         console.log(cntarr);
-      //  console.log("number response -----------");
-      //  console.log(cntarr);
 
 		TotalReqCount=0;
 		TotalEmergencyCount=0;
+        console.log(cntarr);
+        var table = document.getElementById("tblRequest");
+        (document.getElementById("tblRequestBody")).innerHTML="";
         for (var l = 0; l < cntarr.length; l++) {
             if (maxNuReqCount < cntarr[l]["request"])
                 maxNuReqCount = cntarr[l]["request"];
@@ -468,6 +396,16 @@ function two(files) {
             XArr.push(cntarr[l]["deviceId"]);
             Y1Arr.push(cntarr[l]["request"]);
             Y2Arr.push(cntarr[l]["emergency"]);
+			
+            
+			var row = table.insertRow();
+			var DID = row.insertCell(0);
+			var Request = row.insertCell(1);
+			var Critical = row.insertCell(2);
+
+            DID.innerHTML=cntarr[l]["deviceId"];
+			Request.innerHTML=cntarr[l]["request"];
+            Critical.innerHTML=cntarr[l]["emergency"];
         }
         if(cntarr.length == 1){
           XArr.push(0);
@@ -492,20 +430,15 @@ function two(files) {
                 var tmpdid = Filter1Arr[i]["deviceId"];
                 var ck = 0;
                 for (var j = 0; j < filterEmergncy.length; j++) {
-                    //console.log("tmpdid");
-                   // console.log(filterEmergncy[j]);
                     if (filterEmergncy[j].deviceId == tmpdid) {
                         if (Filter1Arr[i]["statsId"] == 4)
                             filterEmergncy[j].emergency += 1;
                         var ck = 1;
-                       // console.log("Rep**");
-
                         break;
                     }
                 }
                 if (ck == 0) {
                     var temcount = new emergengyTable();
-                   // console.log("tttttttttttttttt**");
                     temcount.deviceId = tmpdid;
                     temcount.emergency = 1;
                     filterEmergncy.push(temcount);
@@ -514,40 +447,12 @@ function two(files) {
             }
 
         }
-      //  console.log("eeeeeeeeeeeeeee");
-     //   console.log(filterEmergncy);
 
         for (var l = 0; l < filterEmergncy.length; l++) {
             maxNuEmrCount = filterEmergncy[l]["emergency"]
             XEmeergencyArr.push(filterEmergncy[l]["deviceId"]);
             Y1EmeergencyArr.push(filterEmergncy[l]["emergency"]);
         }
-        //console.log(filterEmergncy);
-        //console.log(XEmeergencyArr);
-        //console.log(Y1EmeergencyArr);
-
-        //end emergency  request count
-
-        //Avg   response  time
-        /*for (var i = 0; i < Filter1Arr.length; i++) {
-
-            var tmpdid = Filter1Arr[i]["deviceId"];
-            var ck = 0;
-            for (var j = 0; j < filterAvgRespons.length; j++) {
-                if (filterAvgRespons[j].deviceId == tmpdid) {
-                    filterAvgRespons[j].count += 1;
-                    ck = 1;
-                    break;
-                }
-            }
-            if (ck == 0) {
-                var tempcnt = new avgResponseTimeTable();
-                tempcnt.deviceId = tmpdid;
-                tempcnt.count = 1;
-                filterAvgRespons.push(tempcnt);
-            }
-        }*/
-
         // Avarage Response Time Table //
 
         for (var i = 0; i < Filter1Arr.length; i++) {
@@ -583,16 +488,24 @@ function two(files) {
             }
         }
         TotalAvgResponse = 0;
-        console.log("TotalAvgResponse-----2");
-        console.log(TotalAvgResponse);
+        var tableAvg = document.getElementById("tblAvgResponceTime");
+        (document.getElementById("tblAvgResponceTimeBody").innerHTML)="";
         for (var l = 0; l < filterAvgRespons.length; l++) {
-          // if(maxAvgResponceTime < filterAvgRespons[l]["count"])
-            // maxAvgResponceTime = filterAvgRespons[l]["count"];
 
             TotalAvgResponse += filterAvgRespons[l]["count"];
 
             XAvgResponsArr.push(filterAvgRespons[l]["deviceId"]);
             Y1AvgResponsArr.push(filterAvgRespons[l]["count"]);
+            
+            var row = tableAvg.insertRow();
+			var DID = row.insertCell(0);
+			var count = row.insertCell(1);
+			
+
+            DID.innerHTML=filterAvgRespons[l]["deviceId"];
+			count.innerHTML=filterAvgRespons[l]["count"];
+           
+            
         }
 		maxAvgResponceTime = 2 * TotalAvgResponse;
         if(filterAvgRespons.length == 1){
@@ -606,39 +519,6 @@ function two(files) {
         console.log(maxAvgResponceTime);
         console.log(filterAvgRespons);
         // END..................Avarage Response Time Table
-
-
-        //Total Off Line
-        /*for (var i = 0; i < Filter1Arr.length; i++) {
-            var tmpdid = Filter1Arr[i]["deviceId"];
-            if (Filter1Arr[i]["statsId"] == 4 || Filter1Arr[i]["statsId"] == 3) {
-                var ck = 0;
-                for (var j = 0; j < filterOfflineArr.length; j++) {
-                    if (filterOfflineArr[j].deviceId == tmpdid) {
-                        if (Filter1Arr[i]["statsId"] == 3)
-                            filterOfflineArr[j].offLineCount += 1;
-                        else
-                            filterOfflineArr[j].offLineCount += 1;
-                        ck = 1;
-
-                        break;
-                    }
-                }
-                if (ck == 0) {
-                    // console.log("Ctreating Row");
-                    var tempOffcnt = new totalOfflineTable();
-                    tempOffcnt.deviceId = tmpdid;
-                    if (Filter1Arr[i]["statsId"] == 3) {
-
-                        tempOffcnt.offLineCount = 1;
-                    }
-                    else {
-                        tempOffcnt.offLineCount = 1;
-                    }
-                    filterOfflineArr.push(tempOffcnt);
-                }
-            }
-        }*/
 
         filterOfflineArr = [];
         for (var i = 0; i < Filter1Arr.length; i++) {
@@ -661,21 +541,34 @@ function two(files) {
         }
 
 		//filterOfflineArr=[];
-    maxNoOfflineCount = 0;
+        maxNoOfflineCount = 0;
+        var tblOffline = document.getElementById("tblOfflineTime");
+        (document.getElementById("tblOfflineTimeBody").innerHTML)="";
+
         for (var l = 0; l < filterOfflineArr.length; l++) {
           var cnt = filterOfflineArr[l]["offLineCount"];
           console.log(filterOfflineArr[l]["deviceId"]);
           console.log(cnt);
           if((totalSelectedMin - cnt)<0)
-          filterOfflineArr[l]["offLineCount"] = 0;
+             filterOfflineArr[l]["offLineCount"] = 0;
           else
-          filterOfflineArr[l]["offLineCount"] = totalSelectedMin - cnt;
-            if (maxNoOfflineCount < filterOfflineArr[l]["offLineCount"])
-                maxNoOfflineCount = filterOfflineArr[l]["offLineCount"];
+            filterOfflineArr[l]["offLineCount"] = totalSelectedMin - cnt;
+        if (maxNoOfflineCount < filterOfflineArr[l]["offLineCount"])
+             maxNoOfflineCount = filterOfflineArr[l]["offLineCount"];
 
-                XfilterOfflineArr.push(filterOfflineArr[l]["deviceId"]);
-                YfilterOfflineArr.push(filterOfflineArr[l]["offLineCount"]);
-            }
+            XfilterOfflineArr.push(filterOfflineArr[l]["deviceId"]);
+            YfilterOfflineArr.push(filterOfflineArr[l]["offLineCount"]);
+
+            var row = tblOffline.insertRow();
+			var DID = row.insertCell(0);
+			var offLineCount = row.insertCell(1);
+			
+
+            DID.innerHTML=filterOfflineArr[l]["deviceId"];
+			offLineCount.innerHTML=filterOfflineArr[l]["offLineCount"];
+
+
+        }
             if(filterOfflineArr.length == 1){
               XfilterOfflineArr.push(0);
               YfilterOfflineArr.push(0);
@@ -698,12 +591,11 @@ function two(files) {
             document.getElementById("rsptm").innerHTML = "-";
             else
 		          document.getElementById("rsptm").innerHTML = TotalAvgResponse.toFixed(2) + " Min";
-        document.getElementById("onlineDeviceCountbox").innerHTML = TotalDeviceOnline;
-		document.getElementById("RqstContbox").innerHTML = TotalReqCount;
+            document.getElementById("onlineDeviceCountbox").innerHTML = TotalDeviceOnline;
+		    document.getElementById("RqstContbox").innerHTML = TotalReqCount;
 			document.getElementById("Totalemrcountbox").innerHTML =TotalEmergencyCount;
 
 
-//four();
 
 		var len = document.getElementById("drpDevic").length;
 		   if(len==1)
@@ -713,7 +605,14 @@ function two(files) {
     }, 1000);
 }
 
-
+function exportData(){
+    document.getElementById("tblExport").style.display='block';
+	 var blob = new Blob([document.getElementById('tblExport').innerText], {
+            type: "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet;charset=utf-8"
+        });
+        saveAs(blob, "CritialReport.xls");
+        document.getElementById("tblExport").style.display="none";
+}
 
 function updateTimeOnline() {
     var file = files[0];
@@ -941,7 +840,7 @@ demo = {
         Chartist.Line('#chartHours3', tempdataSalesOffline, tempoptionsSalesOffline, tempresponsiveSalesOffline);
 
 
-
+//*********************************************number of request******************
         var dataSales1 = {
             //  labels: ['2:00AM', '12:00AM', '3:00PM', '6:00PM', '9:00PM', '12:00PM', '3:00AM', '6:00AM'],
             labels: XArr,
