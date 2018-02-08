@@ -123,6 +123,15 @@ function MainTable() {
 }
 
 
+function MainReportTable() {
+    this.deviceId = null;
+    this.emergency = null;
+    this.request = null;
+    this.avgResponseTime = null;
+    this.offLineCount =null;
+    
+}
+
 function SubTableRespns() {
     this.deviceId = 0;
 }
@@ -149,6 +158,8 @@ function SubTable() {
 var gg = [1];
 var rsponsetime;
 var filter2Arr = [0];
+var mainMargeTableArr=[];
+
 
 var devi=0;
 function deviceDropdownCreate(options){
@@ -594,6 +605,63 @@ function two(files) {
             document.getElementById("onlineDeviceCountbox").innerHTML = TotalDeviceOnline;
 		    document.getElementById("RqstContbox").innerHTML = TotalReqCount;
 			document.getElementById("Totalemrcountbox").innerHTML =TotalEmergencyCount;
+			console.log("mainMargeTableArr");
+			
+			
+			////////////////////////this are three array///////////////////////////
+			/// 1.cntarr 2.filterOfflineArr 3.filterAvgRespons 
+			
+			// 1 array mainMargeTableArr 2 var objTt=new MainReportTable();
+//.concat(filterAvgRespons)
+			//var d = cntarr.concat(filterOfflineArr);
+			//	var set = new Set(d);
+			//d = Array.from(set);
+			// var objTt=new MainReportTable();
+			// for(var aa1=0;l<filterAvgRespons.length;l++){
+				// var tempDDDid=filterAvgRespons[aa1]["deviceId"];
+				// var oolineCount=filterOfflineArr[aa1]["offLineCount"];
+				// for(var k=0;k<d.length;k
+					// if(d[k].deviceId==tmpddid){
+						// objTt.deviceId=d[j]["deviceId"];
+						// objTt.offLineCount=d[j]["offLineCount"];
+						// mainMargeTableArr.push=objTt;
+					// }
+				// }
+			// }
+		
+			//console.log(d);
+			
+			//var obj = {};
+    
+
+			// for (var i=0;i<cntarr.length;i++){
+				// var tmpddid = cntarr[i]["deviceId"];
+				// for(var j=0;j<d.length;j++){
+					// var tt=new MainReportTable();
+					// if(d[j].deviceId==tmpddid){
+						// tt.deviceId=d[j]["deviceId"];
+						// tt.emergency=d[j]["emergency"];
+						// tt.request=d[j]["request"];
+						// tt.avgResponseTime=d[j]["count"];
+						// tt.offLineCount=d[j]["offLineCount"];
+					
+						// mainMargeTableArr.push=tt;
+						
+					// }else{
+						// tt.deviceId=d[j]["deviceId"];
+						// tt.emergency=d[j]["emergency"];
+						// tt.request=d[j]["request"];
+						// tt.avgResponseTime=d[j]["count"];
+						// tt.offLineCount=d[j]["offLineCount"];
+					
+						// mainMargeTableArr.push=tt;
+					// }
+				// }
+				
+			// }
+			console.log(mainMargeTableArr);
+
+
 
 
 
@@ -610,7 +678,7 @@ function exportData(){
 	 var blob = new Blob([document.getElementById('tblExport').innerText], {
             type: "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet;charset=utf-8"
         });
-        saveAs(blob, "CritialReport.xls");
+        saveAs(blob, "Report.xls");
         document.getElementById("tblExport").style.display="none";
 }
 
