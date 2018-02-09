@@ -225,21 +225,25 @@ function two(files) {
 		// console.log(alldatalength);
 
 		if(document.getElementById("all").checked == true){
-			var droptext = document.getElementById("drpTime");
+            var droptext = document.getElementById("drpTime");
+            
 			var min =parseInt(droptext.options[droptext.selectedIndex].value);
-			totalSelectedMin = min;
+            totalSelectedMin = min;
+           
 			console.log("totalSelectedMin");
 			console.log(totalSelectedMin);
 			var fromTime = new Date();
 			var fromTime5Min = new Date();
 			fromTime5Min.setMinutes(fromTime5Min.getMinutes() - 2);
-			fromTime.setMinutes(fromTime.getMinutes() - totalSelectedMin);
+            fromTime.setMinutes(fromTime.getMinutes() - totalSelectedMin);
+          
 
 		}
 		else {
 			datetxt=document.getElementById("date").value;
 			datetxtto=document.getElementById("dateto").value;
-			
+            document.getElementById("tblFrom").value=datetxt;
+            document.getElementById("tblTo").value=datetxtto;
 		}
 		var drpDevic=document.getElementById("drpDevic");
 				var selectedD =parseInt(drpDevic.options[drpDevic.selectedIndex].value);
@@ -271,6 +275,9 @@ function two(files) {
             var dTime = new Date(dStr);
 			var ckdate=0;
             if (dTime >= fromTime) {
+         
+                document.getElementById("tblFrom").innerHTML=fromTime.toDateString();
+                document.getElementById("tblTo").innerHTML=new Date().toDateString();
                 // console.log("in<<<");
 				if(selectedD == 0 || selectedD == alldata[i][0]){
                 var tempFilter = new MainTable();
@@ -286,7 +293,8 @@ function two(files) {
 				}
             }
 			else if(new Date(ddateStr)>=new Date(datetxt) && new Date(ddateStr)<=new Date(datetxtto)){
-
+                document.getElementById("tblFrom").value=new Date(datetxt).toDateString();
+                document.getElementById("tblTo").value=new Date(datetxtto).toDateString();
 				if(selectedD == 0 || selectedD == alldata[i][0]){
 					ckdate=1;
 					var tempFilter = new MainTable();
@@ -393,8 +401,7 @@ function two(files) {
 		TotalReqCount=0;
 		TotalEmergencyCount=0;
         console.log(cntarr);
-        var table = document.getElementById("tblRequest");
-        (document.getElementById("tblRequestBody")).innerHTML="";
+    
         for (var l = 0; l < cntarr.length; l++) {
             if (maxNuReqCount < cntarr[l]["request"])
                 maxNuReqCount = cntarr[l]["request"];
@@ -409,14 +416,7 @@ function two(files) {
             Y2Arr.push(cntarr[l]["emergency"]);
 			
             
-			var row = table.insertRow();
-			var DID = row.insertCell(0);
-			var Request = row.insertCell(1);
-			var Critical = row.insertCell(2);
-
-            DID.innerHTML=cntarr[l]["deviceId"];
-			Request.innerHTML=cntarr[l]["request"];
-            Critical.innerHTML=cntarr[l]["emergency"];
+			
         }
         if(cntarr.length == 1){
           XArr.push(0);
@@ -499,24 +499,13 @@ function two(files) {
             }
         }
         TotalAvgResponse = 0;
-        var tableAvg = document.getElementById("tblAvgResponceTime");
-        (document.getElementById("tblAvgResponceTimeBody").innerHTML)="";
+       
         for (var l = 0; l < filterAvgRespons.length; l++) {
 
             TotalAvgResponse += filterAvgRespons[l]["count"];
 
             XAvgResponsArr.push(filterAvgRespons[l]["deviceId"]);
             Y1AvgResponsArr.push(filterAvgRespons[l]["count"]);
-            
-            var row = tableAvg.insertRow();
-			var DID = row.insertCell(0);
-			var count = row.insertCell(1);
-			
-
-            DID.innerHTML=filterAvgRespons[l]["deviceId"];
-			count.innerHTML=filterAvgRespons[l]["count"];
-           
-            
         }
 		maxAvgResponceTime = 2 * TotalAvgResponse;
         if(filterAvgRespons.length == 1){
@@ -553,9 +542,7 @@ function two(files) {
 
 		//filterOfflineArr=[];
         maxNoOfflineCount = 0;
-        var tblOffline = document.getElementById("tblOfflineTime");
-        (document.getElementById("tblOfflineTimeBody").innerHTML)="";
-
+    
         for (var l = 0; l < filterOfflineArr.length; l++) {
           var cnt = filterOfflineArr[l]["offLineCount"];
           console.log(filterOfflineArr[l]["deviceId"]);
@@ -569,15 +556,6 @@ function two(files) {
 
             XfilterOfflineArr.push(filterOfflineArr[l]["deviceId"]);
             YfilterOfflineArr.push(filterOfflineArr[l]["offLineCount"]);
-
-            var row = tblOffline.insertRow();
-			var DID = row.insertCell(0);
-			var offLineCount = row.insertCell(1);
-			
-
-            DID.innerHTML=filterOfflineArr[l]["deviceId"];
-			offLineCount.innerHTML=filterOfflineArr[l]["offLineCount"];
-
 
         }
             if(filterOfflineArr.length == 1){
@@ -608,63 +586,52 @@ function two(files) {
 			console.log("mainMargeTableArr");
 			
 			
-			////////////////////////this are three array///////////////////////////
-			/// 1.cntarr 2.filterOfflineArr 3.filterAvgRespons 
 			
-			// 1 array mainMargeTableArr 2 var objTt=new MainReportTable();
-//.concat(filterAvgRespons)
-			//var d = cntarr.concat(filterOfflineArr);
-			//	var set = new Set(d);
-			//d = Array.from(set);
-			// var objTt=new MainReportTable();
-			// for(var aa1=0;l<filterAvgRespons.length;l++){
-				// var tempDDDid=filterAvgRespons[aa1]["deviceId"];
-				// var oolineCount=filterOfflineArr[aa1]["offLineCount"];
-				// for(var k=0;k<d.length;k
-					// if(d[k].deviceId==tmpddid){
-						// objTt.deviceId=d[j]["deviceId"];
-						// objTt.offLineCount=d[j]["offLineCount"];
-						// mainMargeTableArr.push=objTt;
-					// }
-				// }
-			// }
-		
-			//console.log(d);
-			
-			//var obj = {};
+    mainMargeTableArr=[];
+   
     
+	for(var aa1=0;aa1<cntarr.length;aa1++){
+		
+		var objTmp = new MainReportTable();
+	objTmp.deviceId=cntarr[aa1]["deviceId"];
+		objTmp.request=cntarr[aa1]["request"];
+		objTmp.emergency=cntarr[aa1]["emergency"];
+	
+		for(var k=0;k<filterOfflineArr.length;k++){
+			if(objTmp.deviceId==filterOfflineArr[k]["deviceId"]){
+				objTmp.offLineCount=filterOfflineArr[k]["offLineCount"];
+				break;
+			}		
+		}
+		for(var kl=0;kl<filterAvgRespons.length;kl++){
+			if(objTmp.deviceId==filterAvgRespons[kl]["deviceId"]){
+				objTmp.avgResponseTime=filterAvgRespons[kl]["count"];
+				break;
+			}		
+		}
+                 mainMargeTableArr.push(objTmp);
+    }
+    var tblOe = document.getElementById("tblRequestT");
+    document.getElementById("tblRequestT").innerHTML="";
 
-			// for (var i=0;i<cntarr.length;i++){
-				// var tmpddid = cntarr[i]["deviceId"];
-				// for(var j=0;j<d.length;j++){
-					// var tt=new MainReportTable();
-					// if(d[j].deviceId==tmpddid){
-						// tt.deviceId=d[j]["deviceId"];
-						// tt.emergency=d[j]["emergency"];
-						// tt.request=d[j]["request"];
-						// tt.avgResponseTime=d[j]["count"];
-						// tt.offLineCount=d[j]["offLineCount"];
-					
-						// mainMargeTableArr.push=tt;
-						
-					// }else{
-						// tt.deviceId=d[j]["deviceId"];
-						// tt.emergency=d[j]["emergency"];
-						// tt.request=d[j]["request"];
-						// tt.avgResponseTime=d[j]["count"];
-						// tt.offLineCount=d[j]["offLineCount"];
-					
-						// mainMargeTableArr.push=tt;
-					// }
-				// }
-				
-			// }
-			console.log(mainMargeTableArr);
+    for (var countTrow=0;countTrow<mainMargeTableArr.length;countTrow++){
+        var row = tblOe.insertRow();
+        var DID = row.insertCell(0);
+        var req = row.insertCell(1);
+        var emr = row.insertCell(2);
+        var avg = row.insertCell(3);
+        var off = row.insertCell(4);
 
-
-
-
-
+        DID.innerHTML=mainMargeTableArr[countTrow]["deviceId"];
+        req.innerHTML=mainMargeTableArr[countTrow]["request"];
+        emr.innerHTML=mainMargeTableArr[countTrow]["emergency"]; 
+        avg.innerHTML=mainMargeTableArr[countTrow]["avgResponseTime"];
+        off.innerHTML=mainMargeTableArr[countTrow]["offLineCount"];
+      
+    }
+    
+    
+			
 		var len = document.getElementById("drpDevic").length;
 		   if(len==1)
 		    deviceDropdownCreate(AllUniqueDevice);
