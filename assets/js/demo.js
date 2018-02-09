@@ -267,9 +267,14 @@ function two(files) {
             var dHour = alldata[i][5];
             var dMin = alldata[i][6];
             var dSec = alldata[i][7];
-            var dStr = dMonth+"-"+dDay+"-"+dYear+" "+dHour+":"+dMin+":"+dSec
+            // var dStr = dMonth+"-"+dDay+"-"+dYear+" "+dHour+":"+dMin+":"+dSec
 
-			var ddateStr= dYear+"-"+dMonth+"-"+dDay+" "+dHour+":"+dMin+":"+dSec
+            // var ddateStr= dYear+"-"+dMonth+"-"+dDay+" "+dHour+":"+dMin+":"+dSec
+            
+            var dStr = dDay+"/"+dMonth+"/"+dYear+" "+dHour+":"+dMin+":"+dSec
+
+			var ddateStr=dDay+"/"+dMonth+"/"+dYear+" "+dHour+":"+dMin+":"+dSec
+
             //01-01-2016 00:03:44
            
             var dTime = new Date(dStr);
