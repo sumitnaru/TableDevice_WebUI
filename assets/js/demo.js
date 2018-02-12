@@ -244,6 +244,7 @@ function two(files) {
 			datetxtto=document.getElementById("dateto").value;
             document.getElementById("tblFrom").value=datetxt;
             document.getElementById("tblTo").value=datetxtto;
+           
 		}
 		var drpDevic=document.getElementById("drpDevic");
 				var selectedD =parseInt(drpDevic.options[drpDevic.selectedIndex].value);
@@ -281,8 +282,8 @@ function two(files) {
 			var ckdate=0;
             if (dTime >= fromTime) {
          
-                document.getElementById("tblFrom").innerHTML=fromTime.toDateString();
-                document.getElementById("tblTo").innerHTML=new Date().toDateString();
+                document.getElementById("tblFrom").innerHTML=fromTime.toDateString()+" "+fromTime.toLocaleTimeString();
+                document.getElementById("tblTo").innerHTML=new Date().toDateString()+" "+new Date().toLocaleTimeString();
                 // console.log("in<<<");
 				if(selectedD == 0 || selectedD == alldata[i][0]){
                 var tempFilter = new MainTable();
@@ -298,8 +299,9 @@ function two(files) {
 				}
             }
 			else if(new Date(ddateStr)>=new Date(datetxt) && new Date(ddateStr)<=new Date(datetxtto)){
-                document.getElementById("tblFrom").value=new Date(datetxt).toDateString();
-                document.getElementById("tblTo").value=new Date(datetxtto).toDateString();
+
+               document.getElementById("tblFrom").innerHTML=new Date(datetxt).toDateString() +" "+new Date(datetxt).toLocaleTimeString();
+                document.getElementById("tblTo").innerHTML=new Date(datetxtto).toDateString() +" "+new Date(datetxtto).toLocaleTimeString();
 				if(selectedD == 0 || selectedD == alldata[i][0]){
 					ckdate=1;
 					var tempFilter = new MainTable();

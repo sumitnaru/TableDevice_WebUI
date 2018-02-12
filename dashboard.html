@@ -179,19 +179,19 @@
                                     <div style="margin:0 15px 0 15px; display:none" id="DateDiv">   
                                         <div class="col-md-6">
                                             <div class="col-lg-3 form-group" style="margin-top:10px">
-                                                <label id="lblenterdate"  >Enter Date From:</label>
+                                                <label id="lblenterdate"  >Date From:</label>
                                             </div>
                                             <div class="col-lg-9 form-group" style="margin-top:0px">
-                                                <input type="text" id="date" style="width:300px;margin:0 0 0 0;border-bottom:1px solid #DBDBDB"  class="form-control floating-label" placeholder="Start Date">
+                                                <input type="text" id="date" style="width:300px;margin:0 0 0 0;border-bottom:1px solid #DBDBDB" onchange="getDateValue()"  class="form-control floating-label" placeholder="Start Date">
                                                 <!--<input id="date" type="datetime-local" onchange="getDateValue()" hidden="hidden"  pattern="\d{1,2}-\d{1,2}-\d{4}" class="form-control">-->
                                             </div>
                                         </div>
                                         <div class="col-md-6">
                                             <div class="col-lg-3 form-group" style="margin-top:10px">
-                                                <label id="lblenterdateto" >Enter Date To:</label>
+                                                <label id="lblenterdateto" >Date To:</label>
                                             </div>
-                                            <div class="col-lg-9 form-group" style="margin-top:0px">
-                                                <input type="text" id="dateto" style="width:300px;margin:0 0 0 0;border-bottom:1px solid #DBDBDB"  class="form-control floating-label" placeholder="End Date">
+                                            <div class="col-lg-9 form-group" style="margin-top:10px">
+                                                <input type="text" id="dateto" style="width:300px;margin:0 0 0 0;border-bottom:1px solid #DBDBDB" onchange="getDateValue()"  class="form-control floating-label" placeholder="End Date">
                                                 <!--<input id="dateto" type="datetime-local" onchange="getDateValue()" hidden="hidden"  pattern="\d{1,2}-\d{1,2}-\d{4}" class="form-control">-->
                                             </div>
                                         </div>
@@ -480,8 +480,8 @@
                                     <th> Device</th>
                                     <th>Request Count</th>
                                     <th>Critical Count</th>
-                                    <th> Average Request Count</th>
-                                    <th> Offline Time</th>
+                                    <th> Average Request Count(Min)</th>
+                                    <th> Offline Time(Min)</th>
                                 </thead>
                                 <tbody id="tblRequestT">
                                         
