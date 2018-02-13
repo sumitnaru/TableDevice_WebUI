@@ -221,8 +221,8 @@ function two(files) {
         console.log("alldata-----------------------");
         alldata = alldata[0].values;
         alldatalength = alldata.length;
-		 console.log(alldata);
-		// console.log(alldatalength);
+		 //console.log(alldata);
+		 console.log(alldata[0].values);
 
 		if(document.getElementById("all").checked == true){
             var droptext = document.getElementById("drpTime");
@@ -242,8 +242,8 @@ function two(files) {
 		else {
 			datetxt=document.getElementById("date").value;
 			datetxtto=document.getElementById("dateto").value;
-            document.getElementById("tblFrom").value=datetxt;
-            document.getElementById("tblTo").value=datetxtto;
+           // document.getElementById("tblFrom").value=datetxt;
+           // document.getElementById("tblTo").value=datetxtto;
            
 		}
 		var drpDevic=document.getElementById("drpDevic");
@@ -277,9 +277,7 @@ function two(files) {
 			var ddateStr=dDay+"/"+dMonth+"/"+dYear+" "+dHour+":"+dMin+":"+dSec
 
             //01-01-2016 00:03:44
-			console.log(datetxtto);
-			console.log(datetxt);
-           
+		
             var dTime = new Date(dStr);
 			var ckdate=0;
             if (dTime >= fromTime) {
@@ -301,7 +299,7 @@ function two(files) {
 				}
             }
 			else if(new Date(datetxt)>=new Date(ddateStr) && new Date(ddateStr)<=new Date(datetxtto)){
-alert("llll");
+
                document.getElementById("tblFrom").innerHTML=new Date(datetxt).toDateString() +" "+new Date(datetxt).toLocaleTimeString();
                 document.getElementById("tblTo").innerHTML=new Date(datetxtto).toDateString() +" "+new Date(datetxtto).toLocaleTimeString();
 				if(selectedD == 0 || selectedD == alldata[i][0]){

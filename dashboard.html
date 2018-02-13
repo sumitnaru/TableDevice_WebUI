@@ -69,7 +69,7 @@
     background-color: #f1f1f1;
     min-width: 120px;
     box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
-    z-index: 1;
+    z-index: 9999;
 }
 
 .dropdown-content a {
@@ -79,7 +79,7 @@
     display: block;
 }
 
-.dropdown-content a:hover {background-color: #ddd}
+.dropdown-content a:hover {background-color: #hhh}
 
 .dropdown:hover .dropdown-content {
     display: block;
@@ -97,24 +97,7 @@ padding:20px 0 20px 20px!important;
     <body>
         <div class="container-fluid top-bg">
             <div class="container main-panel shadow" style="width:100%; margin-top:20px;" >
-                <!--  <nav class="navbar navbar-default">
-                <!-- <div class="container-fluid"> -->
-                <!-- <div class="navbar-header"> -->
-                <!-- <button type="button" class="navbar-toggle"> -->
-                <!-- <span class="sr-only">Toggle navigation</span> -->
-                <!-- <span class="icon-bar bar1"></span> -->
-                <!-- <span class="icon-bar bar2"></span> -->
-                <!-- <span class="icon-bar bar3"></span> -->
-                <!-- </button> -->
-                <!-- <!-- <a class="navbar-brand" href="#">Dashboard</a> -->
-                <!-- </div> -->
-                <!-- <div class="collapse navbar-collapse"> -->
-                <!-- <ul class="nav navbar-nav navbar-right"> -->
-                <!-- </ul> -->
-
-                <!-- </div> -->
-                <!-- </div> -->
-                <!-- </nav>-->
+               
                 <div class="col-md-12" style="">
                     <div class="col-md-12" >
                         <div class="col-md-3" style="border-top-width:10px;border-bottom-width: 10px;margin-top: 10px; margin-bottom: 10px;" ><a href="#"><img style="width: 50%;" src="./assets/img/logo.png" alt="logo"/></a></div>
@@ -129,16 +112,7 @@ padding:20px 0 20px 20px!important;
                             </ul>
 
                             <div style="display:inline-block;float:right;top: 17px; right: 17px; height:50px;  background-color:rgb(249, 250, 250); color:#fff; border:none;">
-                                <!-- <ul class="nav navbar-nav"> -->
-                                    <!-- <li class="dropdown" id="printDrp"> -->
-									<!-- <a class="dropdown-toggle" data-toggle="dropdown" href="#">Export To <span class="caret"></span></a> -->
-                                        <!-- <ul class="dropdown-menu"> -->
-                                            <!-- <li class="text-center" style="color:cornflowerblue;"  onclick="window.print()">PDF</li> -->
-                                            <!-- <li class="text-center" style="color:cornflowerblue;" onclick="exportData()"> Excel</li> -->
-                                        <!-- </ul> -->
-                                    <!-- </li> -->
-                                <!-- </ul> -->
-                                <div class="dropdown">
+                               <div class="dropdown">
                                     <button class="dropbtn">Export To</button>
                                     <div class="dropdown-content">
                                         <a onclick="window.print()">PDF</a>
@@ -154,15 +128,13 @@ padding:20px 0 20px 20px!important;
                         <input type="radio"  id="all">
                         <input type="radio"   id="time">
                     </div>
-
-                   <div class="container card">
-
+<div class="content">
+                   <div class="container-fluid" style="padding-left: 28px;padding-right: 28px;">
                        <div class="row">
-
-                           <div class="col-md-12">
-                               <br>
-
-                              <div class="col-md-2 pddding"> <label for="bday" id="lbltimespan" style="display:none;">Time Spam:</label></div>
+					   <div class=" card">
+                           <div class="col-md-12" style="margin-top:20px;margin-bottom:20px;">
+                              <div class="col-md-2 form-group">
+							  <label for="bday" id="lbltimespan" style="display:none;">Time Span:</label></div>
 								<div class="col-md-10">
                                        <div class="dropdown" style="width:100%; ">
                                            <select id="drpTime" class="btn btn-primary dropdown-toggle" onChange="getDropdownSelectedValue()" style="width:100%; display:none; height:40px;">
@@ -179,37 +151,24 @@ padding:20px 0 20px 20px!important;
                                            </select>
                                        </div>
                                    </div>
-
-
-								</div>	
-
-
-                                  
+								</div>	                                  
 
                                <div class="col-lg-12"  id="DateDiv" >
-                                       <div class="col-md-6">
-                                           <div class="col-lg-3 form-group" style="margin-top:10px;margin-left:-10px">
-                                               <label id="lblenterdate">Date From:</label>
-                                           </div>
-                                           <div class="col-lg-9 form-group" style="margin-top:10px">
-                                               <input type="text" id="date" style="width:300px;margin:0 0 0 0;border-bottom:1px solid #DBDBDB" onChange="getDateValue()"  class="form-control floating-label" placeholder="Start Date">
-                                               <!--<input id="date" type="datetime-local" onchange="getDateValue()" hidden="hidden"  pattern="\d{1,2}-\d{1,2}-\d{4}" class="form-control">-->
-                                           </div>
-                                       </div>
-                                       <div class="col-md-6">
-                                           <div class="col-lg-3 form-group" style="margin-top:10px">
-                                               <label id="lblenterdateto" >Date To:</label>
-                                           </div>
-                                           <div class="col-lg-9 form-group" style="margin-top:10px">
-                                               <input type="text" id="dateto" style="width:300px;margin:0 0 0 0;border-bottom:1px solid #DBDBDB" onChange="getDateValue()"  class="form-control floating-label" placeholder="End Date">
-                                               <!--<input id="dateto" type="datetime-local" onchange="getDateValue()" hidden="hidden"  pattern="\d{1,2}-\d{1,2}-\d{4}" class="form-control">-->
-                                           </div>
-                                       </div>
+                                        <div class="col-md-6">
+                                            <div class="form-control-wrapper">
+                                                <input type="text" id="date" onchange="getDateValue()" class="form-control floating-label" placeholder="Start Date">
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <div class="form-control-wrapper">
+                                                <input type="text" id="dateto" onchange="getDateValue()" class="form-control floating-label" placeholder="End Date">
+                                            </div>
+                                    </div>
                                 </div>
 								<div class="col-lg-12">
-                                        <div class="col-lg-2 pddding"><label for="bday">Devices:</label></div>
+                                        <div class="col-lg-2 form-group"><label for="bday">Devices:</label></div>
                                         <div class="col-lg-10">
-                                            <div class="dropdown" style="width:80%">
+                                            <div class="dropdown" style="width:100%">
                                                 <select id="drpDevic" class="btn btn-info dropdown-toggle" style="width:100%;" onchange="getDateDviceValue()">
                                                     <option value="0" selected="selected">All Devices</option>
                                                 </select>
@@ -217,10 +176,13 @@ padding:20px 0 20px 20px!important;
                                         </div>
                                     </div>
                             </div>
+							</div>
                         </div>
-                        <br>
+                       
+					   </div>
+					   <br>
                         <div class="content">
-                            <div class="container-fluid">
+                            <div class="container-fluid">							
                                 <div class="row">
                                     <div class="col-lg-3 col-sm-6">
                                         <div class="card">
@@ -238,12 +200,7 @@ padding:20px 0 20px 20px!important;
                                                         </div>
                                                     </div>
                                                 </div>
-                                                <!--<div class="footer">
-                                                    <hr />
-                                                    <div class="stats">
-                                                        <i class="ti-reload"></i> Updated now
-                                                    </div>
-                                                </div>-->
+                                           
                                             </div>
                                         </div>
                                     </div>
@@ -264,12 +221,7 @@ padding:20px 0 20px 20px!important;
                                                         </div>
                                                     </div>
                                                 </div>
-                                                <!--<div class="footer">
-                                                    <hr />
-                                                    <div class="stats">
-                                                        <i class="ti-calendar"></i> Last day
-                                                    </div>
-                                                </div>-->
+                                              
                                             </div>
                                         </div>
                                     </div>
@@ -289,12 +241,7 @@ padding:20px 0 20px 20px!important;
                                                         </div>
                                                     </div>
                                                 </div>
-                                                <!--<div class="footer">
-                                                    <hr />
-                                                    <div class="stats">
-                                                        <i class="ti-timer"></i> In the last hour
-                                                    </div>
-                                                </div>-->
+                                               
                                             </div>
                                         </div>
                                     </div>
@@ -342,25 +289,7 @@ padding:20px 0 20px 20px!important;
                                         </div>
                                     </div>
 
-                                    <!-- <div class="col-md-12"> -->
-                                    <!-- <div class="card"> -->
-                                    <!-- <div class="header"> -->
-                                    <!-- <h4 class="title">Emergency Request Count</h4> -->
-                                    <!-- </div> -->
-                                    <!-- <div class="content"> -->
-                                    <!-- <div id="chartHoursEmrgency" class="ct-chart"></div> -->
-                                    <!-- <div class="footer"> -->
-                                    <!-- <div class="chart-legend"> -->
-                                    <!-- <!--<i class="fa fa-circle text-info"></i> On -->
-                                    <!-- <i class="fa fa-circle text-danger"></i> Off-->
-                                    <!-- <i class="fa fa-circle text-info"></i> Emergency -->
-
-                                    <!-- </div> -->
-
-                                    <!-- </div> -->
-                                    <!-- </div> -->
-                                    <!-- </div> -->
-                                    <!-- </div> -->
+                                 
 
                                     <div class="col-md-12">
                                         <div class="card">
@@ -419,24 +348,7 @@ padding:20px 0 20px 20px!important;
                                             </div>
                                         </div>
                                     </div>
-                                    <!--<div class="col-md-6">
-                                        <div class="card ">
-                                            <div class="header">
-                                                <h4 class="title">2015 Sales</h4>
-                                                <p class="category">All products including Taxes</p>
-                                            </div>
-                                            <div class="content">
-                                                <div id="chartActivity" class="ct-chart"></div>
-        
-                                                <div class="footer">
-                                                    <div class="chart-legend">
-                                                        <i class="fa fa-circle text-info"></i> Tesla Model S
-                                                        <i class="fa fa-circle text-warning"></i> BMW 5 Series
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>-->
+                                 
                                 </div>
                             </div>
                         </div>
@@ -499,35 +411,6 @@ padding:20px 0 20px 20px!important;
                             <br>
                         </form>
 
-                        <!--<footer class="footer">
-                            <div class="container-fluid">
-                                <nav class="pull-left">
-                                    <ul>
-        
-                                        <li>
-                                            <a href="http://www.creative-tim.com">
-                                                Creative Tim
-                                            </a>
-                                        </li>
-                                        <li>
-                                            <a href="http://blog.creative-tim.com">
-                                                Blog
-                                            </a>
-                                        </li>
-                                        <li>
-                                            <a href="http://www.creative-tim.com/license">
-                                                Licenses
-                                            </a>
-                                        </li>
-                                    </ul>
-                                </nav>
-                                <div class="copyright pull-right">
-                                    &copy;
-                                    <script>document.write(new Date().getFullYear())</script>, made with <i class="fa fa-heart heart"></i> by <a href="http://www.creative-tim.com">Creative Tim</a>
-                                </div>
-                            </div>
-                        </footer>-->
-
                     </div>
                 </div>
 
@@ -572,11 +455,11 @@ padding:20px 0 20px 20px!important;
                                 {
                                     $('#dateto').bootstrapMaterialDatePicker
                                             ({
-                                                weekStart: 0, format: 'DD/MM/YYYY HH:mm'
+                                                weekStart: 0, format: 'MM/DD/YYYY HH:mm',shortTime: true
                                             });
                                     $('#date').bootstrapMaterialDatePicker
                                             ({
-                                                weekStart: 0, format: 'DD/MM/YYYY HH:mm', shortTime: true
+                                                weekStart: 0, format: 'MM/DD/YYYY HH:mm', shortTime: true
                                             }).on('change', function (e, date)
                                     {
                                         $('#dateto').bootstrapMaterialDatePicker('setMinDate', date);
