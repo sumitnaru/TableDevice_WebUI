@@ -277,6 +277,8 @@ function two(files) {
 			var ddateStr=dDay+"/"+dMonth+"/"+dYear+" "+dHour+":"+dMin+":"+dSec
 
             //01-01-2016 00:03:44
+			console.log(datetxtto);
+			console.log(datetxt);
            
             var dTime = new Date(dStr);
 			var ckdate=0;
@@ -298,8 +300,8 @@ function two(files) {
                 Filter1Arr.push(tempFilter);
 				}
             }
-			else if(new Date(ddateStr)>=new Date(datetxt) && new Date(ddateStr)<=new Date(datetxtto)){
-
+			else if(new Date(datetxt)>=new Date(ddateStr) && new Date(ddateStr)<=new Date(datetxtto)){
+alert("llll");
                document.getElementById("tblFrom").innerHTML=new Date(datetxt).toDateString() +" "+new Date(datetxt).toLocaleTimeString();
                 document.getElementById("tblTo").innerHTML=new Date(datetxtto).toDateString() +" "+new Date(datetxtto).toLocaleTimeString();
 				if(selectedD == 0 || selectedD == alldata[i][0]){

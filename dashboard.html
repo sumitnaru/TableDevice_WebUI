@@ -88,6 +88,10 @@
 .dropdown:hover .dropbtn {
     background-color: #009688;
 }
+.pddding{
+padding:20px 0 20px 20px!important;
+
+}
 </style>
     </head>
     <body>
@@ -151,66 +155,67 @@
                         <input type="radio"   id="time">
                     </div>
 
-                    <div class="container-fluid">
-                        <div class="row">
-                            <div class="col-md-12" >
-                                <br>
-                                <div style="margin:0 15px 0 15px" >
-                                    <div class="col-md-2"> <label for="bday" id="lbltimespan" style="display:none">Time Spam:</label></div>
-                                    <div class="col-md-10">
-                                        <div class="dropdown" style="width:100%;">
-                                            <select id="drpTime" class="btn btn-primary dropdown-toggle" onchange="getDropdownSelectedValue()" style="width:100%; display:none; height:40px;">
-                                                <option value="30" >30 Minuts</option>
-                                                <option value="60" >1 Hour</option>
-                                                <option value="240">4 Hours</option>
-                                                <option value="480">8 Hours</option>
-                                                <option value="720" selected="selected">12 Hours</option>
-                                                <option value="1440">1 day</option>
-                                                <option value="21600">15 days</option>
-                                                <option value="43200">30 days</option>
-                                                <option value="525600">1 year</option>
-                                                <option value="2628000">MAX</option>
-                                            </select>
-                                        </div>
-                                    </div>
+                   <div class="container card">
+
+                       <div class="row">
+
+                           <div class="col-md-12">
+                               <br>
+
+                              <div class="col-md-2 pddding"> <label for="bday" id="lbltimespan" style="display:none;">Time Spam:</label></div>
+								<div class="col-md-10">
+                                       <div class="dropdown" style="width:100%; ">
+                                           <select id="drpTime" class="btn btn-primary dropdown-toggle" onChange="getDropdownSelectedValue()" style="width:100%; display:none; height:40px;">
+                                               <option value="30" >30 Minuts</option>
+                                               <option value="60" >1 Hour</option>
+                                               <option value="240">4 Hours</option>
+                                               <option value="480">8 Hours</option>
+                                               <option value="720" selected="selected">12 Hours</option>
+                                               <option value="1440">1 day</option>
+                                               <option value="21600">15 days</option>
+                                               <option value="43200">30 days</option>
+                                               <option value="525600">1 year</option>
+                                               <option value="2628000">MAX</option>
+                                           </select>
+                                       </div>
+                                   </div>
+
+
+								</div>	
+
+
+                                  
+
+                               <div class="col-lg-12"  id="DateDiv" >
+                                       <div class="col-md-6">
+                                           <div class="col-lg-3 form-group" style="margin-top:10px;margin-left:-10px">
+                                               <label id="lblenterdate">Date From:</label>
+                                           </div>
+                                           <div class="col-lg-9 form-group" style="margin-top:10px">
+                                               <input type="text" id="date" style="width:300px;margin:0 0 0 0;border-bottom:1px solid #DBDBDB" onChange="getDateValue()"  class="form-control floating-label" placeholder="Start Date">
+                                               <!--<input id="date" type="datetime-local" onchange="getDateValue()" hidden="hidden"  pattern="\d{1,2}-\d{1,2}-\d{4}" class="form-control">-->
+                                           </div>
+                                       </div>
+                                       <div class="col-md-6">
+                                           <div class="col-lg-3 form-group" style="margin-top:10px">
+                                               <label id="lblenterdateto" >Date To:</label>
+                                           </div>
+                                           <div class="col-lg-9 form-group" style="margin-top:10px">
+                                               <input type="text" id="dateto" style="width:300px;margin:0 0 0 0;border-bottom:1px solid #DBDBDB" onChange="getDateValue()"  class="form-control floating-label" placeholder="End Date">
+                                               <!--<input id="dateto" type="datetime-local" onchange="getDateValue()" hidden="hidden"  pattern="\d{1,2}-\d{1,2}-\d{4}" class="form-control">-->
+                                           </div>
+                                       </div>
                                 </div>
-
-                                <div class="col-lg-12" >
-                                    <div style="margin:0 15px 0 15px; display:none" id="DateDiv">   
-                                        <div class="col-md-6">
-                                            <div class="col-lg-3 form-group" style="margin-top:10px">
-                                                <label id="lblenterdate"  >Date From:</label>
-                                            </div>
-                                            <div class="col-lg-9 form-group" style="margin-top:0px">
-                                                <input type="text" id="date" style="width:300px;margin:0 0 0 0;border-bottom:1px solid #DBDBDB" onchange="getDateValue()"  class="form-control floating-label" placeholder="Start Date">
-                                                <!--<input id="date" type="datetime-local" onchange="getDateValue()" hidden="hidden"  pattern="\d{1,2}-\d{1,2}-\d{4}" class="form-control">-->
-                                            </div>
-                                        </div>
-                                        <div class="col-md-6">
-                                            <div class="col-lg-3 form-group" style="margin-top:10px">
-                                                <label id="lblenterdateto" >Date To:</label>
-                                            </div>
-                                            <div class="col-lg-9 form-group" style="margin-top:10px">
-                                                <input type="text" id="dateto" style="width:300px;margin:0 0 0 0;border-bottom:1px solid #DBDBDB" onchange="getDateValue()"  class="form-control floating-label" placeholder="End Date">
-                                                <!--<input id="dateto" type="datetime-local" onchange="getDateValue()" hidden="hidden"  pattern="\d{1,2}-\d{1,2}-\d{4}" class="form-control">-->
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <br>
-                                    <br>
-                                    <br>
-
-                                    <div class="col-lg-12">
-                                        <div class="col-lg-2"><label for="bday">Devices:</label></div>
+								<div class="col-lg-12">
+                                        <div class="col-lg-2 pddding"><label for="bday">Devices:</label></div>
                                         <div class="col-lg-10">
-                                            <div class="dropdown" style="width:100%">
+                                            <div class="dropdown" style="width:80%">
                                                 <select id="drpDevic" class="btn btn-info dropdown-toggle" style="width:100%;" onchange="getDateDviceValue()">
                                                     <option value="0" selected="selected">All Devices</option>
                                                 </select>
                                             </div>
                                         </div>
                                     </div>
-                                </div>
                             </div>
                         </div>
                         <br>
