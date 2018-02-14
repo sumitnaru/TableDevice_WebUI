@@ -5,6 +5,7 @@ var datetxt=null;
 var datetxtto=null;
 var datetxt1=null;
 var objParmeter=0;
+var objCk=0;
 $(document).ready(function () {
 
 		tabSelection(1);
@@ -225,6 +226,7 @@ function two(files) {
 		// console.log(alldatalength);
 
 		if(document.getElementById("all").checked == true){
+			
             var droptext = document.getElementById("drpTime");
             
 			var min =parseInt(droptext.options[droptext.selectedIndex].value);
@@ -236,7 +238,7 @@ function two(files) {
 			var fromTime5Min = new Date();
 			fromTime5Min.setMinutes(fromTime5Min.getMinutes() - 2);
             fromTime.setMinutes(fromTime.getMinutes() - totalSelectedMin);
-          
+          objCk=1;
 
 		}
 		else {
@@ -244,6 +246,7 @@ function two(files) {
 			datetxtto=document.getElementById("dateto").value;
             document.getElementById("tblFrom").value=datetxt;
             document.getElementById("tblTo").value=datetxtto;
+			objCk=2;
            
 		}
 		var drpDevic=document.getElementById("drpDevic");
@@ -272,18 +275,18 @@ function two(files) {
 
             // var ddateStr= dYear+"-"+dMonth+"-"+dDay+" "+dHour+":"+dMin+":"+dSec
             
-            var dStr = dDay+"/"+dMonth+"/"+dYear+" "+dHour+":"+dMin+":"+dSec
+            var dStr = dDay+"/"+dMonth+"/"+dYear+" "+dHour+":"+dMin+":"+dSec;
 
-			var ddateStr=dDay+"/"+dMonth+"/"+dYear+" "+dHour+":"+dMin+":"+dSec
-
+			var ddateStr=dMonth+"/"+dDay+"/"+dYear+" "+dHour+":"+dMin+":"+dSec;
+console.log("Date Database"+new Date(ddateStr));
+console.log("Date website" + new Date(datetxt));
             //01-01-2016 00:03:44
            
             var dTime = new Date(dStr);
 			var ckdate=0;
             if (dTime >= fromTime) {
          
-                document.getElementById("tblFrom").innerHTML=fromTime.toDateString()+" "+fromTime.toLocaleTimeString();
-                document.getElementById("tblTo").innerHTML=new Date().toDateString()+" "+new Date().toLocaleTimeString();
+              
                 // console.log("in<<<");
 				if(selectedD == 0 || selectedD == alldata[i][0]){
                 var tempFilter = new MainTable();
@@ -300,8 +303,7 @@ function two(files) {
             }
 			else if(new Date(ddateStr)>=new Date(datetxt) && new Date(ddateStr)<=new Date(datetxtto)){
 
-               document.getElementById("tblFrom").innerHTML=new Date(datetxt).toDateString() +" "+new Date(datetxt).toLocaleTimeString();
-                document.getElementById("tblTo").innerHTML=new Date(datetxtto).toDateString() +" "+new Date(datetxtto).toLocaleTimeString();
+               
 				if(selectedD == 0 || selectedD == alldata[i][0]){
 					ckdate=1;
 					var tempFilter = new MainTable();
@@ -316,7 +318,16 @@ function two(files) {
 					Filter1Arr.push(tempFilter);
 				}
 			}
-
+			if(objCk==1){
+				  document.getElementById("tblFrom").innerHTML=fromTime.toDateString()+" "+fromTime.toLocaleTimeString();
+                document.getElementById("tblTo").innerHTML=new Date().toDateString()+" "+new Date().toLocaleTimeString();
+			}
+			else if(objCk==2){
+				document.getElementById("tblFrom").innerHTML=new Date(datetxt).toDateString() +" "+new Date(datetxt).toLocaleTimeString();
+                document.getElementById("tblTo").innerHTML=new Date(datetxtto).toDateString() +" "+new Date(datetxtto).toLocaleTimeString();
+			}
+			
+			
             if (dTime >= fromTime5Min) {
               var ck = 0;
                 for(var hh = 0; hh<arrToatlOlineArr.length; hh++){
@@ -620,22 +631,40 @@ function two(files) {
     }
     var tblOe = document.getElementById("tblRequestT");
     document.getElementById("tblRequestT").innerHTML="";
+	
+	
+	if(mainMargeTableArr.length>0){
+		for (var countTrow=0;countTrow<mainMargeTableArr.length;countTrow++){
+			var row = tblOe.insertRow();
+			var DID = row.insertCell(0);
+			var req = row.insertCell(1);
+			var emr = row.insertCell(2);
+			var avg = row.insertCell(3);
+			var off = row.insertCell(4);
 
-    for (var countTrow=0;countTrow<mainMargeTableArr.length;countTrow++){
-        var row = tblOe.insertRow();
-        var DID = row.insertCell(0);
-        var req = row.insertCell(1);
-        var emr = row.insertCell(2);
-        var avg = row.insertCell(3);
-        var off = row.insertCell(4);
-
-        DID.innerHTML=mainMargeTableArr[countTrow]["deviceId"];
-        req.innerHTML=mainMargeTableArr[countTrow]["request"];
-        emr.innerHTML=mainMargeTableArr[countTrow]["emergency"]; 
-        avg.innerHTML=mainMargeTableArr[countTrow]["avgResponseTime"];
-        off.innerHTML=mainMargeTableArr[countTrow]["offLineCount"];
-      
+			DID.innerHTML=mainMargeTableArr[countTrow]["deviceId"];
+			req.innerHTML=mainMargeTableArr[countTrow]["request"];
+			emr.innerHTML=mainMargeTableArr[countTrow]["emergency"]; 
+			avg.innerHTML=mainMargeTableArr[countTrow]["avgResponseTime"];
+			off.innerHTML=mainMargeTableArr[countTrow]["offLineCount"];
+		}
     }
+	else{
+		var row = tblOe.insertRow();
+			var DID = row.insertCell(0);
+			var req = row.insertCell(1);
+			var emr = row.insertCell(2);
+			var avg = row.insertCell(3);
+			var off = row.insertCell(4);
+
+			DID.innerHTML=0;
+			req.innerHTML=0;
+			emr.innerHTML=0; 
+			avg.innerHTML=0;
+			off.innerHTML=0;
+	}
+	
+	
     
     
 			

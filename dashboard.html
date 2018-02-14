@@ -22,9 +22,9 @@
 
 
         <!--  Fonts and icons     -->
-        <link href="http://maxcdn.bootstrapcdn.com/font-awesome/latest/css/font-awesome.min.css" rel="stylesheet">
-        <link href='http://fonts.googleapis.com/css?family=Roboto:400,500' rel='stylesheet' type='text/css'>
-        <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+        <link href="assets/css/fonts/font-awesome.min.css" rel="stylesheet">
+        <link href='assets/css/fonts/roboto-icon-fonts.css' rel='stylesheet' type='text/css'>
+        <link href="assets/css/fonts/material-icon-fonts.css" rel="stylesheet">
         <link href="assets/css/themify-icons.css" rel="stylesheet">
         <!--db-->
         <script src="assets/db/sql.js"></script>
@@ -539,8 +539,8 @@
                 <!--  Notifications Plugin    -->
                 <script src="assets/js/bootstrap-notify.js"></script>
 
-                <!--  Google Maps Plugin    -->
-                <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js"></script>
+                <!-- <!--  Google Maps Plugin    --> 
+                <!-- <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js"></script> -->
 
                 <!-- Paper Dashboard Core javascript and methods for Demo purpose -->
                 <script src="assets/js/paper-dashboard.js"></script>
@@ -548,27 +548,28 @@
                 <!-- Paper Dashboard DEMO methods, don't include it in your project! -->
                 <script src="assets/js/demo.js"></script>
                 <link rel="stylesheet"
-                      href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-material-design/0.5.10/css/bootstrap-material-design.min.css"/>
+                      href="assets/css/bootstrap-material-design.min.css"/>
                 <link rel="stylesheet"
-                      href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-material-design/0.5.10/css/ripples.min.css"/>        
+                      href="assets/css/ripples.min.css"/>        
                 <script src="https://code.jquery.com/jquery-1.12.3.min.js" integrity="sha256-aaODHAgvwQW1bFOGXMeX+pC4PZIPsvn2h1sArYOhgXQ=" crossorigin="anonymous"></script>
-                <script type="text/javascript" src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
-                <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-material-design/0.5.10/js/ripples.min.js"></script>
-                <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-material-design/0.5.10/js/material.min.js"></script>
+                <script type="text/javascript" src="assets/js/bootstrap-3.3.2.min.js"></script>
+                <script src="assets/js/ripples.min.js"></script>
+                <script src="assets/js/material.min.js"></script>
                 <!-- <script type="text/javascript" src="https://rawgit.com/FezVrasta/bootstrap-material-design/master/dist/js/material.min.js"></script> -->
-                <script type="text/javascript" src="http://momentjs.com/downloads/moment-with-locales.min.js"></script>
+                 <script type="text/javascript" src="assets/js/moment-with-locales.min.js"></script>
                 <script src="assets/js/datetimepicker/bootstrap-material-datetimepicker.js" ></script>
+
 
                 <script type="text/javascript">
                                 $(document).ready(function ()
                                 {
                                     $('#dateto').bootstrapMaterialDatePicker
                                             ({
-                                                weekStart: 0, format: 'MM/DD/YYYY HH:mm',shortTime: true
+                                                weekStart: 0, format: 'DD/MMM/YYYY HH:mm',shortTime: true
                                             });
                                     $('#date').bootstrapMaterialDatePicker
                                             ({
-                                                weekStart: 0, format: 'MM/DD/YYYY HH:mm', shortTime: true
+                                                weekStart: 0, format: 'DD/MMM/YYYY HH:mm', shortTime: true
                                             }).on('change', function (e, date)
                                     {
                                         $('#dateto').bootstrapMaterialDatePicker('setMinDate', date);
