@@ -24,6 +24,7 @@ int PixPin = 5;  //D1
 int buzz = 4; //D2
 int AnalogPin = A0;
 
+int ServerDownCount = 0;
 int counter = 0;
 unsigned long mainTimer = 0;
 Adafruit_NeoPixel pixels = Adafruit_NeoPixel(NUMPIXELS, PixPin, NEO_GRB + NEO_KHZ800);
@@ -193,11 +194,15 @@ void getRequest() {
     else
     {
       Serial.println("WebServer Down!!");
+      ServerDownCount++;
+
+      if (ServerDownCount >= 5)
+        checkConnection();
     }
     http.end();   //Close connection
   }
-  if(deviceStatus == 3)
+  if (deviceStatus == 3)
     deviceStatus = 1;
-  else if(deviceStatus == 4)
+  else if (deviceStatus == 4)
     deviceStatus = 2;
 }
